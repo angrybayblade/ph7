@@ -1,0 +1,5 @@
+.tox/
+temp/
+
+__pycache__/
+*.pyc
