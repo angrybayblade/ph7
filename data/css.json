@@ -1,0 +1,1519 @@
+{
+  "animation": {
+    "syntax": null,
+    "options": [
+      "animation-name",
+      "animation-duration",
+      "animation-timing-function",
+      "animation-delay",
+      "animation-iteration-count",
+      "animation-direction",
+      "animation-fill-mode",
+      "animation-play-state"
+    ]
+  },
+  "animation-play-state": {
+    "syntax": null,
+    "options": ["paused", "running", "initial", "inherit"]
+  },
+  "animation-name": {
+    "syntax": null,
+    "options": ["keyframename", "none", "initial", "inherit"]
+  },
+  "animation-fill-mode": {
+    "syntax": null,
+    "options": ["none", "forwards", "backwards", "both", "initial", "inherit"]
+  },
+  "align-items": {
+    "syntax": "align-items: stretch | center | flex-start |flex-end | baseline | initial | inherit;",
+    "options": [
+      "stretch",
+      "center",
+      "flex-start",
+      "flex-end",
+      "baseline",
+      "initial",
+      "inherit"
+    ]
+  },
+  "animation-duration": {
+    "syntax": null,
+    "options": ["time", "initial", "inherit"]
+  },
+  "align-self": {
+    "syntax": "align-self: auto | stretch | center | flex-start |flex-end | baseline | initial | inherit;",
+    "options": [
+      "auto",
+      "stretch",
+      "center",
+      "flex-start",
+      "flex-end",
+      "baseline",
+      "initial",
+      "inherit"
+    ]
+  },
+  "align-content": {
+    "syntax": "align-content: stretch | center | flex-start |flex-end | space-between |space-around | initial | inherit;",
+    "options": [
+      "stretch",
+      "center",
+      "flex-start",
+      "flex-end",
+      "space-between",
+      "space-around",
+      "initial",
+      "inherit"
+    ]
+  },
+  "animation-direction": {
+    "syntax": null,
+    "options": [
+      "normal",
+      "reverse",
+      "alternate",
+      "alternate-reverse",
+      "initial",
+      "inherit"
+    ]
+  },
+  "animation-iteration-count": {
+    "syntax": null,
+    "options": ["number", "infinite", "initial", "inherit"]
+  },
+  "all": {
+    "syntax": null,
+    "options": ["initial", "inherit", "unset"]
+  },
+  "animation-delay": {
+    "syntax": "animation-delay: time | initial | inherit;",
+    "options": ["time", "initial", "inherit"]
+  },
+  "animation-timing-function": {
+    "syntax": null,
+    "options": [
+      "linear",
+      "ease",
+      "ease-in",
+      "ease-out",
+      "ease-in-out",
+      "step-start",
+      "step-end",
+      "steps(int,start|end)",
+      "cubic-bezier(n,n,n,n)",
+      "initial",
+      "inherit"
+    ]
+  },
+  "backface-visibility": {
+    "syntax": "backface-visibility: visible | hidden | initial | inherit;",
+    "options": ["visible", "hidden", "initial", "inherit"]
+  },
+  "background-position": {
+    "syntax": "background-position: value | x% y% |xpos ypos | initial | inherit",
+    "options": [
+      "left top",
+      "left center",
+      "left bottom",
+      "right top",
+      "right center",
+      "right bottom",
+      "center top",
+      "center center",
+      "center bottom",
+      "initial",
+      "inherit"
+    ]
+  },
+  "background-size": {
+    "syntax": "background-size: auto | length | cover |contain | initial | inherit;",
+    "options": [
+      "auto",
+      "length",
+      "percentage",
+      "cover",
+      "contain",
+      "initial",
+      "inherit"
+    ]
+  },
+  "background": {
+    "syntax": "background: bg-color bg-image position/bg-size bg-repeatbg-origin bg-clip bg-attachment | initial | inherit;",
+    "options": [
+      "background-color",
+      "background-image",
+      "background-position",
+      "background-size",
+      "background-repeat",
+      "background-origin",
+      "background-clip",
+      "background-attachment",
+      "initial",
+      "inherit"
+    ]
+  },
+  "background-attachment": {
+    "syntax": "background-attachment: scroll | fixed | local |initial | inherit;",
+    "options": ["scroll", "fixed", "local", "initial", "inherit"]
+  },
+  "background-color": {
+    "syntax": "background-color: color | transparent | initial | inherit;",
+    "options": ["color", "transparent", "initial", "inherit"]
+  },
+  "background-repeat": {
+    "syntax": "background-repeat: repeat | repeat-x | repeat-y |no-repeat | initial | inherit;",
+    "options": [
+      "repeat",
+      "repeat-x",
+      "repeat-y",
+      "no-repeat",
+      "space",
+      "round",
+      "initial",
+      "inherit"
+    ]
+  },
+  "background-clip": {
+    "syntax": "background-clip: border-box | padding-box |content-box | initial | inherit;",
+    "options": [
+      "content-box",
+      "padding-box",
+      "border-box",
+      "initial",
+      "inherit"
+    ]
+  },
+  "background-blend-mode": {
+    "syntax": "background-blend-mode: normal | multiply | screen | overlay | darken |lighten | color-dodge | saturation | color |luminosity;",
+    "options": [
+      "normal",
+      "multiply",
+      "screen",
+      "overlay",
+      "darken",
+      "lighten",
+      "color-dodge",
+      "saturation",
+      "color",
+      "luminosity"
+    ]
+  },
+  "background-origin": {
+    "syntax": "background-origin: padding-box | border-box |content-box | initial | inherit;",
+    "options": [
+      "padding-box",
+      "border-box",
+      "content-box",
+      "initial",
+      "inherit"
+    ]
+  },
+  "background-image": {
+    "syntax": "background-image: url(url) | none | linear-gradient() | radial-gradient() |repeating-linear-gradient() | repeating-radial-gradient() |inherit;",
+    "options": [
+      "url",
+      "none",
+      "linear-gradient()",
+      "radial-gradient()",
+      "repeating-linear-gradient()",
+      "repeating-radial-gradient()",
+      "inherit"
+    ]
+  },
+  "border": {
+    "syntax": "border: border-width border-style border-color |initial | inherit;",
+    "options": [
+      "border-width",
+      "border-style",
+      "border-color",
+      "initial",
+      "inherit"
+    ]
+  },
+  "border-bottom": {
+    "syntax": "border-bottom: border-width border-style border-color |initial | inherit;",
+    "options": [
+      "border-width",
+      "border-style",
+      "border-color",
+      "initial",
+      "inherit"
+    ]
+  },
+  "border-bottom-left-radius": {
+    "syntax": "border-bottom-left-radius: length | length% |initial | inherit;",
+    "options": ["length", "%", "initial", "inherit"]
+  },
+  "border-bottom-color": {
+    "syntax": "border-bottom-color: color | transparent |initial | inherit;",
+    "options": ["color", "transparent", "initial", "inherit"]
+  },
+  "border-bottom-style": {
+    "syntax": null,
+    "options": [
+      "none",
+      "hidden",
+      "dotted",
+      "dashed",
+      "solid",
+      "double",
+      "groove",
+      "ridge",
+      "inset",
+      "outset",
+      "initial",
+      "inherit"
+    ]
+  },
+  "border-image-repeat": {
+    "syntax": "border-image-repeat: stretch | repeat |round | initial | inherit;",
+    "options": ["stretch", "repeat", "round", "space", "initial", "inherit"]
+  },
+  "border-image": {
+    "syntax": "border-image: URL slice width outset repeat |initial | inherit;",
+    "options": [
+      "border-image-source",
+      "border-image-slice",
+      "border-image-width",
+      "border-image-outset",
+      "border-image-repeat",
+      "initial",
+      "inherit"
+    ]
+  },
+  "border-collapse": {
+    "syntax": "border-collapse: separate | collapse | initial | inherit;",
+    "options": ["separate", "collapse", "initial", "inherit"]
+  },
+  "border-image-outset": {
+    "syntax": "border-image-outset: length | number |initial | inherit;",
+    "options": ["length", "number", "initial", "inherit"]
+  },
+  "border-bottom-width": {
+    "syntax": null,
+    "options": ["medium", "thin", "thick", "length", "initial", "inherit"]
+  },
+  "border-color": {
+    "syntax": "border-color: color | transparent | initial | inherit;",
+    "options": ["color", "transparent", "initial", "inherit"]
+  },
+  "border-bottom-right-radius": {
+    "syntax": "border-bottom-right-radius: length | length% | initial | inherit;",
+    "options": ["length", "%", "initial", "inherit"]
+  },
+  "border-image-slice": {
+    "syntax": "border-image-slice: number | % |fill | initial | inherit;",
+    "options": ["number", "%", "fill", "initial", "inherit"]
+  },
+  "border-image-source": {
+    "syntax": "border-image-source: none | image | initial | inherit;",
+    "options": ["none", "image", "initial", "inherit"]
+  },
+  "border-image-width": {
+    "syntax": "border-image-width: number | % | auto | initial | inherit;",
+    "options": ["length", "number", "%", "auto", "initial", "inherit"]
+  },
+  "border-left-color": {
+    "syntax": "border-left-color: color | transparent | initial | inherit;",
+    "options": ["color", "transparent", "initial", "inherit"]
+  },
+  "border-left-style": {
+    "syntax": null,
+    "options": [
+      "none",
+      "hidden",
+      "dotted",
+      "dashed",
+      "solid",
+      "double",
+      "groove",
+      "ridge",
+      "inset",
+      "outset",
+      "initial",
+      "inherit"
+    ]
+  },
+  "border-right-style": {
+    "syntax": null,
+    "options": [
+      "none",
+      "hidden",
+      "dotted",
+      "dashed",
+      "solid",
+      "double",
+      "groove",
+      "ridge",
+      "inset",
+      "outset",
+      "initial",
+      "inherit"
+    ]
+  },
+  "border-radius": {
+    "syntax": null,
+    "options": ["length", "%", "initial", "inherit"]
+  },
+  "border-left": {
+    "syntax": "border-left: border-width border-style border-color |initial | inherit;",
+    "options": [
+      "border-width",
+      "border-style",
+      "border-color",
+      "initial",
+      "inherit"
+    ]
+  },
+  "border-left-width": {
+    "syntax": null,
+    "options": ["medium", "thin", "thick", "length", "initial", "inherit"]
+  },
+  "border-right-color": {
+    "syntax": "border-right-color: color | transparent | initial | inherit;",
+    "options": ["color", "transparent", "initial", "inherit"]
+  },
+  "border-right": {
+    "syntax": "border-right: border-width border-style border-color |initial | inherit;",
+    "options": [
+      "border-width",
+      "border-style",
+      "border-color",
+      "initial",
+      "inherit"
+    ]
+  },
+  "border-right-width": {
+    "syntax": null,
+    "options": ["medium", "thin", "thick", "length", "initial", "inherit"]
+  },
+  "border-spacing": {
+    "syntax": "border-spacing: length | initial | inherit;",
+    "options": ["length length", "initial", "inherit"]
+  },
+  "border-style": {
+    "syntax": null,
+    "options": [
+      "none",
+      "hidden",
+      "dotted",
+      "dashed",
+      "solid",
+      "double",
+      "groove",
+      "ridge",
+      "inset",
+      "outset",
+      "initial",
+      "inherit"
+    ]
+  },
+  "border-top": {
+    "syntax": "border-top: border-width border-style border-color |initial | inherit;",
+    "options": [
+      "border-width",
+      "border-style",
+      "border-color",
+      "initial",
+      "inherit"
+    ]
+  },
+  "border-top-right-radius": {
+    "syntax": "border-top-right-radius: length | length% | initial | inherit;",
+    "options": ["length", "%", "initial", "inherit"]
+  },
+  "border-top-color": {
+    "syntax": "border-top-color: color | transparent | initial | inherit;",
+    "options": ["color", "transparent", "initial", "inherit"]
+  },
+  "border-top-left-radius": {
+    "syntax": "border-top-left-radius: length | length% | initial | inherit;",
+    "options": ["length", "%", "initial", "inherit"]
+  },
+  "box-shadow": {
+    "syntax": "box-shadow: none | h-offset v-offset blur spread color |inset | initial | inherit;",
+    "options": [
+      "none",
+      "h-offset",
+      "v-offset",
+      "blur",
+      "spread",
+      "color",
+      "inset",
+      "initial",
+      "inherit"
+    ]
+  },
+  "border-top-width": {
+    "syntax": null,
+    "options": ["medium", "thin", "thick", "length", "initial", "inherit"]
+  },
+  "border-width": {
+    "syntax": "border-width: medium | thin | thick |length | initial | inherit;",
+    "options": ["medium", "thin", "thick", "length", "initial", "inherit"]
+  },
+  "box-decoration-break": {
+    "syntax": "box-decoration-break: slice | clone |initial | inherit | unset;",
+    "options": ["slice", "clone", "initial", "inherit"]
+  },
+  "border-top-style": {
+    "syntax": null,
+    "options": [
+      "none",
+      "hidden",
+      "dotted",
+      "dashed",
+      "solid",
+      "double",
+      "groove",
+      "ridge",
+      "inset",
+      "outset",
+      "initial",
+      "inherit"
+    ]
+  },
+  "bottom": {
+    "syntax": "bottom: auto | length | initial | inherit;",
+    "options": ["auto", "length", "%", "initial", "inherit"]
+  },
+  "box-sizing": {
+    "syntax": "box-sizing: content-box | border-box | initial | inherit;",
+    "options": ["content-box", "border-box", "initial", "inherit"]
+  },
+  "caption-side": {
+    "syntax": "caption-side: top | bottom | initial | inherit;",
+    "options": ["bottom", "top", "initial", "inherit"]
+  },
+  "caret-color": {
+    "syntax": "caret-color: auto | color | transparent;",
+    "options": ["auto", "color", "transparent"]
+  },
+  "charset": {
+    "syntax": "@charset \"charset\";",
+    "options": ["charset"]
+  },
+  "clear": {
+    "syntax": "clear: none | left | right | both |initial | inherit;",
+    "options": ["none", "left", "right", "both", "initial", "inherit"]
+  },
+  "column-count": {
+    "syntax": "column-count: number | auto | initial | inherit;",
+    "options": ["number", "auto", "initial", "inherit"]
+  },
+  "clip": {
+    "syntax": "clip: auto | shape | initial | inherit;",
+    "options": ["auto", "shape", "initial", "inherit"]
+  },
+  "column-rule": {
+    "syntax": "column-rule: column-rule-widthcolumn-rule-stylecolumn-rule-color |initial | inherit;",
+    "options": [
+      "column-rule-width ",
+      "column-rule-style ",
+      "column-rule-color ",
+      "initial",
+      "inherit"
+    ]
+  },
+  "column-gap": {
+    "syntax": "column-gap: length | normal | initial | inherit;",
+    "options": ["length", "normal", "initial", "inherit"]
+  },
+  "clip-path": {
+    "syntax": "clip-path: clip-source | basic-shape | margin-box |border-box | padding-box | content-box |fill-box | stroke-box | view-box | none;",
+    "options": [
+      "none",
+      "basic-shape",
+      "margin-box",
+      "border-box",
+      "padding-box",
+      "content-box",
+      "fill-box",
+      "stroke-box",
+      "clip-source",
+      "view-box"
+    ]
+  },
+  "color": {
+    "syntax": "color: color | initial | inherit;",
+    "options": ["color", "initial", "inherit"]
+  },
+  "column-fill": {
+    "syntax": "column-fill: balance | auto | initial | inherit;",
+    "options": ["balance", "auto", "initial", "inherit"]
+  },
+  "column-rule-color": {
+    "syntax": "column-rule-color: color | initial | inherit;",
+    "options": ["color", "initial", "inherit"]
+  },
+  "column-rule-style": {
+    "syntax": "column-rule-style: none | hidden | dotted |dashed | solid | double |groove | ridge | inset |outset | initial | inherit;",
+    "options": [
+      "none",
+      "hidden",
+      "dotted",
+      "dashed",
+      "solid",
+      "double",
+      "groove",
+      "ridge",
+      "inset",
+      "outset",
+      "initial",
+      "inherit"
+    ]
+  },
+  "column-rule-width": {
+    "syntax": "column-rule-width: length |medium | thin | thick |initial | inherit;",
+    "options": ["length", "medium", "thin", "thick", "initial", "inherit"]
+  },
+  "column-span": {
+    "syntax": "column-span: none | all |initial | inherit;",
+    "options": ["none", "all", "initial", "inherit"]
+  },
+  "column-width": {
+    "syntax": "column-width: auto | length |initial | inherit;",
+    "options": ["auto", "length", "initial", "inherit"]
+  },
+  "columns": {
+    "syntax": "columns: auto | column-width column-count |initial | inherit;",
+    "options": ["auto", "column-width", "column-count", "initial", "inherit"]
+  },
+  "content": {
+    "syntax": "content: normal | none | counter | attr | string |open-quote | close-quote | no-open-quote |no-close-quote | url | initial | inherit;",
+    "options": [
+      "normal",
+      "none",
+      "counter",
+      "attr(attribute)",
+      "string",
+      "open-quote",
+      "close-quote",
+      "no-open-quote",
+      "no-close-quote",
+      "url(url)",
+      "initial",
+      "inherit"
+    ]
+  },
+  "counter-increment": {
+    "syntax": "counter-increment: none | name number |initial | inherit;",
+    "options": ["none", "name number", "initial", "inherit"]
+  },
+  "direction": {
+    "syntax": "direction: ltr | rtl | initial | inherit;",
+    "options": ["ltr", "rtl", "initial", "inherit"]
+  },
+  "counter-reset": {
+    "syntax": "counter-reset: none | name number | initial | inherit;",
+    "options": ["none", "name number", "initial", "inherit"]
+  },
+  "display": {
+    "syntax": "display: value",
+    "options": [
+      "inline",
+      "block",
+      "contents",
+      "flex",
+      "grid",
+      "inline-block",
+      "inline-flex",
+      "inline-grid",
+      "inline-table",
+      "list-item",
+      "run-in",
+      "table",
+      "table-caption",
+      "table-column-group",
+      "table-header-group",
+      "table-footer-group",
+      "table-row-group",
+      "table-cell",
+      "table-column",
+      "table-row",
+      "none",
+      "initial",
+      "inherit"
+    ]
+  },
+  "empty-cells": {
+    "syntax": "empty-cells: show | hide | initial | inherit;",
+    "options": ["show", "hide", "initial", "inherit"]
+  },
+  "filter": {
+    "syntax": "filter: none | blur() | brightness() | contrast() |drop-shadow() | grayscale() | hue-rotate() |invert() | opacity() | saturate() |sepia() | url();",
+    "options": [
+      "none",
+      "blur(px)",
+      "brightness(%)",
+      "contrast(%)",
+      "drop-shadow(h-shadow,v-shadow,blur,spread,color)",
+      "grayscale(%)",
+      "hue-rotate(deg)",
+      "invert(%)",
+      "opacity(%)",
+      "saturate(%)",
+      "sepia(%)",
+      "url(xml-file)",
+      "initial",
+      "inherit"
+    ]
+  },
+  "cursor": {
+    "syntax": "cursor: value;",
+    "options": [
+      "alias",
+      "all-scroll",
+      "auto",
+      "cell",
+      "context-menu",
+      "col-resize",
+      "copy",
+      "crosshair",
+      "default",
+      "e-resize",
+      "ew-resize",
+      "grab",
+      "grabbing",
+      "help",
+      "move",
+      "n-resize",
+      "ne-resize",
+      "nesw-resize",
+      "ns-resize",
+      "nw-resize",
+      "nwse-resize",
+      "no-drop",
+      "none",
+      "not-allowed",
+      "pointer",
+      "progress",
+      "row-resize",
+      "s-resize",
+      "se-resize",
+      "sw-resize",
+      "text",
+      "URL",
+      "vertical-text",
+      "w-resize",
+      "wait",
+      "zoom-in",
+      "zoom-out",
+      "initial",
+      "inherit"
+    ]
+  },
+  "flex": {
+    "syntax": "flex: flex-grow flex-shrink flex-basis |auto | initial | inherit;",
+    "options": [
+      "flex-grow",
+      "flex-shrink",
+      "flex-basis",
+      "auto",
+      "none",
+      "initial",
+      "inherit"
+    ]
+  },
+  "flex-basis": {
+    "syntax": "flex-basis: auto | length | initial | inherit;",
+    "options": ["auto", "length", "initial", "inherit"]
+  },
+  "flex-direction": {
+    "syntax": "flex-direction: row | row-reverse | column |column-reverse | initial |inherit;",
+    "options": [
+      "row",
+      "row-reverse",
+      "column",
+      "column-reverse",
+      "initial",
+      "inherit"
+    ]
+  },
+  "flex-flow": {
+    "syntax": "flex-flow: flex-direction flex-wrap |initial | inherit;",
+    "options": ["flex-direction", "flex-wrap", "initial", "inherit"]
+  },
+  "flex-grow": {
+    "syntax": "flex-grow: number | initial | inherit;",
+    "options": ["number", "initial", "inherit"]
+  },
+  "flex-shrink": {
+    "syntax": "flex-shrink: number | initial | inherit;",
+    "options": ["number", "initial", "inherit"]
+  },
+  "font-family": {
+    "syntax": "font-family: family-name | generic-family |initial | inherit;",
+    "options": [
+      "Arial, Arial, Helvetica, sans-serif",
+      "Courier New, Courier New, monospace",
+      "Georgia, serif",
+      "Lucida Console, Monaco, monospace",
+      "Lucida Sans Unicode, Lucida Grande, sans-serif",
+      "Palatino Linotype, Book Antiqua, Palatino, serif",
+      "Tahoma, Geneva, sans-serif",
+      "Times New Roman, Times New Roman, Times, serif",
+      "Trebuchet MS, Trebuchet MS, sans-serif",
+      "Verdana, Verdana, Geneva, sans-serif"
+    ]
+  },
+  "float": {
+    "syntax": "float: none | left | right | initial | inherit;",
+    "options": ["none", "left", "right", "initial", "inherit"]
+  },
+  "font-face": {
+    "syntax": "@font-face { font-properties }",
+    "options": [
+      "font-family",
+      "src",
+      "font-stretch",
+      "font-style",
+      "font-weight",
+      "unicode-range"
+    ]
+  },
+  "flex-wrap": {
+    "syntax": "flex-wrap: nowrap | wrap | wrap-reverse |initial | inherit;",
+    "options": ["nowrap", "wrap", "wrap-reverse", "initial", "inherit"]
+  },
+  "font": {
+    "syntax": null,
+    "options": [
+      "font-style",
+      "font-variant",
+      "font-weight",
+      "font-size",
+      "font-family",
+      "inherit",
+      "Built in browser fonts",
+      "caption",
+      "icon",
+      "menu",
+      "message-box",
+      "small-caption",
+      "status-bar",
+      "initial"
+    ]
+  },
+  "font-kerning": {
+    "syntax": "font-kerning: auto | normal | none;",
+    "options": ["auto", "normal", "none"]
+  },
+  "font-size": {
+    "syntax": "font-size: medium | xx-small | x-small | small |large | x-large | xx-large | smaller |larger | length | initial | inherit;",
+    "options": [
+      "medium",
+      "xx-small",
+      "x-small",
+      "small",
+      "large",
+      "x-large",
+      "xx-large",
+      "smaller",
+      "larger",
+      "length",
+      "%",
+      "initial",
+      "inherit"
+    ]
+  },
+  "font-stretch": {
+    "syntax": "font-stretch: ultra-condensed | extra-condensed |condensed | semi-condensed | normal |semi-expanded | expanded | extra-expanded |ultra-expanded | initial | inherit;",
+    "options": [
+      "ultra-condensed",
+      "extra-condensed",
+      "condensed",
+      "semi-condensed",
+      "normal",
+      "semi-expanded",
+      "expanded",
+      "extra-expanded",
+      "ultra-expanded",
+      "initial",
+      "inherit"
+    ]
+  },
+  "font-variant": {
+    "syntax": "font-variant: normal | small-caps |initial | inherit;",
+    "options": ["normal", "small-caps", "initial", "inherit"]
+  },
+  "font-style": {
+    "syntax": "font-style: normal | italic | oblique |initial | inherit;",
+    "options": ["normal", "italic", "oblique", "initial", "inherit"]
+  },
+  "font-weight": {
+    "syntax": "font-weight: normal | bold | bolder | lighter |number | initial | inherit;",
+    "options": [
+      "normal",
+      "bold",
+      "bolder",
+      "lighter",
+      "100",
+      "200",
+      "300",
+      "400",
+      "500",
+      "600",
+      "700",
+      "800",
+      "900",
+      "initial",
+      "inherit"
+    ]
+  },
+  "gap": {
+    "syntax": "gap: length | normal | initial | inherit;",
+    "options": ["length", "normal", "initial", "inherit"]
+  },
+  "grid": {
+    "syntax": "grid: none |grid-template-rows / grid-template-columns |grid-template-areas |grid-template-rows / [grid-auto-flow] grid-auto-columns |[grid-auto-flow] grid-auto-rows / grid-template-columns |initial | inherit;",
+    "options": [
+      "none",
+      "initial",
+      "inherit"
+    ]
+  },
+  "grid-auto-columns": {
+    "syntax": "grid-auto-columns: auto | min-content | max-content |minmax() | length | %;",
+    "options": [
+      "auto",
+      "min-content",
+      "max-content",
+      "minmax(min.max)",
+      "length",
+      "%"
+    ]
+  },
+  "grid-auto-rows": {
+    "syntax": "grid-auto-columns: auto | max-content | min-content |minmax | length | %;",
+    "options": [
+      "auto",
+      "max-content",
+      "min-content",
+      "minmax(min.max)",
+      "length",
+      "%"
+    ]
+  },
+  "grid-area": {
+    "syntax": "grid-area: grid-row-start / grid-column-start /grid-row-end / grid-column-end |itemname;",
+    "options": [
+      "grid-row-start",
+      "grid-column-start",
+      "grid-row-end",
+      "grid-column-end",
+      "itemname"
+    ]
+  },
+  "grid-column": {
+    "syntax": "grid-column: grid-column-start  [grid-column-end | span n] ;",
+    "options": ["grid-column-start", "grid-column-end", "span n"]
+  },
+  "grid-auto-flow": {
+    "syntax": "grid-auto-flow: row | column | dense |row dense | column dense;",
+    "options": ["row", "column", "dense", "row dense", "column dense"]
+  },
+  "grid-column-end": {
+    "syntax": "grid-column-end: auto | column | span n;",
+    "options": ["auto", "column", "span n"]
+  },
+  "grid-column-gap": {
+    "syntax": "grid-column-gap: length;",
+    "options": ["length"]
+  },
+  "grid-gap": {
+    "syntax": "grid-gap: grid-row-gap grid-column-gap;",
+    "options": ["grid-row-gap", "grid-column-gap"]
+  },
+  "grid-column-start": {
+    "syntax": "grid-column-start: auto | column | span n;",
+    "options": ["auto", "column", "span n"]
+  },
+  "grid-row-end": {
+    "syntax": "grid-row-end: auto | span n | row-line;",
+    "options": ["auto", "span n", "row"]
+  },
+  "grid-row": {
+    "syntax": "grid-row: grid-row-start  [grid-row-end | span n] ;",
+    "options": ["grid-row-start", "grid-row-end", "span n"]
+  },
+  "grid-row-gap": {
+    "syntax": "grid-row-gap: length;",
+    "options": ["length"]
+  },
+  "grid-template-areas": {
+    "syntax": "grid-template-areas: none | areanames;",
+    "options": ["none", "areanames"]
+  },
+  "grid-template": {
+    "syntax": "grid-template: none | grid-template-rows / grid-template-columns |grid-template-areas | initial | inherit;",
+    "options": [
+      "none",
+      "grid-template-rows",
+      "grid-template-columns",
+      "grid-template-areas",
+      "initial",
+      "inherit"
+    ]
+  },
+  "height": {
+    "syntax": "height: auto | length | initial | inherit;",
+    "options": ["auto", "length", "%", "initial", "inherit"]
+  },
+  "grid-template-columns": {
+    "syntax": "grid-template-columns: none | auto | max-content |min-content | length | initial | inherit;",
+    "options": [
+      "none",
+      "auto",
+      "max-content",
+      "min-content",
+      "length",
+      "initial",
+      "inherit"
+    ]
+  },
+  "grid-row-start": {
+    "syntax": "grid-row-start: auto | span n | row-line;",
+    "options": ["auto", "span n", "row"]
+  },
+  "grid-template-rows": {
+    "syntax": "grid-template-rows: none | auto | max-content |min-content | length | initial | inherit;",
+    "options": [
+      "none",
+      "auto",
+      "max-content",
+      "min-content",
+      "length",
+      "initial",
+      "inherit"
+    ]
+  },
+  "hyphens": {
+    "syntax": "hyphens: none | manual | auto | initial | inherit;",
+    "options": ["none", "manual", "auto", "initial", "inherit"]
+  },
+  "justify-content": {
+    "syntax": "justify-content: flex-start | flex-end | center | space-between |space-around | initial | inherit;",
+    "options": [
+      "flex-start",
+      "flex-end",
+      "center",
+      "space-between",
+      "space-around",
+      "initial",
+      "inherit"
+    ]
+  },
+  "keyframes": {
+    "syntax": "@keyframes animation-name {keyframes-selector { css-styles; }}",
+    "options": ["animation-name", "keyframes-selector", "css-styles"]
+  },
+  "left": {
+    "syntax": "left: auto | length | initial | inherit;",
+    "options": ["auto", "length", "%", "initial", "inherit"]
+  },
+  "letter-spacing": {
+    "syntax": "letter-spacing: normal | length | initial | inherit;",
+    "options": ["normal", "length", "initial", "inherit"]
+  },
+  "line-height": {
+    "syntax": "line-height: normal | number | length |initial | inherit;",
+    "options": ["normal", "number", "length", "%", "initial", "inherit"]
+  },
+  "list-style-image": {
+    "syntax": "list-style-image: none | url | initial | inherit;",
+    "options": ["none", "url", "initial", "inherit"]
+  },
+  "list-style": {
+    "syntax": "list-style: list-style-type list-style-position list-style-image |initial | inherit;",
+    "options": [
+      "list-style-type",
+      "list-style-position",
+      "list-style-image",
+      "initial",
+      "inherit"
+    ]
+  },
+  "margin": {
+    "syntax": "margin: length | auto | initial | inherit;",
+    "options": ["length", "%", "auto", "initial", "inherit"]
+  },
+  "margin-bottom": {
+    "syntax": "margin-bottom: length | auto | initial | inherit;",
+    "options": ["length", "%", "auto", "initial", "inherit"]
+  },
+  "list-style-position": {
+    "syntax": "list-style-position: inside | outside | initial | inherit;",
+    "options": ["inside", "outside", "initial", "inherit"]
+  },
+  "list-style-type": {
+    "syntax": "list-style-type: value;",
+    "options": [
+      "disc",
+      "armenian",
+      "circle",
+      "cjk-ideographic",
+      "decimal",
+      "decimal-leading-zero",
+      "georgian",
+      "hebrew",
+      "hiragana",
+      "hiragana-iroha",
+      "katakana",
+      "katakana-iroha",
+      "lower-alpha",
+      "lower-greek",
+      "lower-latin",
+      "lower-roman",
+      "none",
+      "square",
+      "upper-alpha",
+      "upper-greek",
+      "upper-latin",
+      "upper-roman",
+      "initial",
+      "inherit"
+    ]
+  },
+  "margin-left": {
+    "syntax": "margin-left: length | auto | initial | inherit;",
+    "options": ["length", "%", "auto", "initial", "inherit"]
+  },
+  "margin-right": {
+    "syntax": "margin-right: length | auto | initial | inherit;",
+    "options": ["length", "%", "auto", "initial", "inherit"]
+  },
+  "margin-top": {
+    "syntax": "margin-top: length | auto | initial | inherit;",
+    "options": ["length", "%", "auto", "initial", "inherit"]
+  },
+  "max-width": {
+    "syntax": "max-width: none | length | initial | inherit;",
+    "options": ["none", "length", "%", "initial", "inherit"]
+  },
+  "max-height": {
+    "syntax": "max-height: none | length | initial | inherit;",
+    "options": ["none", "length", "%", "initial", "inherit"]
+  },
+  "media": {
+    "syntax": "@media not | only mediatype and(mediafeature and | or | not mediafeature) {CSS-Code;}",
+    "options": ["all", "print", "screen", "speech"]
+  },
+  "min-height": {
+    "syntax": "min-height: length | initial | inherit;",
+    "options": ["length", "%", "initial", "inherit"]
+  },
+  "min-width": {
+    "syntax": "min-width: length | initial | inherit;",
+    "options": ["length", "%", "initial", "inherit"]
+  },
+  "opacity": {
+    "syntax": "opacity: number | initial | inherit;",
+    "options": ["number", "initial", "inherit"]
+  },
+  "outline": {
+    "syntax": "outline: outline-width outline-style outline-color | initial | inherit;",
+    "options": [
+      "outline-width",
+      "outline-style",
+      "outline-color",
+      "initial",
+      "inherit"
+    ]
+  },
+  "object-position": {
+    "syntax": "object-position: position | initial | inherit;",
+    "options": ["position", "initial", "inherit"]
+  },
+  "order": {
+    "syntax": "order: number | initial | inherit;",
+    "options": ["number", "initial", "inherit"]
+  },
+  "object-fit": {
+    "syntax": "object-fit: fill | contain | cover | scale-down |none | initial | inherit;",
+    "options": [
+      "fill",
+      "contain",
+      "cover",
+      "scale-down",
+      "none",
+      "initial",
+      "inherit"
+    ]
+  },
+  "outline-color": {
+    "syntax": "outline-color: invert | color | transparent |initial | inherit;",
+    "options": ["invert", "color", "initial", "inherit"]
+  },
+  "outline-offset": {
+    "syntax": "outline-offset: length | initial | inherit;",
+    "options": ["length", "initial", "inherit"]
+  },
+  "outline-style": {
+    "syntax": "outline-style: none | hidden | dotted | dashed |solid | double | groove | ridge |inset | outset | initial | inherit;",
+    "options": [
+      "none",
+      "hidden",
+      "dotted",
+      "dashed",
+      "solid",
+      "double",
+      "groove",
+      "ridge",
+      "inset",
+      "outset",
+      "initial",
+      "inherit"
+    ]
+  },
+  "outline-width": {
+    "syntax": "outline-width: medium | thin | thick |length | initial | inherit;",
+    "options": ["medium", "thin", "thick", "length", "initial", "inherit"]
+  },
+  "overflow-x": {
+    "syntax": "overflow-x: visible | hidden | scroll |auto | initial | inherit;",
+    "options": ["visible", "hidden", "scroll", "auto", "initial", "inherit"]
+  },
+  "overflow-y": {
+    "syntax": "overflow-y: visible | hidden | scroll |auto | initial | inherit;",
+    "options": ["visible", "hidden", "scroll", "auto", "initial", "inherit"]
+  },
+  "overflow": {
+    "syntax": "overflow: visible | hidden | scroll |auto | initial | inherit;",
+    "options": ["visible", "hidden", "scroll", "auto", "initial", "inherit"]
+  },
+  "padding-left": {
+    "syntax": "padding-left: length | initial | inherit;",
+    "options": ["length", "%", "initial", "inherit"]
+  },
+  "padding-bottom": {
+    "syntax": "padding-bottom: length | initial | inherit;",
+    "options": ["length", "%", "initial", "inherit"]
+  },
+  "padding-top": {
+    "syntax": "padding-top: length | initial | inherit;",
+    "options": ["length", "%", "initial", "inherit"]
+  },
+  "padding": {
+    "syntax": "padding: length | initial | inherit;",
+    "options": ["length", "initial", "inherit"]
+  },
+  "padding-right": {
+    "syntax": "padding-right: length | initial | inherit;",
+    "options": ["length", "%", "initial", "inherit"]
+  },
+  "page-break-after": {
+    "syntax": "page-break-after: auto | always | avoid | left |right | initial | inherit;",
+    "options": [
+      "auto",
+      "always",
+      "avoid",
+      "left",
+      "right",
+      "initial",
+      "inherit"
+    ]
+  },
+  "page-break-before": {
+    "syntax": "page-break-before: auto | always | avoid | left |right | initial | inherit;",
+    "options": [
+      "auto",
+      "always",
+      "avoid",
+      "left",
+      "right",
+      "initial",
+      "inherit"
+    ]
+  },
+  "page-break-inside": {
+    "syntax": "page-break-inside: auto | avoid |initial | inherit;",
+    "options": ["auto", "avoid", "initial", "inherit"]
+  },
+  "perspective": {
+    "syntax": "perspective: length | none | initial | inherit;",
+    "options": ["length", "none", "initial", "inherit"]
+  },
+  "position": {
+    "syntax": "position: static | absolute | fixed | relative |sticky | initial | inherit;",
+    "options": [
+      "static",
+      "relative",
+      "absolute",
+      "fixed",
+      "sticky",
+      "initial",
+      "inherit"
+    ]
+  },
+  "pointer-events": {
+    "syntax": null,
+    "options": [
+      "auto",
+      "none",
+      "visiblePainted",
+      "visibleFill",
+      "visibleStroke",
+      "visible",
+      "painted",
+      "fill",
+      "stroke",
+      "all",
+      "initial",
+      "inherit"
+    ]
+  },
+  "perspective-origin": {
+    "syntax": "perspective-origin: x-axis y-axis |initial | inherit;",
+    "options": ["x-axis", "y-axis", "initial", "inherit"]
+  },
+  "quotes": {
+    "syntax": "quotes: none | [string string]+ |initial | inherit;",
+    "options": ["none", "[string string]+", "initial", "inherit"]
+  },
+  "right": {
+    "syntax": "right: auto | length | initial | inherit;",
+    "options": ["auto", "length", "%", "initial", "inherit"]
+  },
+  "row-gap": {
+    "syntax": "row-gap: length | normal | initial | inherit;",
+    "options": ["length", "normal", "initial", "inherit"]
+  },
+  "text-align": {
+    "syntax": "text-align: left | right | center |justify | initial | inherit;",
+    "options": ["left", "right", "center", "justify", "initial", "inherit"]
+  },
+  "scroll-behavior": {
+    "syntax": "scroll-behavior: auto | smooth | initial | inherit;",
+    "options": ["auto", "smooth", "initial", "inherit"]
+  },
+  "table-layout": {
+    "syntax": "table-layout: auto | fixed | initial | inherit;",
+    "options": ["auto", "fixed", "initial", "inherit"]
+  },
+  "text-align-last": {
+    "syntax": "text-align-last: auto | left | right | center |justify | start | end |initial | inherit;",
+    "options": [
+      "auto",
+      "left",
+      "right",
+      "center",
+      "justify",
+      "start",
+      "end",
+      "initial",
+      "inherit"
+    ]
+  },
+  "text-decoration": {
+    "syntax": "text-decoration: none |text-decoration-line text-decoration-colortext-decoration-style | initial | inherit;",
+    "options": [
+      "none",
+      "text-decoration-line",
+      "text-decoration-color",
+      "text-decoration-style",
+      "initial",
+      "inherit"
+    ]
+  },
+  "text-decoration-color": {
+    "syntax": "text-decoration-color: color | initial | inherit;",
+    "options": ["color", "initial", "inherit"]
+  },
+  "text-decoration-line": {
+    "syntax": "text-decoration-line: none | underline |overline | line-through |initial | inherit;",
+    "options": [
+      "none",
+      "underline",
+      "overline",
+      "line-through",
+      "initial",
+      "inherit"
+    ]
+  },
+  "text-indent": {
+    "syntax": "text-indent: length | initial | inherit;",
+    "options": ["length", "%", "initial", "inherit"]
+  },
+  "text-decoration-style": {
+    "syntax": "text-decoration-style: solid | double | dotted |dashed | wavy | initial | inherit;",
+    "options": [
+      "solid",
+      "double",
+      "dotted",
+      "dashed",
+      "wavy",
+      "initial",
+      "inherit"
+    ]
+  },
+  "text-justify": {
+    "syntax": "text-justify: auto | inter-word |none | initial | inherit;",
+    "options": ["none", "auto", "inter-word", "trim", "initial", "inherit"]
+  },
+  "text-shadow": {
+    "syntax": "text-shadow: x-offset y-offset blur-radius color |none | initial | inherit;",
+    "options": [
+      "none",
+      "x-offset",
+      "y-offset",
+      "blur-radius",
+      "color",
+      "initial",
+      "inherit"
+    ]
+  },
+  "text-overflow": {
+    "syntax": "text-overflow: clip | ellipsis | string |initial | inherit;",
+    "options": ["clip", "ellipsis", "string", "initial", "inherit"]
+  },
+  "text-transform": {
+    "syntax": "text-transform: none | capitalize | uppercase |lowercase | initial | inherit;",
+    "options": [
+      "none",
+      "capitalize",
+      "uppercase",
+      "lowercase",
+      "initial",
+      "inherit"
+    ]
+  },
+  "top": {
+    "syntax": "top: auto | length | initial | inherit;",
+    "options": ["auto", "length", "%", "initial", "inherit"]
+  },
+  "transform-origin": {
+    "syntax": "transform-origin: x-axis y-axis z-axis |initial | inherit;",
+    "options": ["x-axis", "y-axis", "z-axis", "initial", "inherit"]
+  },
+  "transform": {
+    "syntax": "transform: none | transform-functions |initial | inherit;",
+    "options": [
+      "none",
+      "translate(x,y)",
+      "translateX(x)",
+      "translateY(y)",
+      "scale(x,y)",
+      "scaleX(x)",
+      "scaleY(y)",
+      "rotate(angle)",
+      "skew(x-angle,y-angle)",
+      "skewX(angle)",
+      "skewY(angle)",
+      "matrix(n,n,n,n,n,n)",
+      "initial",
+      "inherit"
+    ]
+  },
+  "transform-style": {
+    "syntax": "transform-style: flat | preserve-3d | initial | inherit;",
+    "options": ["flat", "preserve-3d", "initial", "inherit"]
+  },
+  "transition": {
+    "syntax": "transition: property duration timing-function delay |initial | inherit;",
+    "options": [
+      "transition-property",
+      "transition-duration",
+      "transition-timing-function",
+      "transition-delay",
+      "initial",
+      "inherit"
+    ]
+  },
+  "transition-duration": {
+    "syntax": "transition-duration: time | initial | inherit;",
+    "options": ["time", "initial", "inherit"]
+  },
+  "transition-delay": {
+    "syntax": "transition-delay: time | initial | inherit;",
+    "options": ["time", "initial", "inherit"]
+  },
+  "transition-property": {
+    "syntax": "transition-property: none | all | properties |initial | inherit;",
+    "options": ["none", "all", "properties", "initial", "inherit"]
+  },
+  "transition-timing-function": {
+    "syntax": null,
+    "options": [
+      "ease",
+      "linear",
+      "ease-in",
+      "ease-out",
+      "ease-in-out",
+      "step-start",
+      "step-end",
+      "steps(int,start|end)",
+      "cubic-bezier(n,n,n,n)",
+      "initial",
+      "inherit"
+    ]
+  },
+  "user-select": {
+    "syntax": "user-select: auto | none | text | all;",
+    "options": ["auto", "none", "text", "all"]
+  },
+  "width": {
+    "syntax": "width: auto | length | initial | inherit;",
+    "options": ["auto", "length", "initial", "inherit"]
+  },
+  "word-break": {
+    "syntax": "word-break: normal | break-all | keep-all |break-word | initial | inherit;",
+    "options": [
+      "normal",
+      "break-all",
+      "keep-all",
+      "break-word",
+      "initial",
+      "inherit"
+    ]
+  },
+  "visibility": {
+    "syntax": "visibility: visible | hidden | collapse |initial | inherit;",
+    "options": ["visible", "hidden", "collapse", "initial", "inherit"]
+  },
+  "word-spacing": {
+    "syntax": "word-spacing: normal | length | initial | inherit;",
+    "options": ["normal", "length", "initial", "inherit"]
+  },
+  "white-space": {
+    "syntax": "white-space: normal | nowrap | pre |pre-line | pre-wrap | initial | inherit;",
+    "options": [
+      "normal",
+      "nowrap",
+      "pre",
+      "pre-line",
+      "pre-wrap",
+      "initial",
+      "inherit"
+    ]
+  },
+  "vertical-align": {
+    "syntax": "vertical-align: baseline | length | sub | super |top | text-top | middle | bottom |text-bottom | initial | inherit;",
+    "options": [
+      "baseline",
+      "length",
+      "%",
+      "sub",
+      "super",
+      "top",
+      "text-top",
+      "middle",
+      "bottom",
+      "text-bottom",
+      "initial",
+      "inherit"
+    ]
+  },
+  "word-wrap": {
+    "syntax": "word-wrap: normal | break-word | initial | inherit;",
+    "options": ["normal", "break-word", "initial", "inherit"]
+  },
+  "z-index": {
+    "syntax": "z-index: auto | number | initial | inherit;",
+    "options": ["auto", "number", "initial", "inherit"]
+  },
+  "writing-mode": {
+    "syntax": "writing-mode: horizontal-tb | vertical-rl | vertical-lr;",
+    "options": ["horizontal-tb", "vertical-rl", "vertical-lr"]
+  }
+}

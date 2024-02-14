@@ -1,0 +1,2663 @@
+{
+    "abbr": [
+        {
+            "name": "title",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        }
+    ],
+    "address": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        }
+    ],
+    "base": [
+        {
+            "name": "href",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "target",
+            "options": [
+                "_blank",
+                "_self",
+                "_parent",
+                "_top",
+                "framename"
+            ]
+        }
+    ],
+    "b": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        }
+    ],
+    "article": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        }
+    ],
+    "audio": [
+        {
+            "name": "controls",
+            "options": []
+        },
+        {
+            "name": "src",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        },
+        {
+            "name": "title",
+            "options": []
+        },
+        {
+            "name": "autoplay",
+            "options": []
+        },
+        {
+            "name": "loop",
+            "options": []
+        },
+        {
+            "name": "muted",
+            "options": []
+        },
+        {
+            "name": "preload",
+            "options": []
+        },
+        {
+            "name": "crossorigin",
+            "options": []
+        }
+    ],
+    "aside": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        }
+    ],
+    "blockquote": [
+        {
+            "name": "cite",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "title",
+            "options": []
+        }
+    ],
+    "area": [
+        {
+            "name": "shape",
+            "options": []
+        },
+        {
+            "name": "coords",
+            "options": []
+        },
+        {
+            "name": "href",
+            "options": []
+        },
+        {
+            "name": "target",
+            "options": [
+                "_blank",
+                "_self",
+                "_parent",
+                "_top",
+                "framename"
+            ]
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "tabindex",
+            "options": []
+        },
+        {
+            "name": "alt",
+            "options": []
+        },
+        {
+            "name": "rel",
+            "options": [
+                "nofollow",
+                "noopener",
+                "noreferrer",
+                "external",
+                "author",
+                "help",
+                "license",
+                "prev",
+                "next",
+                "bookmark",
+                "search",
+                "alternate",
+                "tag"
+            ]
+        },
+        {
+            "name": "hreflang",
+            "options": []
+        },
+        {
+            "name": "type",
+            "options": []
+        },
+        {
+            "name": "media",
+            "options": []
+        },
+        {
+            "name": "download",
+            "options": []
+        }
+    ],
+    "body": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        }
+    ],
+    "a": [
+        {
+            "name": "href",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        },
+        {
+            "name": "title",
+            "options": []
+        },
+        {
+            "name": "tabindex",
+            "options": []
+        },
+        {
+            "name": "rel",
+            "options": [
+                "nofollow",
+                "noopener",
+                "noreferrer",
+                "external",
+                "author",
+                "help",
+                "license",
+                "prev",
+                "next",
+                "bookmark",
+                "search",
+                "alternate",
+                "tag"
+            ]
+        },
+        {
+            "name": "target",
+            "options": [
+                "_blank",
+                "_self",
+                "_parent",
+                "_top",
+                "framename"
+            ]
+        },
+        {
+            "name": "type",
+            "options": []
+        },
+        {
+            "name": "hreflang",
+            "options": []
+        },
+        {
+            "name": "media",
+            "options": []
+        },
+        {
+            "name": "ping",
+            "options": []
+        },
+        {
+            "name": "download",
+            "options": []
+        }
+    ],
+    "br": [
+        {
+            "name": "clear",
+            "options": []
+        }
+    ],
+    "button": [
+        {
+            "name": "type",
+            "options": [
+                "button",
+                "submit",
+                "reset"
+            ]
+        },
+        {
+            "name": "name",
+            "options": []
+        },
+        {
+            "name": "value",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        },
+        {
+            "name": "title",
+            "options": []
+        },
+        {
+            "name": "tabindex",
+            "options": []
+        },
+        {
+            "name": "disabled",
+            "options": []
+        },
+        {
+            "name": "form",
+            "options": []
+        },
+        {
+            "name": "formaction",
+            "options": []
+        },
+        {
+            "name": "formenctype",
+            "options": []
+        },
+        {
+            "name": "formmethod",
+            "options": [
+                "get",
+                "post"
+            ]
+        },
+        {
+            "name": "formnovalidate",
+            "options": []
+        },
+        {
+            "name": "formtarget",
+            "options": [
+                "_blank",
+                "_self",
+                "_parent",
+                "_top",
+                "framename"
+            ]
+        },
+        {
+            "name": "autofocus",
+            "options": []
+        }
+    ],
+    "canvas": [
+        {
+            "name": "height",
+            "options": []
+        },
+        {
+            "name": "width",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        },
+        {
+            "name": "title",
+            "options": []
+        }
+    ],
+    "code": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        }
+    ],
+    "cite": [],
+    "col": [
+        {
+            "name": "span",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        }
+    ],
+    "datalist": [
+        {
+            "name": "id",
+            "options": []
+        }
+    ],
+    "dd": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        }
+    ],
+    "data": [
+        {
+            "name": "value",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        }
+    ],
+    "details": [
+        {
+            "name": "open",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        }
+    ],
+    "del": [
+        {
+            "name": "datetime",
+            "options": []
+        },
+        {
+            "name": "cite",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        }
+    ],
+    "colgroup": [
+        {
+            "name": "span",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        }
+    ],
+    "caption": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        }
+    ],
+    "div": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        }
+    ],
+    "dl": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        }
+    ],
+    "dt": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        }
+    ],
+    "em": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        }
+    ],
+    "embed": [
+        {
+            "name": "height",
+            "options": []
+        },
+        {
+            "name": "width",
+            "options": []
+        },
+        {
+            "name": "src",
+            "options": []
+        },
+        {
+            "name": "type",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        }
+    ],
+    "fieldset": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "form",
+            "options": []
+        },
+        {
+            "name": "name",
+            "options": []
+        },
+        {
+            "name": "disabled",
+            "options": []
+        }
+    ],
+    "header": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        }
+    ],
+    "footer": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        }
+    ],
+    "head": [
+        {
+            "name": "profile",
+            "options": []
+        }
+    ],
+    "figcaption": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        }
+    ],
+    "figure": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        },
+        {
+            "name": "title",
+            "options": []
+        }
+    ],
+    "form": [
+        {
+            "name": "action",
+            "options": []
+        },
+        {
+            "name": "method",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "enctype",
+            "options": []
+        },
+        {
+            "name": "target",
+            "options": [
+                "_blank",
+                "_self",
+                "_parent",
+                "_top",
+                "framename"
+            ]
+        },
+        {
+            "name": "autocomplete",
+            "options": []
+        },
+        {
+            "name": "novalidate",
+            "options": []
+        },
+        {
+            "name": "accept-charset",
+            "options": []
+        },
+        {
+            "name": "rel",
+            "options": [
+                "nofollow",
+                "noopener",
+                "noreferrer",
+                "external",
+                "author",
+                "help",
+                "license",
+                "next",
+                "bookmark",
+                "search"
+            ]
+        }
+    ],
+    "html": [
+        {
+            "name": "xmlns",
+            "options": []
+        },
+        {
+            "name": "lang",
+            "options": []
+        }
+    ],
+    "hr": [
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        }
+    ],
+    "i": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        }
+    ],
+    "iframe": [
+        {
+            "name": "height",
+            "options": []
+        },
+        {
+            "name": "width",
+            "options": []
+        },
+        {
+            "name": "src",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        },
+        {
+            "name": "title",
+            "options": []
+        },
+        {
+            "name": "tabindex",
+            "options": []
+        },
+        {
+            "name": "srcdoc",
+            "options": []
+        },
+        {
+            "name": "name",
+            "options": []
+        },
+        {
+            "name": "sandbox",
+            "options": []
+        }
+    ],
+    "ins": [
+        {
+            "name": "datetime",
+            "options": []
+        },
+        {
+            "name": "cite",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        }
+    ],
+    "input": [
+        {
+            "name": "type",
+            "options": [
+                "text",
+                "checkbox",
+                "radio",
+                "hidden",
+                "button",
+                "submit",
+                "reset",
+                "password",
+                "file",
+                "color",
+                "date",
+                "datetime-local",
+                "email",
+                "search",
+                "image",
+                "month",
+                "number",
+                "range",
+                "tel",
+                "time",
+                "url",
+                "week"
+            ]
+        },
+        {
+            "name": "name",
+            "options": []
+        },
+        {
+            "name": "value",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        },
+        {
+            "name": "title",
+            "options": []
+        },
+        {
+            "name": "tabindex",
+            "options": []
+        },
+        {
+            "name": "lang",
+            "options": []
+        },
+        {
+            "name": "checked",
+            "options": []
+        },
+        {
+            "name": "placeholder",
+            "options": []
+        },
+        {
+            "name": "maxlength",
+            "options": []
+        },
+        {
+            "name": "required",
+            "options": []
+        },
+        {
+            "name": "readonly",
+            "options": []
+        },
+        {
+            "name": "disabled",
+            "options": []
+        },
+        {
+            "name": "autofocus",
+            "options": []
+        },
+        {
+            "name": "autocomplete",
+            "options": []
+        },
+        {
+            "name": "form",
+            "options": []
+        },
+        {
+            "name": "formaction",
+            "options": []
+        },
+        {
+            "name": "formtarget",
+            "options": [
+                "_blank",
+                "_self",
+                "_parent",
+                "_top",
+                "framename"
+            ]
+        },
+        {
+            "name": "formenctype",
+            "options": []
+        },
+        {
+            "name": "formmethod",
+            "options": []
+        },
+        {
+            "name": "formnovalidate",
+            "options": []
+        },
+        {
+            "name": "accept",
+            "options": []
+        },
+        {
+            "name": "min",
+            "options": []
+        },
+        {
+            "name": "max",
+            "options": []
+        },
+        {
+            "name": "step",
+            "options": []
+        },
+        {
+            "name": "multiple",
+            "options": []
+        },
+        {
+            "name": "pattern",
+            "options": []
+        },
+        {
+            "name": "size",
+            "options": []
+        },
+        {
+            "name": "src",
+            "options": []
+        },
+        {
+            "name": "alt",
+            "options": []
+        },
+        {
+            "name": "width",
+            "options": []
+        },
+        {
+            "name": "height",
+            "options": []
+        },
+        {
+            "name": "list",
+            "options": []
+        },
+        {
+            "name": "dirname",
+            "options": []
+        }
+    ],
+    "img": [
+        {
+            "name": "src",
+            "options": []
+        },
+        {
+            "name": "alt",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        },
+        {
+            "name": "title",
+            "options": []
+        },
+        {
+            "name": "loading",
+            "options": []
+        },
+        {
+            "name": "height",
+            "options": []
+        },
+        {
+            "name": "width",
+            "options": []
+        },
+        {
+            "name": "ismap",
+            "options": []
+        },
+        {
+            "name": "usemap",
+            "options": []
+        },
+        {
+            "name": "srcset",
+            "options": []
+        },
+        {
+            "name": "sizes",
+            "options": []
+        },
+        {
+            "name": "crossorigin",
+            "options": []
+        }
+    ],
+    "legend": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        }
+    ],
+    "label": [
+        {
+            "name": "for",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        },
+        {
+            "name": "title",
+            "options": []
+        }
+    ],
+    "li": [
+        {
+            "name": "value",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        },
+        {
+            "name": "title",
+            "options": []
+        }
+    ],
+    "kbd": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        }
+    ],
+    "link": [
+        {
+            "name": "href",
+            "options": []
+        },
+        {
+            "name": "rel",
+            "options": [
+                "stylesheet",
+                "icon",
+                "canonical",
+                "dns-prefetch",
+                "author",
+                "help",
+                "license",
+                "prev",
+                "next",
+                "search",
+                "alternate"
+            ]
+        },
+        {
+            "name": "type",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "media",
+            "options": []
+        },
+        {
+            "name": "sizes",
+            "options": []
+        },
+        {
+            "name": "hreflang",
+            "options": []
+        },
+        {
+            "name": "crossorigin",
+            "options": []
+        }
+    ],
+    "main": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        }
+    ],
+    "mark": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        }
+    ],
+    "map": [
+        {
+            "name": "name",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        }
+    ],
+    "meta": [
+        {
+            "name": "name",
+            "options": []
+        },
+        {
+            "name": "content",
+            "options": []
+        },
+        {
+            "name": "http-equiv",
+            "options": []
+        },
+        {
+            "name": "charset",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        }
+    ],
+    "meter": [
+        {
+            "name": "value",
+            "options": []
+        },
+        {
+            "name": "min",
+            "options": []
+        },
+        {
+            "name": "max",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        },
+        {
+            "name": "title",
+            "options": []
+        },
+        {
+            "name": "low",
+            "options": []
+        },
+        {
+            "name": "high",
+            "options": []
+        },
+        {
+            "name": "optimum",
+            "options": []
+        },
+        {
+            "name": "form",
+            "options": []
+        }
+    ],
+    "nav": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        }
+    ],
+    "object": [
+        {
+            "name": "data",
+            "options": []
+        },
+        {
+            "name": "type",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        },
+        {
+            "name": "height",
+            "options": []
+        },
+        {
+            "name": "width",
+            "options": []
+        },
+        {
+            "name": "name",
+            "options": []
+        },
+        {
+            "name": "form",
+            "options": []
+        },
+        {
+            "name": "usemap",
+            "options": []
+        }
+    ],
+    "ol": [
+        {
+            "name": "type",
+            "options": []
+        },
+        {
+            "name": "start",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        },
+        {
+            "name": "reversed",
+            "options": []
+        }
+    ],
+    "optgroup": [
+        {
+            "name": "label",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        },
+        {
+            "name": "disabled",
+            "options": []
+        }
+    ],
+    "output": [
+        {
+            "name": "for",
+            "options": []
+        },
+        {
+            "name": "form",
+            "options": []
+        },
+        {
+            "name": "name",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        }
+    ],
+    "option": [
+        {
+            "name": "label",
+            "options": []
+        },
+        {
+            "name": "value",
+            "options": []
+        },
+        {
+            "name": "selected",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        },
+        {
+            "name": "disabled",
+            "options": []
+        }
+    ],
+    "noscript": [
+        {
+            "name": "id",
+            "options": []
+        }
+    ],
+    "picture": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        },
+        {
+            "name": "title",
+            "options": []
+        }
+    ],
+    "param": [
+        {
+            "name": "name",
+            "options": []
+        },
+        {
+            "name": "value",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        }
+    ],
+    "pre": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        },
+        {
+            "name": "title",
+            "options": []
+        }
+    ],
+    "progress": [
+        {
+            "name": "max",
+            "options": []
+        },
+        {
+            "name": "value",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        },
+        {
+            "name": "title",
+            "options": []
+        }
+    ],
+    "q": [
+        {
+            "name": "cite",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        }
+    ],
+    "rp": [],
+    "script": [
+        {
+            "name": "src",
+            "options": []
+        },
+        {
+            "name": "type",
+            "options": []
+        },
+        {
+            "name": "charset",
+            "options": []
+        },
+        {
+            "name": "async",
+            "options": []
+        },
+        {
+            "name": "defer",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "crossorigin",
+            "options": []
+        }
+    ],
+    "rt": [],
+    "samp": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        }
+    ],
+    "ruby": [],
+    "p": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "lang",
+            "options": []
+        }
+    ],
+    "section": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        }
+    ],
+    "small": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        }
+    ],
+    "select": [
+        {
+            "name": "name",
+            "options": []
+        },
+        {
+            "name": "multiple",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "tabindex",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        },
+        {
+            "name": "disabled",
+            "options": []
+        },
+        {
+            "name": "autofocus",
+            "options": []
+        },
+        {
+            "name": "autocomplete",
+            "options": []
+        },
+        {
+            "name": "form",
+            "options": []
+        },
+        {
+            "name": "required",
+            "options": []
+        },
+        {
+            "name": "size",
+            "options": []
+        }
+    ],
+    "source": [
+        {
+            "name": "src",
+            "options": []
+        },
+        {
+            "name": "srcset",
+            "options": []
+        },
+        {
+            "name": "type",
+            "options": []
+        },
+        {
+            "name": "media",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "sizes",
+            "options": []
+        }
+    ],
+    "span": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        },
+        {
+            "name": "title",
+            "options": []
+        }
+    ],
+    "strong": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        }
+    ],
+    "style": [
+        {
+            "name": "media",
+            "options": []
+        },
+        {
+            "name": "type",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        }
+    ],
+    "summary": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        }
+    ],
+    "sub": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        }
+    ],
+    "sup": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        }
+    ],
+    "table": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        },
+        {
+            "name": "title",
+            "options": []
+        }
+    ],
+    "svg": [
+        {
+            "name": "viewBox",
+            "options": []
+        },
+        {
+            "name": "width",
+            "options": []
+        },
+        {
+            "name": "height",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        },
+        {
+            "name": "title",
+            "options": []
+        },
+        {
+            "name": "preserveAspectRatio",
+            "options": []
+        }
+    ],
+    "tbody": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        }
+    ],
+    "template": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        }
+    ],
+    "td": [
+        {
+            "name": "rowspan",
+            "options": []
+        },
+        {
+            "name": "colspan",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "title",
+            "options": []
+        },
+        {
+            "name": "headers",
+            "options": []
+        }
+    ],
+    "textarea": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        },
+        {
+            "name": "title",
+            "options": []
+        },
+        {
+            "name": "tabindex",
+            "options": []
+        },
+        {
+            "name": "lang",
+            "options": []
+        },
+        {
+            "name": "autocomplete",
+            "options": []
+        },
+        {
+            "name": "autofocus",
+            "options": []
+        },
+        {
+            "name": "cols",
+            "options": []
+        },
+        {
+            "name": "dirname",
+            "options": []
+        },
+        {
+            "name": "disabled",
+            "options": []
+        },
+        {
+            "name": "form",
+            "options": []
+        },
+        {
+            "name": "maxlength",
+            "options": []
+        },
+        {
+            "name": "name",
+            "options": []
+        },
+        {
+            "name": "placeholder",
+            "options": []
+        },
+        {
+            "name": "readonly",
+            "options": []
+        },
+        {
+            "name": "required",
+            "options": []
+        },
+        {
+            "name": "rows",
+            "options": []
+        },
+        {
+            "name": "wrap",
+            "options": []
+        }
+    ],
+    "tfoot": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        }
+    ],
+    "th": [
+        {
+            "name": "colspan",
+            "options": []
+        },
+        {
+            "name": "rowspan",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "title",
+            "options": []
+        },
+        {
+            "name": "headers",
+            "options": []
+        },
+        {
+            "name": "scope",
+            "options": []
+        },
+        {
+            "name": "abbr",
+            "options": []
+        }
+    ],
+    "thead": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        }
+    ],
+    "time": [
+        {
+            "name": "datetime",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        }
+    ],
+    "tr": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        },
+        {
+            "name": "title",
+            "options": []
+        }
+    ],
+    "title": [],
+    "track": [
+        {
+            "name": "src",
+            "options": []
+        },
+        {
+            "name": "kind",
+            "options": []
+        },
+        {
+            "name": "label",
+            "options": []
+        },
+        {
+            "name": "srclang",
+            "options": []
+        },
+        {
+            "name": "default",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        }
+    ],
+    "u": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        }
+    ],
+    "ul": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        }
+    ],
+    "var": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        }
+    ],
+    "video": [
+        {
+            "name": "height",
+            "options": []
+        },
+        {
+            "name": "width",
+            "options": []
+        },
+        {
+            "name": "src",
+            "options": []
+        },
+        {
+            "name": "controls",
+            "options": []
+        },
+        {
+            "name": "autoplay",
+            "options": []
+        },
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        },
+        {
+            "name": "style",
+            "options": []
+        },
+        {
+            "name": "data-*",
+            "options": []
+        },
+        {
+            "name": "hidden",
+            "options": []
+        },
+        {
+            "name": "title",
+            "options": []
+        },
+        {
+            "name": "loop",
+            "options": []
+        },
+        {
+            "name": "muted",
+            "options": []
+        },
+        {
+            "name": "poster",
+            "options": []
+        },
+        {
+            "name": "preload",
+            "options": []
+        },
+        {
+            "name": "crossorigin",
+            "options": []
+        }
+    ],
+    "wbr": [],
+    "h1": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        }
+    ],
+    "h2": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        }
+    ],
+    "h3": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        }
+    ],
+    "h4": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        }
+    ],
+    "h5": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        }
+    ],
+    "h6": [
+        {
+            "name": "id",
+            "options": []
+        },
+        {
+            "name": "class",
+            "options": []
+        }
+    ]
+}
