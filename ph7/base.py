@@ -2,6 +2,8 @@
 Base class for defining HTML nodes.
 """
 
+# pylint: disable=line-too-long,too-many-lines,redefined-outer-name,redefined-builtin,invalid-name,too-many-locals
+
 import typing as t
 
 from ph7.formatters import aformat, hformat, sformat
@@ -21,7 +23,7 @@ def _wrap(child: "ChildType") -> "node":
     return data(value=child)
 
 
-class node:
+class node:  # pylint: disable=too-many-instance-attributes
     """Html node."""
 
     _render_cache: str
@@ -175,6 +177,7 @@ class wrapper(node):
 
     def __init__(self, view: "CallableAsView") -> None:
         """Initialize data node."""
+        super().__init__()
         self.view = view
         self.wrappers = {}
         self._is_wrapper = False
@@ -195,6 +198,7 @@ class data(node):
 
     def __init__(self, value: t.Any) -> None:
         """Initialize data node."""
+        super().__init__()
         self.sub, self.value = None, value
         if isinstance(value, str) and value.startswith("${") and value.endswith("}"):
             self.sub, self.value = value.replace("${", "").replace("}", "").split("|")

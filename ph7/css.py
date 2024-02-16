@@ -2,6 +2,8 @@
 This file is auto generated using scripts/render/css.py
 """
 
+# pylint: disable=line-too-long,too-many-lines,redefined-outer-name,redefined-builtin,invalid-name,too-many-locals
+
 import typing as t
 
 from typing_extensions import Literal
@@ -731,10 +733,11 @@ class css:
     """gap: length | normal | initial | inherit;"""
 
     grid: Literal["none", "initial", "inherit"]
-    """grid:
+    """grid: 
         none |grid-template-rows / grid-template-columns |grid-template-areas |
         grid-template-rows / [grid-auto-flow] grid-auto-columns |
-        [grid-auto-flow] grid-auto-rows / grid-template-columns |initial | inherit;
+        [grid-auto-flow] grid-auto-rows / grid-template-columns |
+        initial | inherit;
     """
 
     grid_auto_columns: Literal[

@@ -54,3 +54,9 @@ format-code:
 .PHONY: check-code
 check-code:
 	tox -p -e isort-check -e black-check -e flake8 -e mypy -e pylint
+
+.PHONY: codegen
+codegen:
+	python scripts/render/html.py
+	python scripts/render/css.py
+	python scripts/render/style.py

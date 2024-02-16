@@ -1,3 +1,7 @@
+"""
+Attribute formatters for HTML nodes.
+"""
+
 import typing as t
 
 from ph7.css import css

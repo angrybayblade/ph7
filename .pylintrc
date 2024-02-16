@@ -1,0 +1,11 @@
+[MASTER]
+ignore-patterns=
+ignore=
+
+[MESSAGES CONTROL]
+disable=R0801
+
+# R0801: similar lines
+
+[IMPORTS]
+ignored-modules=bootstrap

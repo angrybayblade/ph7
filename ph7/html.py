@@ -2,6 +2,8 @@
 This file is auto generated using scripts/render/html.py
 """
 
+# pylint: disable=line-too-long,too-many-lines,redefined-outer-name,redefined-builtin,invalid-name,too-many-locals
+
 import typing as t
 
 from typing_extensions import Literal

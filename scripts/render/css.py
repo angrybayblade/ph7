@@ -24,6 +24,8 @@ code = """\"\"\"
 This file is auto generated using scripts/render/css.py
 \"\"\"
 
+# pylint: disable=line-too-long,too-many-lines,redefined-outer-name,redefined-builtin,invalid-name,too-many-locals
+
 import typing as t
 from ph7.style import attributes as css_attr
 from typing_extensions import Literal

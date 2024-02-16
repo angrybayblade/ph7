@@ -18,6 +18,8 @@ for spec in bootstrap.split("}.")[1:]:
 
 code = """\"\"\"This file is autogenerate using scripts/render/bootstrap.py\"\"\"
 
+# pylint: disable=line-too-long,too-many-lines,redefined-outer-name,redefined-builtin,invalid-name,too-many-locals
+
 """
 
 for cls in sorted(classes):
