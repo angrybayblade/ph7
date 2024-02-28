@@ -2,19 +2,38 @@
 PH7 - Python native HTML rendering
 """
 
-from . import css, html, style
+from . import html, style
+from .css import CSSObject
+from .static import include
 
 
-class _KebabCase:  # pylint: disable=too-few-public-methods
+class _Case:
+    def __call__(self, name: str) -> str:
+        """Call getattr for __name"""
+        return getattr(self, name)
+
+
+class _KebabCase(_Case):
     def __getattribute__(self, __name: str) -> str:
         """Get attribute."""
         return __name.replace("_", "-")
 
 
-kebab = _KebabCase()
+class _TitleCase(_Case):
+    def __getattribute__(self, __name: str) -> str:
+        """Get attribute."""
+        return " ".join(map(lambda x: x.title(), __name.split("_")))
+
+
+kebabc = _KebabCase()
+titlec = _TitleCase()
+
 
 __all__ = (
     "html",
-    "css",
     "style",
+    "include",
+    "kebabc",
+    "titlec",
+    "CSSObject",
 )
