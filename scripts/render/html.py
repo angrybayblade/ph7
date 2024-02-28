@@ -41,6 +41,12 @@ template_fn = """def {tag}(
     )
 """
 
+
+unpack_node = """def unpack(*children: ChildType) -> node:
+    \"\"\"Unpackable node.\"\"\"
+    return _unpack(*children)
+"""
+
 code = """\"\"\"
 This file is auto generated using scripts/render/html.py
 \"\"\"
@@ -50,10 +56,10 @@ This file is auto generated using scripts/render/html.py
 import typing as t
 from typing_extensions import Literal
 
-from ph7.base import node, ChildType
+from ph7.base import node, ChildType, unpack as _unpack
 from ph7.style import Style
 from ph7.formatters import cformat
-from ph7.css import css
+from ph7.css import CSSObject
 from ph7.js import Events as DOMEvents
 
 
@@ -64,7 +70,7 @@ def get_class_render() -> t.Tuple[str, str, str, str]:
     """Returns template values for `class` attribute."""
     return (
         "class_name",
-        "t.Union[t.List[t.Union[str, css]], t.Union[str, css]]",
+        "t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]",
         "class",
         "cformat(class_name)",
     )
@@ -136,5 +142,6 @@ for tag in sorted(tags):
         content_allowed=tag not in content_not_allowed,
     )
 
+code += unpack_node
 
 Path("ph7/html.py").write_text(format_str(code, mode=Mode()))
