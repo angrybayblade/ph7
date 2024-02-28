@@ -4,7 +4,8 @@ Attribute formatters for HTML nodes.
 
 import typing as t
 
-from ph7.css import css
+from ph7.context import ctx
+from ph7.css import CSSObject
 
 
 def sformat(style: t.Dict) -> str:
@@ -32,14 +33,23 @@ def hformat(handlers: t.Dict) -> str:
 
 
 def cformat(
-    class_name: t.Optional[t.Union[t.List[t.Union[str, css]], t.Union[str, css]]]
+    class_name: t.Optional[
+        t.Union[
+            t.List[t.Union[str, CSSObject]],
+            t.Union[
+                str,
+                CSSObject,
+            ],
+        ]
+    ]
 ) -> t.Optional[str]:
     """Format classname."""
     if class_name is None:
         return None
 
     if hasattr(class_name, "name"):
-        return t.cast(css, class_name).name()
+        ctx.static.add(resource=t.cast(CSSObject, class_name))
+        return t.cast(CSSObject, class_name).name()
 
     if isinstance(class_name, str):
         return class_name
@@ -47,7 +57,8 @@ def cformat(
     cls_name = ""
     for cls in class_name:
         if hasattr(cls, "name"):
-            cls_name += f"{t.cast(css, cls).name()} "
+            ctx.static.add(resource=t.cast(CSSObject, cls))
+            cls_name += f"{t.cast(CSSObject, cls).name()} "
             continue
         cls_name += f"{cls} "
     return cls_name[:-1]
