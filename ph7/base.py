@@ -4,31 +4,56 @@ Base class for defining HTML nodes.
 
 # pylint: disable=line-too-long,too-many-lines,redefined-outer-name,redefined-builtin,invalid-name,too-many-locals
 
+import re
 import typing as t
+from pathlib import Path
 
-from ph7.formatters import aformat, hformat, sformat
+from typing_extensions import NotRequired, TypedDict
+
+from ph7.css import CSSObject
+from ph7.formatters import aformat, cformat, hformat, sformat
 from ph7.js import Events as DOMEvents
 from ph7.style import Style
 from ph7.style import attributes as _styles
 
+TEMPLATE_RE = re.compile(r"\$\{([a-z0-9_]+)(\|([a-zA-Z0-9_\. ]+))?\}")
 
-def _wrap(child: "ChildType") -> "node":
+
+def _wrap(child: "ChildType") -> t.Tuple["node", ...]:
     """Warp child as node type."""
     if isinstance(child, node):
-        return child
+        return (child,)
 
     if callable(child):
-        return wrapper(view=child)
+        return (wrapper(view=child),)
 
-    return data(value=child)
+    if isinstance(child, t.Generator):
+        return t.cast(t.Tuple["node", ...], tuple(child))
+
+    return (data(value=child),)
+
+
+def _unpack(children: t.Tuple["ChildType", ...]) -> t.Tuple["node", ...]:
+    """Unpack children."""
+    unpacked: t.List["node"] = []
+    for child in children:
+        unpacked.extend(_wrap(child=child))
+    return tuple(unpacked)
+
+
+class _RenderCache(TypedDict):
+    """Render cache."""
+
+    start: NotRequired[str]
+    end: NotRequired[str]
 
 
 class node:  # pylint: disable=too-many-instance-attributes
     """Html node."""
 
-    _render_cache: str
-    _is_wrapper: bool
-    _wrapper: t.Optional[str]
+    _render_cache: _RenderCache
+    _is_template: bool
+    _template_name: t.Optional[str]
 
     def __init__(
         self,
@@ -44,7 +69,7 @@ class node:  # pylint: disable=too-many-instance-attributes
         if len(children) > 0 and render is not None:
             raise ValueError("Cannot provide both children and render function.")
 
-        self.children = tuple(map(_wrap, children))
+        self.children = _unpack(children=children)
         self.style = style or {}
         self.handlers = handlers or DOMEvents({})
         self.attributes = attributes or {}
@@ -52,50 +77,68 @@ class node:  # pylint: disable=too-many-instance-attributes
         self.name = name or self.__class__.__name__
         self.content_allowed = content_allowed
 
-        self.wrappers = {}
+        self.templates = {}
         for child in self.children:
-            if child._is_wrapper:
-                self.wrappers[child._wrapper] = child
-            for nm, nd in child.wrappers.items():
-                if nm in self.wrappers:
-                    raise ValueError(f"Found multiple wrappers with same name: {nm}")
-                self.wrappers[nm] = nd
+            if child._is_template:
+                self.templates[child._template_name] = child
+            for nm, nd in child.templates.items():
+                if nm in self.templates:
+                    raise ValueError(f"Found multiple templates with same name: {nm}")
+                self.templates[nm] = nd
 
-        self._is_wrapper = False
-        self._wrapper = None
+        self._is_template = False
+        self._template_name = None
         self._cache()
 
     @property
-    def wrapper(self) -> str:
-        """Set the node to wrapper name."""
-        if self._is_wrapper:
-            return t.cast(str, self._wrapper)
-        raise ValueError("Node is not a wrapper node.")
+    def template(self) -> str:
+        """Set the node to template name."""
+        if self._is_template:
+            return t.cast(str, self._template_name)
+        raise ValueError("Node is not a template node.")
 
     @property
-    def is_wrapper(self) -> bool:
-        """If the node is a wrapper node."""
-        return self._is_wrapper
+    def is_template(self) -> bool:
+        """If the node is a template node."""
+        return self._is_template
 
-    def as_wrapper(self, name: str) -> "node":
-        """Convert the node to a wrapper node."""
-        self._is_wrapper = True
-        self._wrapper = name
+    def as_template(self, name: str) -> "node":
+        """Convert the node to a template node."""
+        self._is_template = True
+        self._template_name = name
         return self
 
     def __call__(
         self,
         *args: "ChildType",
         copy: bool = True,
+        style: t.Optional[Style] = None,
+        class_name: t.Optional[
+            t.Union[
+                t.List[t.Union[str, CSSObject]],
+                t.Union[
+                    str,
+                    CSSObject,
+                ],
+            ]
+        ] = None,
         **kwargs: t.Union["ChildType", t.Tuple["ChildType", ...]],
     ) -> "node":
-        """Hydrate wrapper node."""
-
+        """Hydrate template node."""
         if len(args) > 0 and copy:
             return node(
                 *args,
-                attributes=self.attributes,
-                style=self.style,
+                attributes=(
+                    self.attributes
+                    if class_name is None
+                    else {
+                        **self.attributes,
+                        "class": cformat(
+                            class_name=class_name,
+                        ),
+                    }
+                ),
+                style=style or self.style,
                 handlers=self.handlers,
                 render=self.context_render,
                 name=self.name,
@@ -103,20 +146,29 @@ class node:  # pylint: disable=too-many-instance-attributes
             )
 
         if len(args) > 0:
-            self.children = tuple(map(_wrap, args))
+            self.children = _unpack(children=args)
             return self
 
         cls = self.copy()
         for name, children in kwargs.items():
-            if name not in cls.wrappers:
-                raise ValueError(f"Invalid wrapper name: {name}")
-
+            if name not in cls.templates:
+                raise ValueError(f"Invalid template name: {name}")
             children = children if isinstance(children, tuple) else (children,)
-            cls.wrappers[name] = cls.wrappers[name](
-                *(_wrap(child=child) for child in children),
+            cls.templates[name] = cls.templates[name](
+                *_unpack(children=children),
                 copy=False,
             )
-
+        cls.style = style or self.style
+        cls.attributes = (
+            self.attributes
+            if class_name is None
+            else {
+                **self.attributes,
+                "class": cformat(
+                    class_name=class_name,
+                ),
+            }
+        )
         return cls
 
     def copy(self) -> "node":
@@ -130,30 +182,24 @@ class node:  # pylint: disable=too-many-instance-attributes
             name=self.name,
             content_allowed=self.content_allowed,
         )
-        if self.is_wrapper:
-            return cls.as_wrapper(self.wrapper)
+        if self.is_template:
+            return cls.as_template(self.template)
         return cls
 
     def _cache(self) -> None:
         """Generate cache."""
         style = {_styles[attr]: val for attr, val in self.style.items()}
-        if self.content_allowed:
-            self._render_cache = (
-                f"<{self.name}"
-                + f"{aformat(self.attributes)}"
-                + f"{sformat(style)}"
-                + f"{hformat(t.cast(t.Dict,self.handlers))}"
-                + ">"
-                + "{content}"
-                + f"</{self.name}>"
-            )
-            return
-        self._render_cache = (
-            f"<{self.name}"
-            + f"{aformat(self.attributes)}"
-            + f"{sformat(style)}"
-            + f"{hformat(t.cast(t.Dict,self.handlers))}"
-            + "/>"
+        self._render_cache = _RenderCache(
+            {
+                "start": (
+                    f"<{self.name}"
+                    + f"{aformat(self.attributes)}"
+                    + f"{sformat(style)}"
+                    + f"{hformat(t.cast(t.Dict,self.handlers))}"
+                    + (">" if self.content_allowed else "/>")
+                ),
+                "end": f"</{self.name}>",
+            }
         )
 
     def _render(self, context: t.Dict) -> str:
@@ -162,8 +208,37 @@ class node:  # pylint: disable=too-many-instance-attributes
     def render(self, context: t.Optional[t.Dict] = None) -> str:
         """Render"""
         if not self.content_allowed:
-            return self._render_cache
-        return self._render_cache.format(content=self._render(context=context or {}))
+            return self._render_cache["start"]
+        return (
+            self._render_cache["start"]
+            + self._render(context=context or {})
+            + self._render_cache["end"]
+        )
+
+    def _stream(
+        self,
+        context: t.Optional[t.Dict] = None,
+    ) -> t.Generator[str, None, None]:
+        """Render and stream children content."""
+        for child in self.children:
+            yield from child.stream(context=context)
+
+    def stream(
+        self,
+        context: t.Optional[t.Dict] = None,
+    ) -> t.Generator[str, None, None]:
+        """Stream chunks of response."""
+        yield self._render_cache["start"]
+        if not self.content_allowed:
+            return
+        yield from self._stream(context=context or {})
+        yield self._render_cache["end"]
+
+    def write(
+        self, file: t.Union[str, Path], context: t.Optional[t.Dict] = None
+    ) -> None:
+        """Write to a file."""
+        Path(file).write_text(self.render(context=context), encoding="utf-8")
 
     def __repr__(self) -> str:
         return self.__str__()
@@ -179,9 +254,9 @@ class wrapper(node):
         """Initialize data node."""
         super().__init__()
         self.view = view
-        self.wrappers = {}
-        self._is_wrapper = False
-        self._wrapper = None
+        self.templates = {}
+        self._is_template = False
+        self._template_name = None
 
     def copy(self) -> "node":
         """Copy data node."""
@@ -192,6 +267,13 @@ class wrapper(node):
         context = context or {}
         return self.view(context).render(context=context)
 
+    def stream(
+        self,
+        context: t.Optional[t.Dict] = None,
+    ) -> t.Generator[str, None, None]:
+        """Stream chunks of response."""
+        yield from self.view(context or {}).stream(context=context)
+
 
 class data(node):
     """Data node."""
@@ -199,26 +281,100 @@ class data(node):
     def __init__(self, value: t.Any) -> None:
         """Initialize data node."""
         super().__init__()
-        self.sub, self.value = None, value
-        if isinstance(value, str) and value.startswith("${") and value.endswith("}"):
-            self.sub, self.value = value.replace("${", "").replace("}", "").split("|")
-
-        self.wrappers = {}
-        self._is_wrapper = False
-        self._wrapper = None
+        self.subs = []
+        self.value = value
+        if isinstance(value, str):
+            subs = TEMPLATE_RE.findall(value)
+            if len(subs) > 0:
+                for key, _, default in subs:
+                    self.subs.append(
+                        (
+                            (f"${{{key}|{default}}}" if default else f"${{{key}}}"),
+                            key,
+                            default,
+                        )
+                    )
+        self.templates = {}
+        self._is_template = False
+        self._template_name = None
 
     def copy(self) -> "node":
         """Copy data node."""
         return data(value=self.value)
 
+    def parse(self, context: t.Optional[t.Dict] = None) -> str:
+        """Parse value."""
+        context = context or {}
+        if len(self.subs) > 0:
+            content = t.cast(str, self.value)
+            for placeholder, key, default in self.subs:
+                subtitute = context.get(key, str(default))
+                if not subtitute:
+                    raise ValueError(
+                        f"Error rendering {self.value}; "
+                        f"Value for '{key}' not provided"
+                    )
+                content = content.replace(placeholder, str(subtitute))
+            return content
+        return str(self.value)
+
     def render(self, context: t.Optional[t.Dict] = None) -> str:
         """Render string."""
-        context = context or {}
-        if self.sub is not None:
-            return str(context.get(self.sub, self.value))
-        return str(self.value)
+        return self.parse(context=context)
+
+    def stream(
+        self,
+        context: t.Optional[t.Dict] = None,
+    ) -> t.Generator[str, None, None]:
+        """Stream chunks of response."""
+        yield from self.parse(context=context)
+
+
+class unpack(node):
+    """Unpackable node."""
+
+    def __init__(self, *children: "ChildType") -> None:
+        super().__init__(*children)
+
+    def copy(self) -> "node":
+        """Copy node."""
+        if self.is_template:
+            return unpack(*self.children).as_template(self.template)
+        return unpack(*self.children)
+
+    def render(self, context: t.Optional[t.Dict] = None) -> str:
+        return self._render(context=context or {})
+
+    def _stream(
+        self,
+        context: t.Optional[t.Dict] = None,
+    ) -> t.Generator[str, None, None]:
+        """Render and stream children content."""
+        for child in self.children:
+            yield from child.stream(context=context)
+
+    def stream(
+        self,
+        context: t.Optional[t.Dict] = None,
+    ) -> t.Generator[str, None, None]:
+        """Stream chunks of response."""
+        yield from self._stream(context=context or {})
 
 
 CallableAsView = t.Callable[[t.Dict], node]
 
-ChildType = t.Union[node, str, int, float, bool, CallableAsView]
+ChildTypeMeta = t.Union[node, str, int, float, bool, CallableAsView]
+
+ChildType = t.Union[
+    node,
+    str,
+    int,
+    float,
+    bool,
+    CallableAsView,
+    t.Generator[
+        ChildTypeMeta,
+        None,
+        None,
+    ],
+]
