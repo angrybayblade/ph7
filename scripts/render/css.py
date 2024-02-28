@@ -30,30 +30,33 @@ import typing as t
 from ph7.style import attributes as css_attr
 from typing_extensions import Literal
 
-class css:
+class CSSObject:
     \"\"\"CSS class representation.\"\"\"
+
+    _name: t.Optional[str] = None
 
     {properties}
 
     @classmethod
     def name(cls) -> str:
         \"\"\"Name string.\"\"\"
-        return cls.__name__
-
+        if cls._name is not None:
+            return cls._name
+        return cls.__name__.replace("_", "-")
     @classmethod
     def properties(cls) -> t.Dict[str, str]:
         \"\"\"Returns properties mapping.\"\"\"
         properties = {{}}
         for base in cls.__bases__:
             if hasattr(base, "properties"):
-                properties.update(base.properties)
+                properties.update(base.properties())
         for prop, val in cls.__dict__.items():
             if isinstance(val, str) and not prop.startswith("__"):
                 properties[css_attr[prop]] = val
         return properties
 
     @classmethod
-    def subclasses(cls) -> t.List["css"]:
+    def subclasses(cls) -> t.List["CSSObject"]:
         \"\"\"Returns the list of available subclasses.\"\"\"
         cs = []
         for c in cls.__dict__.values():
@@ -62,7 +65,7 @@ class css:
         return cs
 
 
-def _render(obj: css, parent: str, container: t.Dict) -> None:
+def _render(obj: CSSObject, parent: str, container: t.Dict) -> None:
     \"\"\"Render CSS object.\"\"\"
     container[f"{{parent}} .{{obj.name()}}"[1:]] = obj.properties()
     for subc in obj.subclasses():
@@ -73,18 +76,21 @@ def _render(obj: css, parent: str, container: t.Dict) -> None:
         )
 
 
-def render(obj: css) -> str:
+def render(*objs: CSSObject, min: bool = False) -> str:
     \"\"\"Render CSS stylesheet.\"\"\"
     sheet = ""
     container: t.Dict[str, t.Dict] = {{}}
-
-    _render(obj=obj, parent="", container=container)
+    separator = "" if min else " "
+    newline = "" if min else "\\n"
+    tab = "" if min else "  "
+    for obj in objs:
+        _render(obj=obj, parent="", container=container)
     for cls in sorted(container):
-        sheet += f"{{cls}}" + " {{\\n"
+        sheet += f"{{cls}}" + "{{" + newline
         for prop, val in container[cls].items():
-            sheet += f"  {{prop}}: {{val}};\\n"
-        sheet += "}}\\n\\n"
-    return sheet[:-1]
+            sheet += f"{{tab}}{{prop}}:{{separator}}{{val}};{{newline}}"
+        sheet += "}}" + newline
+    return sheet
 
 """
 
