@@ -55,9 +55,7 @@ for tag in tags:
     type_ = "str"
     if tags[tag]["options"]:
         type_ = (
-            "t.Union[str,Literal["
-            + ",".join(map(lambda x: f'"{x}"', tags[tag]["options"]))
-            + "]]"
+            "Literal[" + ",".join(map(lambda x: f'"{x}"', tags[tag]["options"])) + "]"
         )
     properties += propt.format(
         property=tag.replace("-", "_"),
