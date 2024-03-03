@@ -1,7 +1,7 @@
 ## Adding Style
 
 Use `style` attribute to add style to a view. The `style` attribute is defined using a `TypedDict` object which means it's a type constrained dictionary. What this means is, you can utilise the autocomplete from your IDE for writing code faster. And since it's type constriained you can also utilise a tool like `mypy` to make sure you are not defining any wrong attributes.
-![Autocomplete](/ph7/img/style-autocomplete.gif)
+![Autocomplete](/img/style-autocomplete.gif)
 
 <!-- {"type": "html", "file": "examples/styles.py"} -->
 ```python

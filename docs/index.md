@@ -27,8 +27,11 @@ print(template)
 </html>
 ```
 <!-- end -->
+
 Add some style
-![Stylesheet Autocomplete](/ph7/img/style-autocomplete.gif)
+
+![Stylesheet Autocomplete](/img/style-autocomplete.gif)
+
 <!-- {"type": "html", "file": "examples/styles.py"} -->
 ```python
 """Simple hello example."""
@@ -61,7 +64,9 @@ print(template)
 </html>
 ```
 <!-- end -->
+
 Or use `CSSObject` to define reusable stylesheets.
+
 <!-- {"type": "html", "file": "examples/css_nesting.py"} -->
 ```python
 from ph7 import CSSObject, include
