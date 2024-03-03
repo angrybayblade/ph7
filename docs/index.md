@@ -144,5 +144,5 @@ print(template)
 
 ---
 ## Next Steps
-- [Writing HTML](/ph7/html)
-- [Writing CSS](/ph7/css)
+- [Writing HTML](/html)
+- [Writing CSS](/css)
