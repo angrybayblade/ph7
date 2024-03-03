@@ -1,0 +1,27 @@
+from ph7 import CSSObject, include
+from ph7.html import body, div, head, html
+
+
+class flex_center(CSSObject):
+    """Flex center."""
+
+    display = "flex"
+    align_items = "center"
+    justify_content = "center"
+
+
+template = html(
+    head(
+        include(flex_center, minify=True),
+    ),
+    body(
+        div(
+            div(
+                "Hello, World!",
+            ),
+            class_name=[flex_center],
+        )
+    ),
+)
+
+print(template)
