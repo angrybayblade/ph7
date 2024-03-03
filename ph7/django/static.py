@@ -47,7 +47,7 @@ class StaticContext(BaseStatiContext):
             self.resources[module][cls] = getattr(sys.modules[module], cls)
         self.cache[module] = render_css(
             *self.resources[module].values(),
-            min=not self.development_mode,
+            minify=not self.development_mode,
         )
 
         if not self.development_mode:
