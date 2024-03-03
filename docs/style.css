@@ -22,6 +22,22 @@ body .navbar {
   background: var(--primary) !important;
 }
 
+body .navbar .show {
+  background: var(--primary);
+  position: absolute;
+  width: calc(100% - 20px);
+  top: 50px;
+  left: 10px;
+  padding: 10px;
+
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+body .navbar .show li{
+  border-bottom: 1px solid #eee;
+}
+
 body .navbar .container {
   padding: 0px;
   margin: 0px;
