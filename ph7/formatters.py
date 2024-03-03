@@ -29,7 +29,7 @@ def hformat(handlers: t.Dict) -> str:
     """Handler formatter."""
     if len(handlers) == 0:
         return ""
-    return " ".join(map(lambda x: f'{x[0]}="{x[1]}"', handlers.items()))
+    return " " + " ".join(map(lambda x: f'{x[0]}="{x[1]}"', handlers.items()))
 
 
 def cformat(
