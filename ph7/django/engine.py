@@ -1,6 +1,5 @@
 """Template engine implementation."""
 
-import types
 import typing as t
 from importlib.machinery import SourceFileLoader
 from pathlib import Path
@@ -34,27 +33,38 @@ class Environment:
         cwd = Path.cwd()
         for _dir in self.app_dirs:
             for template in _dir.glob("**/*.py"):
-                template = template.relative_to(cwd)
-                if template.name in ("__init__.py", "base.py", "styles.py"):
+                if "styles" in template.parts:
                     continue
+                template = template.relative_to(cwd)
                 app, _, *path, name = template.parts
-                name = name.replace(".py", "")
-                path = [app, *path, name]
+                if name == "__init__.py":
+                    path = [app, *path]
+                    fullname = ".".join(template.parts[:-1])
+                else:
+                    name = name.replace(".py", "")
+                    path = [app, *path, name]
+                    fullname = ".".join([*template.parts[:-1], name])
+
                 module = SourceFileLoader(
-                    fullname=".".join(
-                        [*template.parts[:-1], template.name.replace(".py", "")]
-                    ),
+                    fullname=fullname,
                     path=str(template),
                 ).load_module()
-                self.templates["/".join(path)] = module
-                if name == "index":
-                    self.templates["/".join(path[:-1])] = module
+                self.templates[".".join(path)] = module
 
-    def get(self, name: str) -> types.ModuleType:
+    def get(self, name: str, cls: t.Optional[str] = None) -> "Template":
         """Get PH7 node for `name`"""
-        if name not in self.templates:
+        cls = cls or "template"
+        if ":" in name:
+            name, cls = name.split(":")
+
+        module = self.templates.get(name)
+        if module is None:
             raise NotFound(f"Template '{name}' not found")
-        return self.templates[name]
+
+        template = getattr(module, cls, None)
+        if template is None:
+            raise AttributeError(f"View '{cls}' not found in template {name}")
+        return Template(template=template, view=module.__name__)
 
 
 class PH7Templates(BaseEngine):
@@ -81,8 +91,7 @@ class PH7Templates(BaseEngine):
     def get_template(self, template_name: str) -> "Template":
         """Get PH7 template."""
         try:
-            module = self.environment.get(template_name)
-            return Template(template=module.template, view=module.__name__)
+            return self.environment.get(template_name)
         except AttributeError:
             raise TemplateSyntaxError(
                 f"Invalid template; '{template_name}' "
