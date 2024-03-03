@@ -52,8 +52,8 @@ class node:  # pylint: disable=too-many-instance-attributes
     """Html node."""
 
     _render_cache: _RenderCache
-    _is_template: bool
-    _template_name: t.Optional[str]
+    _is_overridable: bool
+    _overridable_name: t.Optional[str]
 
     def __init__(
         self,
@@ -64,6 +64,7 @@ class node:  # pylint: disable=too-many-instance-attributes
         render: t.Optional[t.Callable[[t.Dict], str]] = None,
         name: t.Optional[str] = None,
         content_allowed: bool = True,
+        cache: t.Optional[_RenderCache] = None,
     ) -> None:
         """Initialize object."""
         if len(children) > 0 and render is not None:
@@ -79,33 +80,49 @@ class node:  # pylint: disable=too-many-instance-attributes
 
         self.templates = {}
         for child in self.children:
-            if child._is_template:
-                self.templates[child._template_name] = child
+            if child._is_overridable:
+                self.templates[child._overridable_name] = child
             for nm, nd in child.templates.items():
                 if nm in self.templates:
                     raise ValueError(f"Found multiple templates with same name: {nm}")
                 self.templates[nm] = nd
 
-        self._is_template = False
-        self._template_name = None
-        self._cache()
+        self._is_overridable = False
+        self._overridable_name = None
+        self._render_cache = cache or self._cache()
+
+    def _cache(self) -> _RenderCache:
+        """Generate cache."""
+        style = {_styles[attr]: val for attr, val in self.style.items()}
+        return _RenderCache(
+            {
+                "start": (
+                    f"<{self.name}"
+                    + f"{aformat(self.attributes)}"
+                    + f"{sformat(style)}"
+                    + f"{hformat(t.cast(t.Dict,self.handlers))}"
+                    + (">" if self.content_allowed else "/>")
+                ),
+                "end": f"</{self.name}>",
+            }
+        )
 
     @property
     def template(self) -> str:
         """Set the node to template name."""
-        if self._is_template:
-            return t.cast(str, self._template_name)
+        if self._is_overridable:
+            return t.cast(str, self._overridable_name)
         raise ValueError("Node is not a template node.")
 
     @property
     def is_template(self) -> bool:
         """If the node is a template node."""
-        return self._is_template
+        return self._is_overridable
 
-    def as_template(self, name: str) -> "node":
+    def overridable(self, name: str) -> "node":
         """Convert the node to a template node."""
-        self._is_template = True
-        self._template_name = name
+        self._is_overridable = True
+        self._overridable_name = name
         return self
 
     def __call__(
@@ -126,6 +143,11 @@ class node:  # pylint: disable=too-many-instance-attributes
     ) -> "node":
         """Hydrate template node."""
         if len(args) > 0 and copy:
+            if style is None and class_name is None:
+                return node(
+                    *args,
+                    cache=self._render_cache,
+                )
             return node(
                 *args,
                 attributes=(
@@ -183,68 +205,45 @@ class node:  # pylint: disable=too-many-instance-attributes
             content_allowed=self.content_allowed,
         )
         if self.is_template:
-            return cls.as_template(self.template)
+            return cls.overridable(self.template)
         return cls
 
-    def _cache(self) -> None:
-        """Generate cache."""
-        style = {_styles[attr]: val for attr, val in self.style.items()}
-        self._render_cache = _RenderCache(
-            {
-                "start": (
-                    f"<{self.name}"
-                    + f"{aformat(self.attributes)}"
-                    + f"{sformat(style)}"
-                    + f"{hformat(t.cast(t.Dict,self.handlers))}"
-                    + (">" if self.content_allowed else "/>")
-                ),
-                "end": f"</{self.name}>",
-            }
-        )
-
     def _render(self, context: t.Dict) -> str:
-        return "".join(map(lambda x: x.render(context=context), self.children))
+        return "".join([child.render(context=context) for child in self.children])
 
-    def render(self, context: t.Optional[t.Dict] = None) -> str:
+    def render(self, context: t.Dict) -> str:
         """Render"""
         if not self.content_allowed:
             return self._render_cache["start"]
-        return (
-            self._render_cache["start"]
-            + self._render(context=context or {})
-            + self._render_cache["end"]
-        )
+        return f"""{self._render_cache["start"]}{self._render(context=context)}{self._render_cache["end"]}"""
 
-    def _stream(
-        self,
-        context: t.Optional[t.Dict] = None,
-    ) -> t.Generator[str, None, None]:
+    def _stream(self, context: t.Dict) -> t.Generator[str, None, None]:
         """Render and stream children content."""
         for child in self.children:
             yield from child.stream(context=context)
 
-    def stream(
-        self,
-        context: t.Optional[t.Dict] = None,
-    ) -> t.Generator[str, None, None]:
+    def stream(self, context: t.Dict) -> t.Generator[str, None, None]:
         """Stream chunks of response."""
         yield self._render_cache["start"]
         if not self.content_allowed:
             return
-        yield from self._stream(context=context or {})
+        yield from self._stream(context=context)
         yield self._render_cache["end"]
 
     def write(
         self, file: t.Union[str, Path], context: t.Optional[t.Dict] = None
     ) -> None:
         """Write to a file."""
-        Path(file).write_text(self.render(context=context), encoding="utf-8")
+        Path(file).write_text(
+            self.render(context=context or {}),
+            encoding="utf-8",
+        )
 
     def __repr__(self) -> str:
         return self.__str__()
 
     def __str__(self) -> str:
-        return self.render()
+        return self.render({})
 
 
 class wrapper(node):
@@ -255,24 +254,23 @@ class wrapper(node):
         super().__init__()
         self.view = view
         self.templates = {}
-        self._is_template = False
-        self._template_name = None
+        self._is_overridable = False
+        self._overridable_name = None
 
     def copy(self) -> "node":
         """Copy data node."""
         return wrapper(view=self.view)
 
-    def render(self, context: t.Optional[t.Dict] = None) -> str:
+    def render(self, context: t.Dict) -> str:
         """Render string."""
-        context = context or {}
         return self.view(context).render(context=context)
 
     def stream(
         self,
-        context: t.Optional[t.Dict] = None,
+        context: t.Dict,
     ) -> t.Generator[str, None, None]:
         """Stream chunks of response."""
-        yield from self.view(context or {}).stream(context=context)
+        yield from self.view(context).stream(context=context)
 
 
 class data(node):
@@ -295,36 +293,35 @@ class data(node):
                         )
                     )
         self.templates = {}
-        self._is_template = False
-        self._template_name = None
+        self._is_overridable = False
+        self._overridable_name = None
 
     def copy(self) -> "node":
         """Copy data node."""
         return data(value=self.value)
 
-    def parse(self, context: t.Optional[t.Dict] = None) -> str:
+    def parse(self, context: t.Dict) -> str:
         """Parse value."""
-        context = context or {}
         if len(self.subs) > 0:
             content = t.cast(str, self.value)
             for placeholder, key, default in self.subs:
                 subtitute = context.get(key, str(default))
                 if not subtitute:
                     raise ValueError(
-                        f"Error rendering {self.value}; "
+                        f"Error rendering '{self.value}'; "
                         f"Value for '{key}' not provided"
                     )
                 content = content.replace(placeholder, str(subtitute))
             return content
         return str(self.value)
 
-    def render(self, context: t.Optional[t.Dict] = None) -> str:
+    def render(self, context: t.Dict) -> str:
         """Render string."""
         return self.parse(context=context)
 
     def stream(
         self,
-        context: t.Optional[t.Dict] = None,
+        context: t.Dict,
     ) -> t.Generator[str, None, None]:
         """Stream chunks of response."""
         yield from self.parse(context=context)
@@ -339,15 +336,15 @@ class unpack(node):
     def copy(self) -> "node":
         """Copy node."""
         if self.is_template:
-            return unpack(*self.children).as_template(self.template)
+            return unpack(*self.children).overridable(self.template)
         return unpack(*self.children)
 
-    def render(self, context: t.Optional[t.Dict] = None) -> str:
-        return self._render(context=context or {})
+    def render(self, context: t.Dict) -> str:
+        return self._render(context=context)
 
     def _stream(
         self,
-        context: t.Optional[t.Dict] = None,
+        context: t.Dict,
     ) -> t.Generator[str, None, None]:
         """Render and stream children content."""
         for child in self.children:
@@ -355,10 +352,10 @@ class unpack(node):
 
     def stream(
         self,
-        context: t.Optional[t.Dict] = None,
+        context: t.Dict,
     ) -> t.Generator[str, None, None]:
         """Stream chunks of response."""
-        yield from self._stream(context=context or {})
+        yield from self._stream(context=context)
 
 
 CallableAsView = t.Callable[[t.Dict], node]

@@ -14,7 +14,6 @@ from ph7.style import attributes as css_attr
 class CSSObject:
     """CSS class representation."""
 
-
     animation: Literal[
         "animation-name",
         "animation-duration",
@@ -1241,13 +1240,13 @@ def _render(obj: CSSObject, parent: str, container: t.Dict) -> None:
         )
 
 
-def render(*objs: CSSObject, min: bool = False) -> str:
+def render(*objs: CSSObject, minify: bool = False) -> str:
     """Render CSS stylesheet."""
     sheet = ""
     container: t.Dict[str, t.Dict] = {}
-    separator = "" if min else " "
-    newline = "" if min else "\n"
-    tab = "" if min else "  "
+    separator = "" if minify else " "
+    newline = "" if minify else "\n"
+    tab = "" if minify else "  "
     for obj in objs:
         _render(obj=obj, parent="", container=container)
     for cls in sorted(container):
