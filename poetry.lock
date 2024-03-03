@@ -48,6 +48,21 @@ jupyter = ["ipython (>=7.8.0)", "tokenize-rt (>=3.2.0)"]
 uvloop = ["uvloop (>=0.15.2)"]
 
 [[package]]
+name = "clea"
+version = "0.1.0rc4"
+description = "Framework for writing CLI application quickly"
+category = "main"
+optional = false
+python-versions = ">=3.8,<4.0"
+files = [
+    {file = "clea-0.1.0rc4-py3-none-any.whl", hash = "sha256:5220c52c698cd1936abbe01c5281ea3906bffbefd29e1ffdc913ef5c9b06f444"},
+    {file = "clea-0.1.0rc4.tar.gz", hash = "sha256:e9d128bab506ab88bae384aa546ff26060e8a64075bffd7ff9e600007e76880d"},
+]
+
+[package.dependencies]
+typing-extensions = ">=4.7.1,<5.0.0"
+
+[[package]]
 name = "click"
 version = "8.1.7"
 description = "Composable command line interface toolkit"
@@ -168,4 +183,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "e036525fa86f0fcf58caa077427ae65232d1abd9e633c091b84c3bd5900bf683"
+content-hash = "1321bbc9565fcccd147103f3170e39fe7e96e96f5722aedfc91992cfdd26fd0f"
