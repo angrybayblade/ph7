@@ -1,0 +1,12 @@
+site_name: PH7
+site_url: https://angrybayblade.me/ph7
+repo_url: https://github.com/angrybayblade/ph7
+edit_uri: blob/main/docs/
+extra_css:
+  - style.css
+nav:
+  - HTML: html.md
+  - CSS: css.md
+  - Django:
+    - Templates: django/
+    - Static: django/static.md
