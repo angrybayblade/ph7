@@ -1,9 +1,6 @@
 from django import forms
 
-from ph7.context import ctx
-from ph7.html import body, div, form, head, html, title
-
-ctx.static.view(__name__)
+from ph7.html import body, div, form, html, title
 
 
 class UserForm(forms.Form):
@@ -16,9 +13,6 @@ class UserForm(forms.Form):
 
 template = html(
     title("Forms Example"),
-    head(
-        ctx.static.include,
-    ),
     body(
         div(
             form(

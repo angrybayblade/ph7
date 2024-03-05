@@ -118,11 +118,9 @@ Forms can be included directly using `form` tag.
 
 <!-- {"type": "html", "file": "examples/django_app/forms/templates/__init__.py", "input_only": true} -->
 ```python
-from ph7.context import ctx
-from ph7.html import body, div, head, html, title, form
 from django import forms
 
-ctx.static.view(__name__)
+from ph7.html import body, div, form, html, title
 
 
 class UserForm(forms.Form):
@@ -135,9 +133,6 @@ class UserForm(forms.Form):
 
 template = html(
     title("Forms Example"),
-    head(
-        ctx.static.include,
-    ),
     body(
         div(
             form(
