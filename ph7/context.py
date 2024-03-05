@@ -25,7 +25,7 @@ class StaticContext:
         self.files: t.Dict[str, Path] = {}
         self.resources: t.Dict = {}
 
-        (self.path / "css").mkdir(exist_ok=True)
+        (self.path / "css").mkdir(exist_ok=True, parents=True)
 
     def view(self, name: str) -> None:
         """Set view."""
