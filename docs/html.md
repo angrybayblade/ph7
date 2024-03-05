@@ -335,9 +335,9 @@ print(f"Third render: {time.perf_counter() - tick}")
 ```
 
 ```stdout
-First render: 6.056515792
-Second render: 0.3598642089999995
-Third render: 0.3476206660000001
+First render: 6.347275333000001
+Second render: 0.3539066670000004
+Third render: 0.35804579199999953
 ```
 <!-- end -->
 When make a view cacheable, make sure the view satisfies following constrains

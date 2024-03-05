@@ -7,6 +7,4 @@ extra_css:
 nav:
   - HTML: html.md
   - CSS: css.md
-  - Django:
-    - Templates: django/
-    - Static: django/static.md
+  - Django: django.md

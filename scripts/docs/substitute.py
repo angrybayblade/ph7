@@ -93,15 +93,16 @@ def code_block(blockd: t.Dict) -> str:
             type="python",
         )
         block += "\n"
-    code = run_example(file=blockd["file"], env=blockd.get("env"))
-    if "lines" in blockd:
-        code = "\n".join(code.split("\n")[slice(*blockd["lines"])])
-    if blockd["type"] in ("html", "css", "js"):
-        code = prettify(code=code, tp=blockd["type"])
-    block += CODE_BLOCK.format(
-        code=code,
-        type=blockd["type"],
-    )
+    if not blockd.get("input_only", False):
+        code = run_example(file=blockd["file"], env=blockd.get("env"))
+        if "lines" in blockd:
+            code = "\n".join(code.split("\n")[slice(*blockd["lines"])])
+        if blockd["type"] in ("html", "css", "js"):
+            code = prettify(code=code, tp=blockd["type"])
+        block += CODE_BLOCK.format(
+            code=code,
+            type=blockd["type"],
+        )
     block += BLOCK_END
     block += "\n"
     return block
