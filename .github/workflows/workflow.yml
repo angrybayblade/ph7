@@ -1,0 +1,105 @@
+name: main_workflow
+on:
+  push:
+    branches:
+      - develop
+      - main
+  pull_request:
+jobs:
+  lock_check:
+    continue-on-error: False
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: ["3.10.9"]
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@master
+        with:
+          python-version: ${{ matrix.python-version }}
+      - if: matrix.os != 'windows-latest'
+        name: Lock check
+        run: |
+          pip install poetry
+          rm -rf poetry.lock
+          time poetry lock
+
+  linter_checks:
+    continue-on-error: False
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: ["3.10.9"]
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@master
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          sudo apt-get update --fix-missing
+          sudo apt-get autoremove
+          sudo apt-get autoclean
+          pip install --user --upgrade setuptools
+          pip install tox==4.6.3
+      # TODO
+      # - name: Security checks
+      #   run: |
+      #     tox -e bandit
+      #     tox -e safety
+      - name: Code style check
+        run: |
+          tox -e black-check
+          tox -e isort-check
+          tox -e flake8
+      - name: Static type check
+        run: tox -e mypy
+      - name: Pylint
+        run: tox -e pylint
+        # TODO
+        # - name: Documentation checks
+        #   run: tox -e docs-block-check
+
+  # TODO
+  # test:
+  #   continue-on-error: True
+  #   needs:
+  #     - lock_check
+  #     - linter_checks
+  #   runs-on: ${{ matrix.os }}
+  #   strategy:
+  #     matrix:
+  #       os: [ubuntu-latest]
+  #       python-version: ["3.8", "3.9", "3.10.9", "3.11"]
+  #   timeout-minutes: 15
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         submodules: recursive
+  #         fetch-depth: 0
+  #     - uses: actions/setup-python@master
+  #       with:
+  #         python-version: ${{ matrix.python-version }}
+  #     - name: Install Dependencies
+  #       run: |
+  #         sudo apt-get update --fix-missing
+  #         sudo apt-get autoremove
+  #         sudo apt-get autoclean
+  #         pip install --user --upgrade setuptools
+  #         pip install tox==4.6.3
+  #     - name: Unittests
+  #       run: |
+  #         tox -e unittests
+  #     - if: matrix.python-version == '3.10.9'
+  #       name: Upload coverage to Codecov
+  #       uses: codecov/codecov-action@v3
+  #       with:
+  #         token: ${{ secrets.CODECOV_TOKEN }}
+  #         file: ./coverage.xml
+  #         flags: unittests
+  #         name: codecov-umbrella
+  #         fail_ci_if_error: false
