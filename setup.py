@@ -29,9 +29,7 @@ setup(
     keywords="html, css, js, templates, django",
     packages=find_packages(include=["ph7*"]),
     python_requires=">=3.7, <4",
-    install_requires=[
-        "typing-extensions",
-    ],
+    install_requires=[],
     package_data={
         "ph7": [
             "py.typed",
