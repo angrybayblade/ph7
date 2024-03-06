@@ -6,6 +6,7 @@ import typing as t
 
 from ph7.context import ctx
 from ph7.css import CSSObject
+from ph7.js import JSCallable
 
 
 def sformat(style: t.Dict) -> str:
@@ -29,7 +30,19 @@ def hformat(handlers: t.Dict) -> str:
     """Handler formatter."""
     if len(handlers) == 0:
         return ""
-    return " " + " ".join(map(lambda x: f'{x[0]}="{x[1]}"', handlers.items()))
+
+    formatted = " "
+    for name, handler in handlers.items():
+        if isinstance(handler, str):
+            formatted += f"{name}={handler}"
+            continue
+        if isinstance(handler, JSCallable):
+            formatted += f"{name}={handler}"
+            ctx.static.add(handler)
+            continue
+        ctx.static.add(handler)
+        formatted += f"{name}={handler.__name__}()"
+    return formatted
 
 
 def cformat(
