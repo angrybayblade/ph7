@@ -2,12 +2,50 @@
 Static content helpers.
 """
 
+import typing as t
+
 from ph7.base import node
 from ph7.css import CSSObject
-from ph7.css import render as crender
-from ph7.html import style
+from ph7.css import render as to_css
+from ph7.html import script, style, unpack
+from ph7.js import JavaScriptObject, JSCallable
+from ph7.js.transpile import to_js
 
 
-def include(*objs: CSSObject, minify: bool = True) -> node:
+def is_css(obj: t.Any):
+    """Check if the object is a CSS Object."""
+    return hasattr(obj, "__css__")
+
+
+def include(
+    *objs: t.Union[CSSObject, JavaScriptObject],
+    minify: bool = True,
+) -> node:
     """Include css objects."""
-    return style(("" if minify else "\n") + crender(*objs, minify=minify))
+    styles = []
+    scripts = []
+    for obj in objs:
+        if is_css(obj=obj):
+            styles.append(obj)
+            continue
+        if isinstance(obj, JSCallable):
+            scripts.append(obj.func)
+            continue
+        scripts.append(obj)
+
+    style_node = style(
+        to_css(*styles, minify=minify),
+    )
+
+    script_node = script(
+        to_js(*scripts, minify=minify),
+    )
+
+    if len(scripts) > 0 and len(styles) > 0:
+        return unpack(style_node, script_node)
+
+    if len(scripts) > 0:
+        return script_node
+
+    if len(styles) > 0:
+        return style_node
