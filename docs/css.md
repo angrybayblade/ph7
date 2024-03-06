@@ -57,7 +57,7 @@ class flex_center(CSSObject):
 
 template = html(
     head(
-        include(flex_center, minify=True),
+        include(flex_center),
     ),
     body(
         div(
@@ -117,7 +117,7 @@ class textbox(flex_center):
 
 template = html(
     head(
-        include(textbox, minify=True),
+        include(textbox),
     ),
     body(
         div(
@@ -187,7 +187,7 @@ class textbox(flex_center):
 
 template = html(
     head(
-        include(textbox, minify=True),
+        include(textbox),
     ),
     body(
         div(
@@ -238,6 +238,7 @@ PH7 has a runtime context object which can be used for managing the static resou
 
 <!-- {"type": "html", "file": "examples/static_context.py", "env": {"DEVELOPMENT": "1"}} -->
 ```python
+from examples.script import alertHello
 from examples.style import textbox
 from ph7.context import ctx
 from ph7.html import body, div, head, html
@@ -252,8 +253,11 @@ template = html(
     body(
         div(
             div(
-                "Hello, World!",
+                "Click Here",
                 class_name=[textbox.text],
+                handlers={
+                    "onclick": alertHello("John Doe"),
+                },
             ),
             class_name=[textbox],
         )
@@ -266,7 +270,7 @@ print(template.render(context={"_view": __name__}))
 ```html
 <html>
   <head>
-    <style id="examples.style">
+    <style id="css.examples.style">
       .textbox {
         display: flex;
         align-items: center;
@@ -280,10 +284,15 @@ print(template.render(context={"_view": __name__}))
         font-family: Lucida Console, Monaco, monospace;
       }
     </style>
+    <script id="js.examples.script">
+      function alertHello(user) {
+        alert('Hello, ' + user);
+      }
+    </script>
   </head>
   <body>
     <div class="textbox">
-      <div class="text">Hello, World!</div>
+      <div class="text" onclick=alertHello('John Doe')>Click Here</div>
     </div>
   </body>
 </html>
@@ -296,11 +305,12 @@ As you can see, the static context collects the various static resources and inc
 ```html
 <html>
   <head>
-    <link href="/static/css/examples_style.css" rel="stylesheet" id="examples.style" />
+    <link href="/static/css/examples_style.css" rel="stylesheet" id="css.examples.style" />
+    <script src="/static/js/examples_script.js" id="js.examples.script"></script>
   </head>
   <body>
     <div class="textbox">
-      <div class="text">Hello, World!</div>
+      <div class="text" onclick=alertHello('John Doe')>Click Here</div>
     </div>
   </body>
 </html>

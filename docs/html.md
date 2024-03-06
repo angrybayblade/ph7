@@ -76,7 +76,7 @@ print(template)
   <body>
     <div id="container" class="container">
       <div id="child" class="text bold teal">Example for different attributes</div>
-      <div onclick="sayHello">Clickable div</div>
+      <div onclick='sayHello()'>Clickable div</div>
     </div>
   </body>
 </html>
@@ -262,15 +262,16 @@ template = html(
     )
 )
 
-print("With `number_of_users` parameter")
+print("<!-- With `number_of_users` parameter -->\n")
 print(template.render(context={"number_of_users": 5}), end="\n\n")
 
-print("Without `number_of_users` parameter")
+print("<!-- Without `number_of_users` parameter -->\n")
 print(template.render(context={}))
 ```
 
 ```html
-With `number_of_users` parameter <html>
+<!-- With `number_of_users` parameter -->
+<html>
   <body>
     <div class="user">
       <div class="user">User 0</div>
@@ -280,7 +281,9 @@ With `number_of_users` parameter <html>
       <div class="user">User 4</div>
     </div>
   </body>
-</html> Without `number_of_users` parameter <html>
+</html>
+<!-- Without `number_of_users` parameter -->
+<html>
   <body>
     <div class="error">Error, Users not found</div>
   </body>
@@ -335,11 +338,14 @@ print(f"Third render: {time.perf_counter() - tick}")
 ```
 
 ```stdout
-First render: 6.705524875
-Second render: 0.38814591600000004
-Third render: 0.35611545899999975
+First render: 6.0718302500000005
+Second render: 0.35541508400000055
+Third render: 0.38755016700000056
 ```
 <!-- end -->
-When make a view cacheable, make sure the view satisfies following constrains
-- View only depends on the data provided by the arguments and does not fetch any external data
-- View does not return very large objects, or you might run into out of memory error after a while. If a view returns very large objects and you still want to cache it, you can use a smaller cache stack size on `functools.lru_cache`.
+
+
+When making a view cacheable, make sure the view satisfies following constrains
+
+* View only depends on the data provided by the arguments and does not fetch any external data
+* View does not return very large objects, or you might run into out of memory error after a while. If a view returns very large objects and you still want to cache it, you can use a smaller cache stack size on `functools.lru_cache`.
