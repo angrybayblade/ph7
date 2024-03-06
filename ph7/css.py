@@ -14,6 +14,8 @@ from ph7.style import attributes as css_attr
 class CSSObject:
     """CSS class representation."""
 
+    __css__ = True
+
     animation: Literal[
         "animation-name",
         "animation-duration",

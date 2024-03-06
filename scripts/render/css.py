@@ -33,7 +33,7 @@ from typing_extensions import Literal
 class CSSObject:
     \"\"\"CSS class representation.\"\"\"
 
-    _name: t.Optional[str] = None
+    __css__ = True
 
     {properties}
 
