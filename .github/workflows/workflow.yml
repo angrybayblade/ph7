@@ -22,9 +22,8 @@ jobs:
       - if: matrix.os != 'windows-latest'
         name: Lock check
         run: |
-          pip install poetry
-          rm -rf poetry.lock
-          time poetry lock
+          pip install pipenv
+          time pipenv lock
 
   linter_checks:
     continue-on-error: False
