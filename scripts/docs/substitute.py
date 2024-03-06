@@ -9,7 +9,7 @@ import typing as t
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
-from clea import Boolean, Directory, command, run
+from clea import Boolean, Directory, File, command, run
 from typing_extensions import Annotated
 
 BLOCK_DEF = "<!-- {blockd} -->\n"
@@ -131,34 +131,39 @@ def cmd_block(blockd: t.Dict) -> str:
     return block
 
 
-def update(path: Path) -> None:
+def update(file: Path) -> None:
+    """Update document."""
+    updated = ""
+    content = file.read_text(encoding="utf-8")
+    lines = content.split("\n")
+    while len(lines):
+        line = lines.pop(0)
+        if "<!-- {" in line:
+            blockd = json.loads(
+                line.replace(
+                    "<!-- ",
+                    "",
+                ).replace(
+                    " -->",
+                    "",
+                )
+            )
+            if "cmd" in blockd:
+                block = cmd_block(blockd=blockd)
+            else:
+                block = code_block(blockd=blockd)
+            while line != BLOCK_END:
+                line = lines.pop(0)
+            updated += block
+        else:
+            updated += line + "\n"
+    file.write_text(updated[:-1], encoding="utf-8")
+
+
+def update_all(path: Path) -> None:
     """Update document."""
     for file in path.glob("**/*.md"):
-        updated = ""
-        content = file.read_text(encoding="utf-8")
-        lines = content.split("\n")
-        while len(lines):
-            line = lines.pop(0)
-            if "<!-- {" in line:
-                blockd = json.loads(
-                    line.replace(
-                        "<!-- ",
-                        "",
-                    ).replace(
-                        " -->",
-                        "",
-                    )
-                )
-                if "cmd" in blockd:
-                    block = cmd_block(blockd=blockd)
-                else:
-                    block = code_block(blockd=blockd)
-                while line != BLOCK_END:
-                    line = lines.pop(0)
-                updated += block
-            else:
-                updated += line + "\n"
-        file.write_text(updated[:-1], encoding="utf-8")
+        update(file=file)
 
 
 @command
@@ -167,13 +172,25 @@ def sub(
     docs: Annotated[Path, Directory(help="Path to documentation.")] = Path(
         "./docs",
     ),
+    file: Annotated[
+        Path,
+        File(
+            help="File to perform substitutions or check.",
+            long_flag="--file",
+        ),
+    ] = None,
 ) -> None:
     """
     Substitute {{example:FILE}} blocks in the documentation
     """
     if check:
         ...
-    update(path=docs)
+
+    if file is not None:
+        update(file=file)
+        return
+
+    update_all(path=docs)
 
 
 if __name__ == "__main__":
