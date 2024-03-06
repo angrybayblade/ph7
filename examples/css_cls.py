@@ -12,7 +12,7 @@ class flex_center(CSSObject):
 
 template = html(
     head(
-        include(flex_center, minify=True),
+        include(flex_center),
     ),
     body(
         div(

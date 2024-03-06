@@ -20,8 +20,8 @@ template = html(
     )
 )
 
-print("With `number_of_users` parameter")
+print("<!-- With `number_of_users` parameter -->\n")
 print(template.render(context={"number_of_users": 5}), end="\n\n")
 
-print("Without `number_of_users` parameter")
+print("<!-- Without `number_of_users` parameter -->\n")
 print(template.render(context={}))

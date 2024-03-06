@@ -19,7 +19,7 @@ class textbox(flex_center):
 
 template = html(
     head(
-        include(textbox, minify=True),
+        include(textbox),
     ),
     body(
         div(
