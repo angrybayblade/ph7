@@ -37,6 +37,8 @@ class Visitor(ast.NodeVisitor):
 
     def decrese_stack(self) -> None:
         """Decrease stack level."""
+        if len(self.scope) == 1:
+            return
         self.scope.pop()
 
     def increase_level(self) -> None:
