@@ -1,9 +1,14 @@
-.tox/
 temp/
-
 static/
 
-__pycache__/
-*.pyc
+.tox/
+dist/
+build/
 
+__pycache__/
+
+*.egg-info/
+*.pyc
 *.html
+
+Pipfile.lock
