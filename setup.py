@@ -1,9 +1,4 @@
-"""A setuptools based setup module.
-
-See:
-https://packaging.python.org/guides/distributing-packages-using-setuptools/
-https://github.com/pypa/sampleproject
-"""
+"""Setup module for ph7"""
 
 # Always prefer setuptools over distutils
 from setuptools import setup, find_packages
@@ -13,7 +8,7 @@ here = pathlib.Path(__file__).parent.resolve()
 long_description = (here / "README.md").read_text(encoding="utf-8")
 setup(
     name="ph7",
-    version="0.1.rc3",
+    version="0.1.0.rc0",
     description="Python native HTML rendering",
     long_description=long_description,
     long_description_content_type="text/markdown",

@@ -43,8 +43,18 @@ clean-cache:
 clean: clean-test clean-build clean-pyc clean-docs
 
 .PHONY: dist
-dist: clean
-	poetry build
+dist:
+	rm -rf dist/
+	python setup.py sdist
+
+.PHONY: publish
+publish: dist
+	twine upload dist/*
+
+
+.PHONY: test-publish
+test-publish: dist
+	twine upload --repository testpypi dist/*
 
 .PHONY: format-code
 format-code:
