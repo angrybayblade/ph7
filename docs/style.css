@@ -82,3 +82,14 @@ body pre {
 .col-md-9 p {
   padding-left: 10px;
 }
+
+@media only screen and (min-width: 1000px) {
+  body .side-by-side {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+  }
+  body .side-by-side pre{
+    width: 50%;
+  }
+}
