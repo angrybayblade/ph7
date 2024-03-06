@@ -4,6 +4,9 @@ version = "0.1.0"
 description = "Python native HTML rendering"
 authors = ["angrybayblade <vptl185@gmail.com>"]
 readme = "README.md"
+include = [
+    "ph7/py.typed",
+]
 
 [tool.poetry.dependencies]
 python = "^3.9"
