@@ -50,7 +50,7 @@ def prettify(code: str, tp: str) -> str:
         return data
 
 
-def run_example(file: str, env: t.Optional[t.Dict] = None) -> t.Dict:
+def run_example(file: str, read: str, env: t.Optional[t.Dict] = None) -> t.Dict:
     """Run example."""
     process = subprocess.Popen(
         [sys.executable, file],
@@ -58,6 +58,13 @@ def run_example(file: str, env: t.Optional[t.Dict] = None) -> t.Dict:
         stderr=subprocess.PIPE,
         env=env,
     )
+
+    if read == "stdout":
+        return process.stdout.read().decode(encoding="utf-8").strip()
+
+    if read == "stderr":
+        return process.stderr.read().decode(encoding="utf-8").strip()
+
     return (
         process.stdout.read().decode(encoding="utf-8").strip()
         + process.stderr.read().decode(encoding="utf-8").strip()
@@ -74,6 +81,7 @@ def run_cmd(cmd: t.List[str], env: t.Optional[t.Dict] = None) -> t.Dict:
     )
     return (
         process.stdout.read().decode(encoding="utf-8").strip()
+        + "\n"
         + process.stderr.read().decode(encoding="utf-8").strip()
     )
 
@@ -81,28 +89,41 @@ def run_cmd(cmd: t.List[str], env: t.Optional[t.Dict] = None) -> t.Dict:
 def code_block(blockd: t.Dict) -> str:
     """Build code block."""
     block = BLOCK_DEF.format(blockd=json.dumps(blockd))
+    if blockd.get("class") is not None:
+        block += f"<div class='{blockd['class']}'>\n"
     if not blockd.get("output_only", False):
-        block += CODE_BLOCK.format(
-            code=Path(
+        code = (
+            Path(
                 blockd["file"],
             )
             .read_text(
                 encoding="utf-8",
             )
-            .strip(),
+            .strip()
+        )
+        if "lines" in blockd and "input" in blockd["lines"]:
+            code = "\n".join(code.split("\n")[slice(*blockd["lines"]["input"])])
+        block += CODE_BLOCK.format(
+            code=code,
             type="python",
         )
         block += "\n"
     if not blockd.get("input_only", False):
-        code = run_example(file=blockd["file"], env=blockd.get("env"))
-        if "lines" in blockd:
-            code = "\n".join(code.split("\n")[slice(*blockd["lines"])])
+        code = run_example(
+            file=blockd["file"],
+            read=blockd.get("read"),
+            env=blockd.get("env"),
+        )
+        if "lines" in blockd and "output" in blockd["lines"]:
+            code = "\n".join(code.split("\n")[slice(*blockd["lines"]["output"])])
         if blockd["type"] in ("html", "css", "js"):
             code = prettify(code=code, tp=blockd["type"])
         block += CODE_BLOCK.format(
             code=code,
             type=blockd["type"],
         )
+    if blockd.get("class") is not None:
+        block += f"</div>\n"
     block += BLOCK_END
     block += "\n"
     return block

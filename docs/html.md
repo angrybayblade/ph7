@@ -116,7 +116,7 @@ print(template.render(context={"name": "Jane Doe", "age": 24}))
 ```
 <!-- end -->
 Not providing value for placeholder without default value will result in error
-<!-- {"type": "text", "file": "examples/missing_placeholders.py", "lines": [-1, null]} -->
+<!-- {"type": "text", "file": "examples/missing_placeholders.py", "lines": {"output":[-1, null]}} -->
 ```python
 from ph7.html import body, div, html
 
