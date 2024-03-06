@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "home",
     "static_files",
     "forms",
+    "javascript",
 ]
 
 MIDDLEWARE = [

@@ -17,6 +17,7 @@ Including another URLconf
 
 import forms.views as forms
 import home.views as home
+import javascript.views as javascript
 import static_files.views as static_files
 from django.contrib import admin
 from django.urls import path
@@ -26,4 +27,5 @@ urlpatterns = [
     path("", home.home),
     path("static_files", static_files.static_files),
     path("forms", forms.forms),
+    path("javascript", javascript.javascript),
 ]
