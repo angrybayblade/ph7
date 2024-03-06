@@ -1,3 +1,4 @@
+from examples.script import alertHello
 from examples.style import textbox
 from ph7.context import ctx
 from ph7.html import body, div, head, html
@@ -12,8 +13,11 @@ template = html(
     body(
         div(
             div(
-                "Hello, World!",
+                "Click Here",
                 class_name=[textbox.text],
+                handlers={
+                    "onclick": alertHello("John Doe"),
+                },
             ),
             class_name=[textbox],
         )
