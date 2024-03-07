@@ -5,15 +5,13 @@ This file is auto generated using scripts/render/html.py
 # pylint: disable=line-too-long,too-many-lines,redefined-outer-name,redefined-builtin,invalid-name,too-many-locals
 
 import typing as t
-
 from typing_extensions import Literal
 
-from ph7.base import ChildType, node
-from ph7.base import unpack as _unpack
-from ph7.css import CSSObject
-from ph7.formatters import cformat
-from ph7.js import Events as DOMEvents
+from ph7.base import node, ChildType, unpack as _unpack
 from ph7.style import Style
+from ph7.formatters import cformat
+from ph7.css import CSSObject
+from ph7.js import Events as DOMEvents
 
 
 def a(
@@ -1284,7 +1282,7 @@ def img(
         style=style,
         handlers=handlers,
         name="img",
-        content_allowed=True,
+        content_allowed=False,
     )
 
 

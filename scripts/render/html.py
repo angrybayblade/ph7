@@ -6,7 +6,7 @@ from black import Mode, format_str
 
 tags = json.loads((Path.cwd() / "data" / "html.json").read_text())
 
-content_not_allowed = ["link"]
+content_not_allowed = ["link", "img"]
 
 template_cls = """class {tag}(node):
     \"\"\"{title} node.\"\"\"
