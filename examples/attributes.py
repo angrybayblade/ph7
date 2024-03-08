@@ -1,4 +1,4 @@
-from ph7.html import body, div, h1, head, html, title
+from ph7.html import body, div, head, html, title
 
 template = html(
     head(

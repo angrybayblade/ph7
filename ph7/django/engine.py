@@ -45,7 +45,7 @@ class Environment:
                     path = [app, *path, name]
                     fullname = ".".join([*template.parts[:-1], name])
 
-                module = SourceFileLoader(
+                module = SourceFileLoader(  # pylint: disable=deprecated-method,no-value-for-parameter
                     fullname=fullname,
                     path=str(template),
                 ).load_module()
@@ -92,13 +92,13 @@ class PH7Templates(BaseEngine):
         """Get PH7 template."""
         try:
             return self.environment.get(template_name)
-        except AttributeError:
+        except AttributeError as e:
             raise TemplateSyntaxError(
                 f"Invalid template; '{template_name}' "
                 "does not have 'template' attribute"
-            )
-        except NotFound as exc:
-            raise TemplateDoesNotExist(exc.args, backend=self)
+            ) from e
+        except NotFound as e:
+            raise TemplateDoesNotExist(e.args, backend=self) from e
 
 
 class Template:

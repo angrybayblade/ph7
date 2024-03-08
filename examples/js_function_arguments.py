@@ -4,7 +4,7 @@ from ph7.js import document, fetch, js_callable
 
 
 @js_callable
-async def fetchUserProfilePicture(user: str):
+async def fetchUserProfilePicture(user: str) -> None:
     response = await fetch(
         "/api/users/" + user,
         {"method": "GET"},
@@ -19,7 +19,7 @@ def _user(name: str) -> node:
         button(
             f"Click to fetch {name}'s  profile picture.",
             handlers={
-                "onclick": fetchUserProfilePicture(user=name),
+                "onclick": fetchUserProfilePicture(name),
             },
         ),
     )

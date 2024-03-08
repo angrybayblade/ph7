@@ -132,10 +132,17 @@ class node:  # pylint: disable=too-many-instance-attributes
         style: t.Optional[Style] = None,
         class_name: t.Optional[
             t.Union[
-                t.List[t.Union[str, CSSObject]],
+                t.List[
+                    t.Union[
+                        str,
+                        CSSObject,
+                        t.Type[CSSObject],
+                    ]
+                ],
                 t.Union[
                     str,
                     CSSObject,
+                    t.Type[CSSObject],
                 ],
             ]
         ] = None,

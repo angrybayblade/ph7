@@ -51,11 +51,14 @@ def hformat(handlers: t.Dict) -> str:
 def cformat(
     class_name: t.Optional[
         t.Union[
-            t.List[t.Union[str, CSSObject]],
-            t.Union[
-                str,
-                CSSObject,
+            t.List[
+                t.Union[
+                    str,
+                    CSSObject,
+                    t.Type[CSSObject],
+                ]
             ],
+            t.Union[str, CSSObject, t.Type[CSSObject], t.Type[CSSObject]],
         ]
     ]
 ) -> t.Optional[str]:

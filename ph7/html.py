@@ -21,7 +21,10 @@ def a(
     href: t.Optional[str] = None,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     title: t.Optional[str] = None,
@@ -84,7 +87,10 @@ def abbr(
     title: t.Optional[str] = None,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -108,7 +114,10 @@ def address(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -190,7 +199,10 @@ def article(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
@@ -215,7 +227,10 @@ def aside(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
@@ -242,7 +257,10 @@ def audio(
     src: t.Optional[str] = None,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     title: t.Optional[str] = None,
@@ -281,7 +299,10 @@ def b(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -330,7 +351,10 @@ def blockquote(
     cite: t.Optional[str] = None,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     title: t.Optional[str] = None,
     style: t.Optional[Style] = None,
@@ -356,7 +380,10 @@ def body(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -401,7 +428,10 @@ def button(
     value: t.Optional[str] = None,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     title: t.Optional[str] = None,
@@ -453,7 +483,10 @@ def canvas(
     width: t.Optional[str] = None,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     title: t.Optional[str] = None,
@@ -482,7 +515,10 @@ def caption(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -521,7 +557,10 @@ def code(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -545,7 +584,10 @@ def col(
     span: t.Optional[str] = None,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -630,7 +672,10 @@ def dd(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -654,7 +699,10 @@ def details(
     open: t.Optional[str] = None,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -678,7 +726,10 @@ def div(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
@@ -703,7 +754,10 @@ def dl(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -726,7 +780,10 @@ def dt(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -749,7 +806,10 @@ def em(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -776,7 +836,10 @@ def embed(
     type: t.Optional[str] = None,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -803,7 +866,10 @@ def fieldset(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     form: t.Optional[str] = None,
     name: t.Optional[str] = None,
@@ -832,7 +898,10 @@ def figcaption(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -855,7 +924,10 @@ def figure(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     title: t.Optional[str] = None,
@@ -882,7 +954,10 @@ def footer(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
@@ -957,7 +1032,10 @@ def h1(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -980,7 +1058,10 @@ def h2(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -1003,7 +1084,10 @@ def h3(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -1026,7 +1110,10 @@ def h4(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -1049,7 +1136,10 @@ def h5(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -1072,7 +1162,10 @@ def h6(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -1114,7 +1207,10 @@ def header(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
@@ -1138,7 +1234,10 @@ def header(
 def hr(
     *children: ChildType,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -1181,7 +1280,10 @@ def i(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -1207,7 +1309,10 @@ def iframe(
     src: t.Optional[str] = None,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     title: t.Optional[str] = None,
@@ -1247,7 +1352,10 @@ def img(
     alt: t.Optional[str] = None,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     title: t.Optional[str] = None,
@@ -1284,7 +1392,7 @@ def img(
         style=style,
         handlers=handlers,
         name="img",
-        content_allowed=True,
+        content_allowed=False,
     )
 
 
@@ -1320,7 +1428,10 @@ def input(
     value: t.Optional[str] = None,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     title: t.Optional[str] = None,
@@ -1412,7 +1523,10 @@ def ins(
     cite: t.Optional[str] = None,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -1437,7 +1551,10 @@ def kbd(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -1461,7 +1578,10 @@ def label(
     for_html: t.Optional[str] = None,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     title: t.Optional[str] = None,
@@ -1489,7 +1609,10 @@ def legend(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -1513,7 +1636,10 @@ def li(
     value: t.Optional[str] = None,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     title: t.Optional[str] = None,
@@ -1588,7 +1714,10 @@ def main(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
@@ -1634,7 +1763,10 @@ def mark(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -1687,7 +1819,10 @@ def meter(
     max: t.Optional[str] = None,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     title: t.Optional[str] = None,
@@ -1725,7 +1860,10 @@ def nav(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
@@ -1771,7 +1909,10 @@ def object(
     type: t.Optional[str] = None,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     height: t.Optional[str] = None,
@@ -1810,7 +1951,10 @@ def ol(
     start: t.Optional[str] = None,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     reversed: t.Optional[str] = None,
@@ -1840,7 +1984,10 @@ def optgroup(
     label: t.Optional[str] = None,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     disabled: t.Optional[str] = None,
@@ -1871,7 +2018,10 @@ def option(
     selected: t.Optional[str] = None,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     disabled: t.Optional[str] = None,
@@ -1904,7 +2054,10 @@ def output(
     name: t.Optional[str] = None,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -1930,7 +2083,10 @@ def p(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     lang: t.Optional[str] = None,
     style: t.Optional[Style] = None,
@@ -1978,7 +2134,10 @@ def picture(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     title: t.Optional[str] = None,
@@ -2005,7 +2164,10 @@ def pre(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     title: t.Optional[str] = None,
@@ -2034,7 +2196,10 @@ def progress(
     value: t.Optional[str] = None,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     title: t.Optional[str] = None,
@@ -2064,7 +2229,10 @@ def q(
     cite: t.Optional[str] = None,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -2136,7 +2304,10 @@ def samp(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -2190,7 +2361,10 @@ def section(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
@@ -2217,7 +2391,10 @@ def select(
     multiple: t.Optional[str] = None,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     tabindex: t.Optional[str] = None,
     hidden: t.Optional[str] = None,
@@ -2258,7 +2435,10 @@ def small(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -2310,7 +2490,10 @@ def span(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     title: t.Optional[str] = None,
@@ -2337,7 +2520,10 @@ def strong(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -2383,7 +2569,10 @@ def sub(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -2406,7 +2595,10 @@ def summary(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -2429,7 +2621,10 @@ def sup(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -2455,7 +2650,10 @@ def svg(
     height: t.Optional[str] = None,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     title: t.Optional[str] = None,
@@ -2487,7 +2685,10 @@ def table(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     title: t.Optional[str] = None,
@@ -2514,7 +2715,10 @@ def tbody(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
@@ -2541,7 +2745,10 @@ def td(
     colspan: t.Optional[str] = None,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     title: t.Optional[str] = None,
     headers: t.Optional[str] = None,
@@ -2570,7 +2777,10 @@ def template(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -2593,7 +2803,10 @@ def textarea(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     title: t.Optional[str] = None,
@@ -2650,7 +2863,10 @@ def tfoot(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
@@ -2677,7 +2893,10 @@ def th(
     rowspan: t.Optional[str] = None,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     title: t.Optional[str] = None,
     headers: t.Optional[str] = None,
@@ -2710,7 +2929,10 @@ def thead(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
@@ -2736,7 +2958,10 @@ def time(
     datetime: t.Optional[str] = None,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -2776,7 +3001,10 @@ def tr(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     title: t.Optional[str] = None,
@@ -2832,7 +3060,10 @@ def u(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -2855,7 +3086,10 @@ def ul(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
@@ -2880,7 +3114,10 @@ def var(
     *children: ChildType,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     style: t.Optional[Style] = None,
     handlers: t.Optional[DOMEvents] = None,
@@ -2908,7 +3145,10 @@ def video(
     autoplay: t.Optional[str] = None,
     id: t.Optional[str] = None,
     class_name: t.Optional[
-        t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]
+        t.Union[
+            t.List[t.Union[str, CSSObject, t.Type[CSSObject]]],
+            t.Union[str, CSSObject, t.Type[CSSObject]],
+        ]
     ] = None,
     hidden: t.Optional[str] = None,
     title: t.Optional[str] = None,

@@ -27,7 +27,7 @@ class StaticContext:
         self.views: t.Dict[str, t.Dict[str, t.List[str]]] = {"js": {}, "css": {}}
         self.cache: t.Dict[str, t.Dict[str, str]] = {"js": {}, "css": {}}
         self.files: t.Dict[str, t.Dict[str, Path]] = {"js": {}, "css": {}}
-        self.resources: t.Dict[str, t.Dict[str, str]] = {"js": {}, "css": {}}
+        self.resources: t.Dict[str, t.Dict[str, t.Any]] = {"js": {}, "css": {}}
 
         (self.path / "css").mkdir(exist_ok=True, parents=True)
         (self.path / "js").mkdir(exist_ok=True, parents=True)
@@ -107,7 +107,8 @@ class StaticContext:
 
     def _include_css(self, view: str) -> t.Any:
         """Render stylesheet."""
-        from ph7.html import link, style
+        from ph7.html import link  # pylint: disable=import-outside-toplevel
+        from ph7.html import style  # pylint: disable=import-outside-toplevel
 
         if view not in self.views["css"]:
             return ()
@@ -132,7 +133,7 @@ class StaticContext:
 
     def _include_js(self, view: str) -> t.Any:
         """Render script."""
-        from ph7.html import script
+        from ph7.html import script  # pylint: disable=import-outside-toplevel
 
         if view not in self.views["js"]:
             return ()
@@ -156,7 +157,7 @@ class StaticContext:
 
     def include(self, context: t.Dict) -> t.Any:
         """Include static files."""
-        from ph7.html import unpack
+        from ph7.html import unpack  # pylint: disable=import-outside-toplevel
 
         view = context["_view"]
 
