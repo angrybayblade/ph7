@@ -70,7 +70,10 @@ def get_class_render() -> t.Tuple[str, str, str, str]:
     """Returns template values for `class` attribute."""
     return (
         "class_name",
-        "t.Union[t.List[t.Union[str, CSSObject]], t.Union[str, CSSObject]]",
+        (
+            "t.Union[t.List[t.Union[str, CSSObject, t.Type[CSSObject]]], "
+            "t.Union[str, CSSObject, t.Type[CSSObject]]]"
+        ),
         "class",
         "cformat(class_name)",
     )
@@ -144,4 +147,9 @@ for tag in sorted(tags):
 
 code += unpack_node
 
-Path("ph7/html.py").write_text(format_str(code, mode=Mode()))
+Path(
+    "ph7/html.py",
+).write_text(
+    format_str(code, mode=Mode()),
+    encoding="utf-8",
+)
