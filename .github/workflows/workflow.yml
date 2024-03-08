@@ -11,19 +11,22 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [ ubuntu-latest ]
         python-version: ["3.10.9"]
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@master
-        with:
-          python-version: ${{ matrix.python-version }}
-      - if: matrix.os != 'windows-latest'
-        name: Lock check
-        run: |
-          pip install pipenv
-          time pipenv lock
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@master
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Pipenv install requirements and check it can be locked
+      run: |
+        pip install pipenv
+        pipenv --clear
+        time pipenv install --verbose --dev --skip-lock
+        time pipenv run pip install -e .[all]
+        time pipenv lock
+
 
   linter_checks:
     continue-on-error: False
