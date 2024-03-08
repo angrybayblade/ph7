@@ -3,7 +3,9 @@
 import typing as t
 from io import BytesIO
 
-from typing_extensions import NotRequired, Protocol, TypedDict, Union
+from typing_extensions import NotRequired, Protocol, TypedDict
+
+# pylint: disable=missing-function-docstring,missing-class-docstring,unused-argument
 
 ReadableStream = t.IO
 
@@ -15,7 +17,7 @@ class Blob(Protocol):
     async def arrayBuffer(self) -> bytes:
         ...
 
-    def slice(
+    def slice(  # type: ignore
         self,
         start: t.Optional[int] = None,
         end: t.Optional[int] = None,
@@ -35,21 +37,21 @@ class FormDataEntryValue(Protocol):
 
 
 class FormData(Protocol):
-    def __iter__(self) -> t.Iterator[t.Tuple[str, FormDataEntryValue]]:
+    def __iter__(self) -> t.Iterator[t.Tuple[str, FormDataEntryValue]]:  # type: ignore
         ...
 
-    def entries(self) -> t.Iterable[t.Tuple[str, FormDataEntryValue]]:
+    def entries(self) -> t.Iterable[t.Tuple[str, FormDataEntryValue]]:  # type: ignore
         ...
 
-    def keys(self) -> t.Iterable[str]:
+    def keys(self) -> t.Iterable[str]:  # type: ignore
         ...
 
-    def values(self) -> t.Iterable[FormDataEntryValue]:
+    def values(self) -> t.Iterable[FormDataEntryValue]:  # type: ignore
         ...
 
 
 class Body(Protocol):
-    body: Union[None, BytesIO]
+    body: t.Union[None, BytesIO]
     bodyUsed: bool
 
     async def arrayBuffer(self) -> bytes:
@@ -77,7 +79,7 @@ class Response(Body):
     type: str
     url: str
 
-    def clone(self) -> "Response":
+    def clone(self) -> "Response":  # type: ignore
         ...
 
 
@@ -87,10 +89,10 @@ Method = t.Literal["GET", "POST", "DELETE", "PATCH", "OPTIONS", "HEADER"]
 
 
 class RequestInit(TypedDict):
-    body: Union[None, str, bytes, bytearray]
+    body: NotRequired[t.Union[None, str, bytes, bytearray]]
     cache: NotRequired[str]
     credentials: NotRequired[str]
-    headers: Union[None, dict, list]
+    headers: NotRequired[t.Union[None, dict, list]]
     integrity: NotRequired[str]
     keepalive: NotRequired[bool]
     method: NotRequired[Method]
@@ -98,81 +100,81 @@ class RequestInit(TypedDict):
     redirect: NotRequired[str]
     referrer: NotRequired[str]
     referrerPolicy: NotRequired[str]
-    signal: Union[None, object]
-    window: Union[None, object]
+    signal: NotRequired[t.Union[None, object]]
+    window: NotRequired[t.Union[None, object]]
 
 
-async def fetch(url: Request, init: RequestInit) -> Response:
+async def fetch(url: Request, init: RequestInit) -> Response:  # type: ignore
     ...
 
 
-def setInterval(handler: t.Callable, timeout: int, *args: t.List[t.Any]) -> int:
+def setInterval(handler: t.Callable, timeout: int, *args: t.List[t.Any]) -> int:  # type: ignore
     ...
 
 
-def setTimeout(handler: t.Callable, timeout: int, *args: t.List[t.Any]) -> int:
+def setTimeout(handler: t.Callable, timeout: int, *args: t.List[t.Any]) -> int:  # type: ignore
     ...
 
 
 class Console:
-    def assert_(self, condition, *data: t.Any) -> None:
+    def assert_(self, condition, *data: t.Any) -> None:  # type: ignore
         ...
 
-    def clear(self) -> None:
+    def clear(self) -> None:  # type: ignore
         ...
 
-    def count(self, label: str = "") -> None:
+    def count(self, label: str = "") -> None:  # type: ignore
         ...
 
-    def countReset(self, label: str = "") -> None:
+    def countReset(self, label: str = "") -> None:  # type: ignore
         ...
 
-    def debug(self, *data: t.Any) -> None:
+    def debug(self, *data: t.Any) -> None:  # type: ignore
         ...
 
-    def dir(self, item, options=None) -> None:
+    def dir(self, item, options=None) -> None:  # type: ignore
         ...
 
-    def dirxml(self, *data: t.Any) -> None:
+    def dirxml(self, *data: t.Any) -> None:  # type: ignore
         ...
 
-    def error(self, *data: t.Any) -> None:
+    def error(self, *data: t.Any) -> None:  # type: ignore
         ...
 
-    def group(self, *data: t.Any) -> None:
+    def group(self, *data: t.Any) -> None:  # type: ignore
         ...
 
-    def groupCollapsed(self, *data: t.Any) -> None:
+    def groupCollapsed(self, *data: t.Any) -> None:  # type: ignore
         ...
 
-    def groupEnd(self) -> None:
+    def groupEnd(self) -> None:  # type: ignore
         ...
 
-    def info(self, *data: t.Any) -> None:
+    def info(self, *data: t.Any) -> None:  # type: ignore
         ...
 
-    def log(self, *data: t.Any) -> None:
+    def log(self, *data: t.Any) -> None:  # type: ignore
         ...
 
-    def table(self, tabularData, properties=None) -> None:
+    def table(self, tabularData, properties=None) -> None:  # type: ignore
         ...
 
-    def time(self, label: str = "") -> None:
+    def time(self, label: str = "") -> None:  # type: ignore
         ...
 
-    def timeEnd(self, label: str = "") -> None:
+    def timeEnd(self, label: str = "") -> None:  # type: ignore
         ...
 
-    def timeLog(self, label: str = "", *data: t.Any) -> None:
+    def timeLog(self, *data: t.Any, label: str = "") -> None:  # type: ignore
         ...
 
-    def timeStamp(self, label: str = "") -> None:
+    def timeStamp(self, label: str = "") -> None:  # type: ignore
         ...
 
-    def trace(self, *data: t.Any) -> None:
+    def trace(self, *data: t.Any) -> None:  # type: ignore
         ...
 
-    def warn(self, *data: t.Any) -> None:
+    def warn(self, *data: t.Any) -> None:  # type: ignore
         ...
 
 

@@ -30,19 +30,22 @@ def prettify(code: str, tp: str) -> str:
         file = Path(tempd, "fmt." + tp)
         file.write_text(code, encoding="utf-8")
         data = (
-            subprocess.Popen(
-                [
-                    "js-beautify",
-                    "--config",
-                    str(JSBEAUTIFY_CONFIG),
-                    "--type",
-                    tp,
-                    file,
-                ],
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE,
+            t.cast(
+                t.IO[bytes],
+                subprocess.Popen(
+                    [
+                        "js-beautify",
+                        "--config",
+                        str(JSBEAUTIFY_CONFIG),
+                        "--type",
+                        tp,
+                        file,
+                    ],
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
+                ).stdout,
             )
-            .stdout.read()
+            .read()
             .decode(encoding="utf-8")
             .strip()
         )
@@ -50,7 +53,7 @@ def prettify(code: str, tp: str) -> str:
         return data
 
 
-def run_example(file: str, read: str, env: t.Optional[t.Dict] = None) -> t.Dict:
+def run_example(file: str, read: str, env: t.Optional[t.Dict] = None) -> str:
     """Run example."""
     process = subprocess.Popen(
         [sys.executable, file],
@@ -60,18 +63,22 @@ def run_example(file: str, read: str, env: t.Optional[t.Dict] = None) -> t.Dict:
     )
 
     if read == "stdout":
-        return process.stdout.read().decode(encoding="utf-8").strip()
+        return (
+            t.cast(t.IO[bytes], process.stdout).read().decode(encoding="utf-8").strip()
+        )
 
     if read == "stderr":
-        return process.stderr.read().decode(encoding="utf-8").strip()
+        return (
+            t.cast(t.IO[bytes], process.stderr).read().decode(encoding="utf-8").strip()
+        )
 
     return (
-        process.stdout.read().decode(encoding="utf-8").strip()
-        + process.stderr.read().decode(encoding="utf-8").strip()
+        t.cast(t.IO[bytes], process.stdout).read().decode(encoding="utf-8").strip()
+        + t.cast(t.IO[bytes], process.stderr).read().decode(encoding="utf-8").strip()
     )
 
 
-def run_cmd(cmd: t.List[str], env: t.Optional[t.Dict] = None) -> t.Dict:
+def run_cmd(cmd: t.List[str], env: t.Optional[t.Dict] = None) -> str:
     """Run example."""
     process = subprocess.Popen(
         cmd,
@@ -80,9 +87,9 @@ def run_cmd(cmd: t.List[str], env: t.Optional[t.Dict] = None) -> t.Dict:
         env=env,
     )
     return (
-        process.stdout.read().decode(encoding="utf-8").strip()
+        t.cast(t.IO[bytes], process.stdout).read().decode(encoding="utf-8").strip()
         + "\n"
-        + process.stderr.read().decode(encoding="utf-8").strip()
+        + t.cast(t.IO[bytes], process.stderr).read().decode(encoding="utf-8").strip()
     )
 
 
@@ -111,7 +118,7 @@ def code_block(blockd: t.Dict) -> str:
     if not blockd.get("input_only", False):
         code = run_example(
             file=blockd["file"],
-            read=blockd.get("read"),
+            read=blockd.get("read", "all"),
             env=blockd.get("env"),
         )
         if "lines" in blockd and "output" in blockd["lines"]:
@@ -123,7 +130,7 @@ def code_block(blockd: t.Dict) -> str:
             type=blockd["type"],
         )
     if blockd.get("class") is not None:
-        block += f"</div>\n"
+        block += "</div>\n"
     block += BLOCK_END
     block += "\n"
     return block
@@ -194,7 +201,7 @@ def sub(
         "./docs",
     ),
     file: Annotated[
-        Path,
+        t.Optional[Path],
         File(
             help="File to perform substitutions or check.",
             long_flag="--file",

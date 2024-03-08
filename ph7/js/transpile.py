@@ -60,10 +60,10 @@ class Visitor(ast.NodeVisitor):
 
     def visit_Assign(self, node: ast.Assign) -> t.Any:
         """Visit assign."""
-        targets = ast.unparse(node.targets)
+        targets = ast.unparse(node.targets)  # type: ignore
         value = ast.unparse(node.value)
 
-        if targets in self.scope[-1].get("variables"):
+        if targets in self.scope[-1]["variables"]:
             self.code += f"{self.indent}{targets} = {value};{self.separator}"
             return
 
@@ -120,17 +120,17 @@ class Visitor(ast.NodeVisitor):
         range_call = t.cast(ast.Call, node.iter)
 
         if len(range_call.args) == 1:
-            start, step = 0, 1
+            start, step = "0", "1"
             (end,) = list(map(ast.unparse, range_call.args))
 
         elif len(range_call.args) == 2:
-            step = 1
+            step = "1"
             (start, end) = list(map(ast.unparse, range_call.args))
         else:
             (start, end, step) = list(map(ast.unparse, range_call.args))
 
         self.code += (
-            f"{self.indent}for(let {node.target.id}={start}; "
+            f"{self.indent}for(let {node.target.id}={start}; "  # type: ignore
             f"{node.target.id}<{end}; "
             f"{node.target.id}=i+{step}){{{self.separator}"
         )

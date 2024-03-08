@@ -29,4 +29,8 @@ for cls in sorted(classes):
         continue
     code += var + "=" + ",".join(map(lambda x: f'"{x}"', cls.split(","))) + "\n"
 
-Path("contrib/bootstrap/bootstrap/css.py").write_text(format_str(code, mode=Mode()))
+
+Path("contrib/bootstrap/bootstrap/css.py").write_text(
+    format_str(code, mode=Mode()),
+    encoding="utf-8",
+)

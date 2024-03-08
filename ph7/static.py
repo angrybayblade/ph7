@@ -22,16 +22,16 @@ def include(
     minify: bool = True,
 ) -> node:
     """Include css objects."""
-    styles = []
-    scripts = []
+    styles: t.List[t.Union[CSSObject, t.Type[CSSObject]]] = []
+    scripts: t.List[JavaScriptObject] = []
     for obj in objs:
         if is_css(obj=obj):
-            styles.append(obj)
+            styles.append(t.cast(CSSObject, obj))
             continue
         if isinstance(obj, JSCallable):
             scripts.append(obj.func)
             continue
-        scripts.append(obj)
+        scripts.append(t.cast(JavaScriptObject, obj))
 
     style_node = style(
         to_css(*styles, minify=minify),
@@ -47,5 +47,4 @@ def include(
     if len(scripts) > 0:
         return script_node
 
-    if len(styles) > 0:
-        return style_node
+    return style_node

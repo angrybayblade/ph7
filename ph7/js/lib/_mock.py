@@ -1,15 +1,16 @@
 """API mock helper."""
 
 import json
-from typing import Any
+import typing as t
 
 
-def dump(args):
+def serialize(args: t.List[t.Any]) -> t.List[str]:
+    """Serialize arguments."""
     dumped = []
     for arg in args:
         try:
-            dumped.append(json.dumps(arg))
-        except Exception:
+            dumped.append(json.dumps(arg).replace('"', "'"))
+        except Exception:  # pylint: disable=broad-exception-caught
             dumped.append(arg)
     return dumped
 
@@ -30,14 +31,14 @@ class _ApiMock:
         self.args = args
         self.parents = parents or []
 
-    def __getattribute__(self, __name: str) -> str:
+    def __getattribute__(self, __name: str) -> "_ApiMock":
         """Get attribute."""
         return _ApiMock(
             __name,
             parents=[*super().__getattribute__("parents"), self],
         )
 
-    def __call__(self, *args: Any) -> Any:
+    def __call__(self, *args: t.Any) -> t.Any:
         return _ApiMock(
             name=super().__getattribute__("name"),
             is_callable=True,
@@ -49,7 +50,7 @@ class _ApiMock:
         rep = super().__getattribute__("name")
         if super().__getattribute__("is_callable"):
             args = super().__getattribute__("args")
-            rep = rep + "(" + ", ".join(dump(args)) + ")"
+            rep = rep + "(" + ", ".join(serialize(args)) + ")"
         return f"{rep}.{other}"
 
     def __str__(self) -> str:
@@ -57,7 +58,7 @@ class _ApiMock:
         rep = super().__getattribute__("name")
         if super().__getattribute__("is_callable"):
             args = super().__getattribute__("args")
-            rep = rep + "(" + ", ".join(dump(args)) + ")"
+            rep = rep + "(" + ", ".join(serialize(args)) + ")"
 
         parents = super().__getattribute__("parents")
         if parents:

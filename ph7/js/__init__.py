@@ -12,15 +12,16 @@ from .lib.api import fetch
 Param = ParamSpec("Param")
 ReturnType = t.TypeVar("ReturnType")
 OriginalFunc = t.Callable[Param, ReturnType]
-DecoratedFunc = t.Callable[[Concatenate[str, Param]], ReturnType]
+DecoratedFunc = t.Callable[Concatenate[str, Param], ReturnType]
 
 
-def dump(args):
+def serialize(args: t.List[t.Any]) -> t.List[str]:
+    """Serialize arguments."""
     dumped = []
     for arg in args:
         try:
             dumped.append(json.dumps(arg).replace('"', "'"))
-        except Exception:
+        except Exception:  # pylint: disable=broad-exception-caught
             dumped.append(arg)
     return dumped
 
@@ -42,7 +43,7 @@ class JSCallable:
     def __str__(self) -> str:
         return (
             f"{self.func.__name__}("
-            + ",".join(dump([*self.args, *self.kwds.values()]))
+            + ",".join(serialize([*self.args, *self.kwds.values()]))
             + ")"
         )
 
@@ -58,6 +59,7 @@ JavaScriptObject = t.Union[t.Callable, t.Coroutine, JSCallable]
 
 
 def js_callable(func: OriginalFunc) -> DecoratedFunc:
+    """Decorate method as javascript callable."""
     return JSCallable(func)
 
 
