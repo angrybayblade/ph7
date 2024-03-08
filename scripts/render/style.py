@@ -16,7 +16,7 @@ special_properties = {
 }
 
 propt = """
-    {property}: NotRequired[{type}]
+    {property}: NotRequired[# type: ignore\n {type}]
     \"\"\"{annotation}\"\"\"
 """
 
@@ -55,7 +55,9 @@ for tag in tags:
     type_ = "str"
     if tags[tag]["options"]:
         type_ = (
-            "Literal[" + ",".join(map(lambda x: f'"{x}"', tags[tag]["options"])) + "]"
+            "Literal["
+            + ",".join(map(lambda x: f'"{x}"', tags[tag]["options"]))
+            + ",str]"
         )
     properties += propt.format(
         property=tag.replace("-", "_"),
@@ -71,5 +73,6 @@ Path("ph7/style.py").write_text(
             properties=properties,
         ),
         mode=Mode(),
-    )
+    ),
+    encoding="utf-8",
 )

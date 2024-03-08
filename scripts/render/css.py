@@ -40,9 +40,8 @@ class CSSObject:
     @classmethod
     def name(cls) -> str:
         \"\"\"Name string.\"\"\"
-        if cls._name is not None:
-            return cls._name
         return cls.__name__.replace("_", "-")
+
     @classmethod
     def properties(cls) -> t.Dict[str, str]:
         \"\"\"Returns properties mapping.\"\"\"
@@ -65,7 +64,7 @@ class CSSObject:
         return cs
 
 
-def _render(obj: CSSObject, parent: str, container: t.Dict) -> None:
+def _render(obj: t.Union[CSSObject, t.Type[CSSObject]], parent: str, container: t.Dict) -> None:
     \"\"\"Render CSS object.\"\"\"
     container[f"{{parent}} .{{obj.name()}}"[1:]] = obj.properties()
     for subc in obj.subclasses():
@@ -76,13 +75,13 @@ def _render(obj: CSSObject, parent: str, container: t.Dict) -> None:
         )
 
 
-def render(*objs: CSSObject, min: bool = False) -> str:
+def render(*objs: t.Union[CSSObject, t.Type[CSSObject]], minify: bool = False) -> str:
     \"\"\"Render CSS stylesheet.\"\"\"
     sheet = ""
     container: t.Dict[str, t.Dict] = {{}}
-    separator = "" if min else " "
-    newline = "" if min else "\\n"
-    tab = "" if min else "  "
+    separator = "" if minify else " "
+    newline = "" if minify else "\\n"
+    tab = "" if minify else "  "
     for obj in objs:
         _render(obj=obj, parent="", container=container)
     for cls in sorted(container):
@@ -100,7 +99,9 @@ for tag in tags:
     type_ = "str"
     if tags[tag]["options"]:
         type_ = (
-            "Literal[" + ",".join(map(lambda x: f'"{x}"', tags[tag]["options"])) + "]"
+            "Literal[ # type: ignore\n"
+            + ",".join(map(lambda x: f'"{x}"', tags[tag]["options"]))
+            + ", str]"
         )
     properties += propt.format(
         property=tag.replace("-", "_"),
@@ -113,5 +114,6 @@ Path("ph7/css.py").write_text(
     format_str(
         code.format(properties=properties),
         mode=Mode(),
-    )
+    ),
+    encoding="utf-8",
 )
