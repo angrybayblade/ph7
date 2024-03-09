@@ -1,0 +1,10 @@
+# v0.1.0.rc1 (09-03-2024)
+
+* Extends support for `document` API
+* Adds support for transpiling
+  *  `await` expressions
+  *  String interpolations
+  *  Dictionary declarations
+  *  `try/except` blocks
+  *  `raise` statement
+* Better documentation for `Django` integrations
