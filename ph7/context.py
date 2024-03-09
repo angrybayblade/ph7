@@ -39,7 +39,7 @@ class StaticContext:
     def _add_css(self, resource: CSSObject) -> None:
         """Add css resource."""
         module = resource.__module__
-        if module not in self.resources:
+        if module not in self.resources["css"]:
             self.resources["css"][module] = {}
 
         cls, *_ = (
@@ -78,7 +78,7 @@ class StaticContext:
             else resource.__module__
         )
 
-        if module not in self.resources:
+        if module not in self.resources["js"]:
             self.resources["js"][module] = sys.modules[module]
 
         self.cache["js"][module] = to_js(
