@@ -80,9 +80,9 @@ class Visitor(ast.NodeVisitor):  # pylint: disable=too-many-public-methods
         """Visit dictionary."""
         self.code += "{"
         for key, val in zip(node.keys, node.values):
-            self.visit(key)  # type: ignore
+            self.visit(key, end="")  # type: ignore
             self.code += " : "
-            self.visit(val)  # type: ignore
+            self.visit(val, end="")  # type: ignore
             self.code += ","
         if self.code.endswith(","):
             self.code = self.code[:-1]
@@ -209,6 +209,36 @@ class Visitor(ast.NodeVisitor):  # pylint: disable=too-many-public-methods
             self.visit(node=_node)
         self.decrese_level()
         self.code += f"{self.indent}}}{self.separator}"
+
+    def visit_Try(self, node: ast.Try, end: t.Optional[str] = None) -> t.Any:
+        """Visit try/except block."""
+        self.code += f"{self.indent}try{{{self.separator}"
+        self.increase_level()
+        for expr in node.body:
+            self.visit(expr)
+        self.decrese_level()
+
+        if len(node.handlers) > 1:
+            raise ValueError(
+                f"Only exception handler allowed per try block; Line no: {node.lineno}"
+            )
+        (handler,) = node.handlers
+        handler = t.cast(ast.ExceptHandler, handler)
+        self.code += f"{self.indent}}} catch({handler.name}){{{self.separator}"
+        self.increase_level()
+        for expr in handler.body:
+            self.visit(expr)
+        self.decrese_level()
+        if len(node.finalbody) == 0:
+            self.code += f"{self.indent}}};{self.separator}"
+            return
+
+        self.code += f"{self.indent}}} finally{{{self.separator}"
+        self.increase_level()
+        for expr in node.finalbody:
+            self.visit(expr)
+        self.decrese_level()
+        self.code += f"{self.indent}}};{self.separator}"
 
     def visit_Await(self, node: ast.Await, end: t.Optional[str] = None) -> t.Any:
         """Visit await."""
