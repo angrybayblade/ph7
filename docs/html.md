@@ -39,7 +39,7 @@ print(template)
 HTML attributes can be passed down as function arguments, all of the HTML tag functions are defined with arguments representing the attributes as keyword arguments so you that can also utilise your autocomplete for faster development.
 <!-- {"type": "html", "file": "examples/attributes.py"} -->
 ```python
-from ph7.html import body, div, h1, head, html, title
+from ph7.html import body, div, head, html, title
 
 template = html(
     head(
@@ -116,7 +116,7 @@ print(template.render(context={"name": "Jane Doe", "age": 24}))
 ```
 <!-- end -->
 Not providing value for placeholder without default value will result in error
-<!-- {"type": "text", "file": "examples/missing_placeholders.py", "lines": {"output":[-1, null]}} -->
+<!-- {"type": "text", "file": "examples/missing_placeholders.py", "lines": {"output": [-1, null]}} -->
 ```python
 from ph7.html import body, div, html
 
@@ -338,9 +338,9 @@ print(f"Third render: {time.perf_counter() - tick}")
 ```
 
 ```stdout
-First render: 6.0718302500000005
-Second render: 0.35541508400000055
-Third render: 0.38755016700000056
+First render: 6.573292917
+Second render: 0.5675741249999993
+Third render: 0.40496804200000014
 ```
 <!-- end -->
 

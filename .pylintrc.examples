@@ -4,7 +4,7 @@ ignore=
 
 ; TODO: Remove C0114
 [MESSAGES CONTROL]
-disable=R0801,R0903,C0103,C0114,C0116,R0123
+disable=R0801,R0903,C0103,C0114,C0116,R0123,W0718,W0719
 
 [IMPORTS]
 ignored-modules=bootstrap,django,black,requests

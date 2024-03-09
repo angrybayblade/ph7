@@ -6,7 +6,7 @@ import typing as t
 from typing_extensions import Concatenate, ParamSpec
 
 from .events import Events
-from .lib import alert, console, document
+from .lib import JSON, alert, console, document
 from .lib.api import fetch
 
 Param = ParamSpec("Param")
@@ -70,4 +70,5 @@ __all__ = (
     "console",
     "js_callable",
     "alert",
+    "JSON",
 )

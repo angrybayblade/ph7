@@ -1,8 +1,15 @@
-> Currently PH7 has very limited JavaScript support
+Currently PH7 has very limited JavaScript support. But the transpiler API allows you to write your JavaScript code in pure python. PH7 also provides a set of mock APIs that can be used for autocomplete and type checking. 
+
+The list of mock APIs
+
+* `alert`
+* `console`
+* `fetch`
+* `document`
 
 ## Functions
 
-You can write Python functions as JavaScript functions with limited WebApis. You can directly refer the function as event handler, PH7 will take care of the rest.
+Write your functions in python and refer them as event handler, PH7 will take care of the rest.
 
 <!-- {"type": "html", "file": "examples/js_function.py"} -->
 ```python
@@ -19,7 +26,7 @@ async def fetchDog():
     )
     if response.status != 200:
         response_body = await response.text()
-        console.log("Error fetching dog; " + response_body)
+        console.log(f"Error fetching dog; {response_body}")
         return
     data = await response.json()
     console.log("Dog fetched")
@@ -72,7 +79,7 @@ print(template)
     </script>
   </head>
   <body>
-    <div><img src="#" alt="Click to fetch dog" id="image" style="height:200px;width:400px"></img><button onclick=fetchDog()>Click to fetch a dog</button></div>
+    <div><img src="#" alt="Click to fetch dog" id="image" style="height:200px;width:400px" /><button onclick=fetchDog()>Click to fetch a dog</button></div>
   </body>
 </html>
 ```
@@ -90,13 +97,13 @@ from ph7.js import document, fetch, js_callable
 
 
 @js_callable
-async def fetchUserProfilePicture(user: str):
+async def fetchUserProfilePicture(user: str) -> None:
     response = await fetch(
         "/api/users/" + user,
         {"method": "GET"},
     )
     data = await response.json()
-    document.getElementById("image-" + user).src = data.profile_picture
+    document.getElementById(f"image-{user}").src = data.profile_picture
 
 
 def _user(name: str) -> node:
@@ -105,7 +112,7 @@ def _user(name: str) -> node:
         button(
             f"Click to fetch {name}'s  profile picture.",
             handlers={
-                "onclick": fetchUserProfilePicture(user=name),
+                "onclick": fetchUserProfilePicture(name),
             },
         ),
     )
@@ -143,8 +150,8 @@ print(template.render(context={"users": ["john.doe", "jane.doe"]}))
   </head>
   <body>
     <div>
-      <div><img src="#" id="image-john.doe" style="height:200px;width:400px"></img><button onclick=fetchUserProfilePicture('john.doe')>Click to fetch john.doe's profile picture.</button></div>
-      <div><img src="#" id="image-jane.doe" style="height:200px;width:400px"></img><button onclick=fetchUserProfilePicture('jane.doe')>Click to fetch jane.doe's profile picture.</button></div>
+      <div><img src="#" id="image-john.doe" style="height:200px;width:400px" /><button onclick=fetchUserProfilePicture('john.doe')>Click to fetch john.doe's profile picture.</button></div>
+      <div><img src="#" id="image-jane.doe" style="height:200px;width:400px" /><button onclick=fetchUserProfilePicture('jane.doe')>Click to fetch jane.doe's profile picture.</button></div>
     </div>
   </body>
 </html>
@@ -213,7 +220,7 @@ function strictEqual(number) {
 </div>
 <!-- end -->
 
-## For Loops
+## For Loop
 
 <!-- {"type": "js", "file": "examples/js_for_loop.py", "read": "stdout", "class": "side-by-side", "lines": {"input": [3, -11]}} -->
 <div class='side-by-side'>
@@ -269,6 +276,62 @@ function oddEvenStartEndStep(start, end, step) {
       console.log(i + ' is odd');
     };
   }
+}
+```
+</div>
+<!-- end -->
+
+## Try/Catch
+
+<!-- {"type": "js", "file": "examples/js_try_catch.py", "read": "stdout", "class": "side-by-side", "lines": {"input": [3, -11]}} -->
+<div class='side-by-side'>
+```python
+def tryCatch():
+    try:
+        print("try something")
+    except Exception as e:
+        print(f"Error: {e}")
+
+
+def tryCatchFinally():
+    try:
+        print("try something")
+    except Exception as e:
+        print(f"Error: {e}")
+    finally:
+        print("finally")
+
+
+def tryRaiseCatch():
+    try:
+        raise Exception("Some error")
+    except Exception as e:
+        print(f"Error: {e}")
+```
+
+```js
+function tryCatch() {
+  try {
+    console.log('try something');
+  } catch (e) {
+    console.log('Error: ' + e);
+  };
+}
+function tryCatchFinally() {
+  try {
+    console.log('try something');
+  } catch (e) {
+    console.log('Error: ' + e);
+  } finally {
+    console.log('finally');
+  };
+}
+function tryRaiseCatch() {
+  try {
+    throw new Error('Some error');
+  } catch (e) {
+    console.log('Error: ' + e);
+  };
 }
 ```
 </div>

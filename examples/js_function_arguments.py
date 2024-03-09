@@ -10,7 +10,7 @@ async def fetchUserProfilePicture(user: str) -> None:
         {"method": "GET"},
     )
     data = await response.json()
-    document.getElementById("image-" + user).src = data.profile_picture
+    document.getElementById(f"image-{user}").src = data.profile_picture
 
 
 def _user(name: str) -> node:
