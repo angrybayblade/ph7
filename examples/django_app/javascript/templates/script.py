@@ -1,4 +1,4 @@
-from ph7.js import console, document, fetch, js_callable, alert
+from ph7.js import alert, console, document, fetch, js_callable
 
 
 @js_callable

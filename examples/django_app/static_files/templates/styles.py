@@ -2,10 +2,9 @@ from ph7.css import CSSObject
 
 
 class main(CSSObject):
-
     display = "flex"
     align_items = "center"
-    justify_content = "center" 
+    justify_content = "center"
 
     height = "100vh"
     width = "100vw"

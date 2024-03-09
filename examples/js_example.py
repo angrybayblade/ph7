@@ -1,4 +1,4 @@
-from ph7.js import console, document, fetch, as_js
+from ph7.js import as_js, console, document, fetch
 
 
 async def fetchDog():

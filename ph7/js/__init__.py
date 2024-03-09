@@ -8,6 +8,7 @@ from typing_extensions import Concatenate, ParamSpec
 from .events import Events
 from .lib import JSON, alert, console, document
 from .lib.api import fetch
+from .transpile import as_js, to_js
 
 Param = ParamSpec("Param")
 ReturnType = t.TypeVar("ReturnType")
@@ -71,4 +72,6 @@ __all__ = (
     "js_callable",
     "alert",
     "JSON",
+    "to_js",
+    "as_js",
 )

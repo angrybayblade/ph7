@@ -1,7 +1,8 @@
-from ph7.html import body, button, div, head, html, img
-from ph7.context import ctx
 from javascript.templates.script import fetchDog
-from javascript.templates.styles import main, image
+from javascript.templates.styles import image, main
+
+from ph7.context import ctx
+from ph7.html import body, button, div, head, html, img
 
 ctx.static.view(__name__)
 
