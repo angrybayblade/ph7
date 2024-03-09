@@ -856,66 +856,7 @@ class Date:
     ...
 
 
-class HTMLElement(
-    Element,
-    ElementCSSInlineStyle,
-    ElementContentEditable,
-    GlobalEventHandlers,
-    HTMLOrSVGElement,
-):
-    accessKey: str
-    accessKeyLabel: str
-    autocapitalize: str
-    dir: str
-    draggable: bool
-    hidden: bool
-    inert: bool
-    innerText: str
-    lang: str
-    offsetHeight: int
-    offsetLeft: int
-    offsetParent: t.Optional[Element]
-    offsetTop: int
-    offsetWidth: int
-    outerText: str
-    popover: t.Optional[str]
-    spellcheck: bool
-    title: str
-    translate: bool
-
-    def attachInternals(self) -> "ElementInternals":
-        ...
-
-    def click(self) -> None:
-        ...
-
-    def hidePopover(self) -> None:
-        ...
-
-    def showPopover(self) -> None:
-        ...
-
-    def togglePopover(self, force: t.Optional[bool] = None) -> None:
-        ...
-
-    def addEventListener(
-        self,
-        type: str,
-        listener: t.Callable,
-        options: t.Optional[t.Union[bool, dict]] = None,
-    ) -> None:
-        ...
-
-    def removeEventListener(
-        self,
-        type: str,
-        listener: t.Callable,
-        options: t.Optional[t.Union[bool, dict]] = None,
-    ) -> None:
-        ...
-
-
-class HTMLInputElement(HTMLElement, PopoverInvokerElement):
+class HTMLInputElement(PopoverInvokerElement):
     accept: str
     align: str
     alt: str
@@ -1001,6 +942,66 @@ class HTMLInputElement(HTMLElement, PopoverInvokerElement):
         ...
 
     def stepUp(self, n: t.Optional[int] = None) -> None:
+        ...
+
+    def addEventListener(
+        self,
+        type: str,
+        listener: t.Callable,
+        options: t.Optional[t.Union[bool, dict]] = None,
+    ) -> None:
+        ...
+
+    def removeEventListener(
+        self,
+        type: str,
+        listener: t.Callable,
+        options: t.Optional[t.Union[bool, dict]] = None,
+    ) -> None:
+        ...
+
+
+class HTMLElement(
+    Element,
+    ElementCSSInlineStyle,
+    ElementContentEditable,
+    GlobalEventHandlers,
+    HTMLOrSVGElement,
+    HTMLInputElement,
+):
+    accessKey: str
+    accessKeyLabel: str
+    autocapitalize: str
+    dir: str
+    draggable: bool
+    hidden: bool
+    inert: bool
+    innerText: str
+    lang: str
+    offsetHeight: int
+    offsetLeft: int
+    offsetParent: t.Optional[Element]
+    offsetTop: int
+    offsetWidth: int
+    outerText: str
+    popover: t.Optional[str]
+    spellcheck: bool
+    title: str
+    translate: bool
+
+    def attachInternals(self) -> "ElementInternals":
+        ...
+
+    def click(self) -> None:
+        ...
+
+    def hidePopover(self) -> None:
+        ...
+
+    def showPopover(self) -> None:
+        ...
+
+    def togglePopover(self, force: t.Optional[bool] = None) -> None:
         ...
 
     def addEventListener(
@@ -1168,9 +1169,7 @@ class Document(Element):
     def exitPointerLock(self) -> None:
         ...
 
-    def getElementById(
-        self, elementId: str
-    ) -> t.Optional[t.Union[HTMLElement, HTMLInputElement]]:
+    def getElementById(self, elementId: str) -> HTMLElement:
         ...
 
     def getElementsByClassName(self, classNames: str) -> t.List[Element]:
