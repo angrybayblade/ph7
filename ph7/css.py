@@ -1429,6 +1429,12 @@ class CSSObject:
                 cs.append(c)
         return cs
 
+    def __str__(self) -> str:
+        """String represenstation."""
+        return render(self, minify=False)
+
+    __repr__ = __str__
+
 
 def _render(
     obj: t.Union[CSSObject, t.Type[CSSObject]], parent: str, container: t.Dict
