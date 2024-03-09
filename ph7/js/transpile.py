@@ -240,6 +240,14 @@ class Visitor(ast.NodeVisitor):  # pylint: disable=too-many-public-methods
         self.decrese_level()
         self.code += f"{self.indent}}};{self.separator}"
 
+    def visit_Raise(self, node: ast.Raise, end: t.Optional[str] = None) -> t.Any:
+        """Visit raise statement."""
+        self.code += f"{self.indent}throw new Error("
+        if isinstance(node.exc, ast.Call):
+            for expr in node.exc.args:
+                self.visit(expr, end="")
+        self.code += f");{self.separator}"
+
     def visit_Await(self, node: ast.Await, end: t.Optional[str] = None) -> t.Any:
         """Visit await."""
         self.code += "await "
