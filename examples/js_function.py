@@ -11,7 +11,7 @@ async def fetchDog():
     )
     if response.status != 200:
         response_body = await response.text()
-        console.log("Error fetching dog; " + response_body)
+        console.log(f"Error fetching dog; {response_body}")
         return
     data = await response.json()
     console.log("Dog fetched")
