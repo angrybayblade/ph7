@@ -1,8 +1,15 @@
-> Currently PH7 has very limited JavaScript support
+Currently PH7 has very limited JavaScript support. But the transpiler API allows you to write your JavaScript code in pure python. PH7 also provides a set of mock APIs that can be used for autocomplete and type checking. 
+
+The list of mock APIs
+
+* `alert`
+* `console`
+* `fetch`
+* `document`
 
 ## Functions
 
-You can write Python functions as JavaScript functions with limited WebApis. You can directly refer the function as event handler, PH7 will take care of the rest.
+Write your functions in python and refer them as event handler, PH7 will take care of the rest.
 
 <!-- {"type": "html", "file": "examples/js_function.py"} -->
 ```python
