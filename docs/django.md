@@ -124,10 +124,9 @@ from ph7.css import CSSObject
 
 
 class main(CSSObject):
-
     display = "flex"
     align_items = "center"
-    justify_content = "center" 
+    justify_content = "center"
 
     height = "100vh"
     width = "100vw"
@@ -208,7 +207,7 @@ Write your scripts using the [`ph7.js`](/js) APIs.
 
 <!-- {"type": "html", "file": "examples/django_app/javascript/templates/script.py", "input_only": true} -->
 ```python
-from ph7.js import console, document, fetch, js_callable, alert
+from ph7.js import alert, console, document, fetch, js_callable
 
 
 @js_callable
@@ -231,10 +230,11 @@ Use the function in the view
 
 <!-- {"type": "html", "file": "examples/django_app/javascript/templates/__init__.py", "input_only": true} -->
 ```python
-from ph7.html import body, button, div, head, html, img
-from ph7.context import ctx
 from javascript.templates.script import fetchDog
-from javascript.templates.styles import main, image
+from javascript.templates.styles import image, main
+
+from ph7.context import ctx
+from ph7.html import body, button, div, head, html, img
 
 ctx.static.view(__name__)
 

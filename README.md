@@ -46,6 +46,7 @@ from ph7.css import CSSObject
 
 
 class flex_center(CSSObject):
+    """Flex center"""
 
     display = "flex"
     align_items = "center"
@@ -69,7 +70,7 @@ Or use python function as JavaScript functions
 
 <!-- {"type": "js", "file": "examples/js_example.py"} -->
 ```python
-from ph7.js import console, document, fetch, as_js
+from ph7.js import as_js, console, document, fetch
 
 
 async def fetchDog():
