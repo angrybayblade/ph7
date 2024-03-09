@@ -1,42 +1,14 @@
-from ph7 import CSSObject, include
+from javascript.templates.script import fetchDog
+from javascript.templates.styles import image, main
+
+from ph7.context import ctx
 from ph7.html import body, button, div, head, html, img
-from ph7.js import console, document, fetch, js_callable
 
-
-class main(CSSObject):
-    display = "flex"
-    justify_content = "center"
-    align_items = "center"
-    flex_direction = "column"
-
-    height = "100%"
-    width = "100%"
-
-
-class image(CSSObject):
-    height = "200px"
-    width = "400px"
-
-    margin_bottom = "25px"
-
-
-@js_callable
-async def fetchDog():
-    console.log("Fetching dog")
-    response = await fetch(
-        "https://dog.ceo/api/breeds/image/random",
-        {
-            "method": "GET",
-        },
-    )
-    data = await response.json()
-    console.log("Dog fetched")
-    document.getElementById("image").src = data.message
-
+ctx.static.view(__name__)
 
 template = html(
     head(
-        include(image, main, fetchDog),
+        ctx.static.include,
     ),
     body(
         div(
@@ -56,3 +28,7 @@ template = html(
         )
     ),
 )
+
+
+if __name__ == "__main__":
+    print(template.render({"_view": __name__}))

@@ -1,3 +1,14 @@
+## Why PH7?
+
+* Native to python
+* More code modularity
+* Easy to write reusable components
+* Editor support
+    * Syntax highlighting
+    *  Code navvigation tools
+    *  Auto-completion
+*  Type safety using MyPy
+
 ## Install
 ```
 pip3 install ph7
