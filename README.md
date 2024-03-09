@@ -65,7 +65,7 @@ print(flex_center())
 ```
 <!-- end -->
 
-Or use python function as JavaScript functions
+Or use python function as JavaScript function
 
 
 <!-- {"type": "js", "file": "examples/js_example.py"} -->
