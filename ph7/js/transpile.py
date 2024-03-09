@@ -4,13 +4,15 @@ import ast
 import inspect
 import typing as t
 
+# pylint: disable=unused-argument
+
 
 def _stack_level() -> t.Dict:
     """Stack level."""
     return {"variables": set()}
 
 
-class Visitor(ast.NodeVisitor):
+class Visitor(ast.NodeVisitor):  # pylint: disable=too-many-public-methods
     """Inspect Python code."""
 
     level: int
@@ -54,34 +56,102 @@ class Visitor(ast.NodeVisitor):
         """Return indent."""
         return self.level * self._indent
 
-    def visit_Return(self, node: ast.Return) -> t.Any:
+    def visit(self, node: ast.AST, end: t.Optional[str] = None) -> None:
+        """Visit a node."""
+        method = "visit_" + node.__class__.__name__
+        visitor = getattr(self, method, self.generic_visit)
+        visitor(node, end)
+
+    def generic_visit(self, node: ast.AST, end: t.Optional[str] = None) -> None:
+        """Called if no explicit visitor function exists for a node."""
+        for _, value in ast.iter_fields(node):
+            if isinstance(value, list):
+                for item in value:
+                    if isinstance(item, ast.AST):
+                        self.visit(item, end=end)
+            elif isinstance(value, ast.AST):
+                self.visit(value, end=end)
+
+    def visit_Constant(self, node: ast.Constant, end: t.Optional[str] = None) -> t.Any:
+        """Visit constant."""
+        self.code += ast.unparse(node)
+
+    def visit_Dict(self, node: ast.Dict, end: t.Optional[str] = None) -> t.Any:
+        """Visit dictionary."""
+        self.code += "{"
+        for key, val in zip(node.keys, node.values):
+            self.visit(key)  # type: ignore
+            self.code += " : "
+            self.visit(val)  # type: ignore
+            self.code += ","
+        if self.code.endswith(","):
+            self.code = self.code[:-1]
+        self.code += "}"
+        self.code += end if end is not None else f";{self.separator}"
+
+    def visit_Name(self, node: ast.Name, end: t.Optional[str] = None) -> t.Any:
+        """Visit name."""
+        self.code += ast.unparse(node)
+
+    def visit_Add(self, node: ast.Add, end: t.Optional[str] = None) -> t.Any:
+        """Visit name."""
+        self.code += " + "
+
+    def visit_JoinedStr(
+        self, node: ast.JoinedStr, end: t.Optional[str] = None
+    ) -> t.Any:
+        """Visit joined string."""
+        for value in node.values:
+            if isinstance(value, ast.Constant):
+                self.code += ast.unparse(value) + " + "
+            if isinstance(value, ast.FormattedValue):
+                self.code += ast.unparse(value)[3:-2] + " + "
+        self.code = self.code[:-3]
+
+    def visit_BinOp(self, node: ast.BinOp, end: t.Optional[str] = None) -> t.Any:
+        """Visit binary operation."""
+        self.visit(node.left)
+        self.visit(node.op)
+        self.visit(node.right)
+
+    def visit_Return(self, node: ast.Return, end: t.Optional[str] = None) -> t.Any:
         """Visit return node."""
         self.code += f"{self.indent}{ast.unparse(node)};{self.separator}"
 
-    def visit_Assign(self, node: ast.Assign) -> t.Any:
+    def visit_Attribute(
+        self, node: ast.Attribute, end: t.Optional[str] = None
+    ) -> t.Any:
+        """Visit attribute node."""
+        if isinstance(node.value, ast.Call):
+            self.decrese_level()
+            self.visit_Call(node=node.value, end="")
+            self.increase_level()
+        else:
+            self.visit(node.value)
+        self.code += "." + node.attr
+
+    def visit_Assign(self, node: ast.Assign, end: t.Optional[str] = None) -> t.Any:
         """Visit assign."""
         targets = ast.unparse(node.targets)  # type: ignore
         value = ast.unparse(node.value)
 
-        if targets in self.scope[-1]["variables"]:
-            self.code += f"{self.indent}{targets} = {value};{self.separator}"
-            return
-
-        self.scope[-1]["variables"].add(targets)
         if "." in targets:
+            self.code += f"{self.indent}"
+            for target in node.targets:
+                self.visit(target)
+        elif targets in self.scope[-1]["variables"]:
             self.code += f"{self.indent}{targets} = {value};{self.separator}"
-            return
+        else:
+            self.scope[-1]["variables"].add(targets)
+            self.code += f"{self.indent}let {targets}"
 
-        self.code += f"{self.indent}let {targets} = {value};{self.separator}"
+        self.code += " = "
+        self.visit(node.value, end="")
+        self.code += f";{self.separator}"
 
-    def visit_Call(self, node: ast.Call) -> t.Any:
-        """Visit function call"""
-        func = ast.unparse(node)
-        if ast.unparse(node.func) == "print":
-            func = func.replace("print", "console.log")
-        self.code += f"{self.indent}{func};{self.separator}"
-
-    def visit_If(self, node: ast.If, elseif: bool = False) -> t.Any:
+    def visit_If(
+        self, node: ast.If, elseif: bool = False, end: t.Optional[str] = None
+    ) -> t.Any:
         """Visit if condition"""
         test = (
             ast.unparse(node.test)
@@ -111,7 +181,7 @@ class Visitor(ast.NodeVisitor):
             self.decrese_level()
             self.code += f"{self.indent}}};{self.separator}"
 
-    def visit_For(self, node: ast.For) -> t.Any:
+    def visit_For(self, node: ast.For, end: t.Optional[str] = None) -> t.Any:
         """Visit for loop."""
         iterstr = ast.unparse(node.iter)
         if "range" not in iterstr:
@@ -140,17 +210,47 @@ class Visitor(ast.NodeVisitor):
         self.decrese_level()
         self.code += f"{self.indent}}}{self.separator}"
 
-    def visit_FunctionDef(self, node: ast.FunctionDef) -> t.Any:
+    def visit_Await(self, node: ast.Await, end: t.Optional[str] = None) -> t.Any:
+        """Visit await."""
+        self.code += "await "
+        _level = self.level
+        self.level = 0
+        self.visit(node.value, end="")
+        self.level = _level
+        self.code += end if end is not None else f";{self.separator}"
+
+    def visit_Call(self, node: ast.Call, end: t.Optional[str] = None) -> t.Any:
+        """Visit function call"""
+        func = ast.unparse(node.func)
+        if func == "print":
+            func = "console.log"
+        self.code += f"{self.indent}{func}("
+        self.increase_level()
+        for arg in node.args:
+            self.visit(arg, end="")
+            self.code += ","
+        if self.code.endswith(","):
+            self.code = self.code[:-1]
+        self.decrese_level()
+        self.code += ")"
+        self.code += end if end is not None else f";{self.separator}"
+
+    def visit_FunctionDef(
+        self, node: ast.FunctionDef, end: t.Optional[str] = None
+    ) -> t.Any:
         """Visit function definition."""
         args = ", ".join([arg.arg for arg in node.args.args])
         self.code += f"""{self.indent}function {node.name}({args}){{{self.separator}"""
         self.increase_level()
-        self.generic_visit(node=node)
+        for stmnt in node.body:
+            self.visit(node=stmnt)
         self.decrese_stack()
         self.decrese_level()
         self.code += f"""}}{self.separator}"""
 
-    def visit_AsyncFunctionDef(self, node: ast.AsyncFunctionDef) -> t.Any:
+    def visit_AsyncFunctionDef(
+        self, node: ast.AsyncFunctionDef, end: t.Optional[str] = None
+    ) -> t.Any:
         """Visit async function def."""
         args = ", ".join([arg.arg for arg in node.args.args])
         self.code += (
@@ -158,7 +258,8 @@ class Visitor(ast.NodeVisitor):
         )
         self.increase_level()
         self.increase_stack()
-        self.generic_visit(node=node)
+        for stmnt in node.body:
+            self.visit(node=stmnt)
         self.decrese_stack()
         self.decrese_level()
         self.code += f"""}};{self.separator}"""
