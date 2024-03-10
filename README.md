@@ -5,6 +5,18 @@
     Python native HTML rendering
 </div>
 
+## Why PH7?
+
+* Native to python
+* More code modularity
+* Easy to write reusable components
+* Out of the box editor support
+    * Syntax highlighting
+    * Code navvigation tools
+    * Auto-completion
+*  Type safety using MyPy
+
+
 ## Install
 ```
 pip3 install ph7
