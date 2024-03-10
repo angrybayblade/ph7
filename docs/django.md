@@ -69,7 +69,8 @@ Forms can be included directly using `form` tag.
 ```python
 from django import forms
 
-from ph7.html import body, div, form, html, title
+from ph7.django import csrf_token
+from ph7.html import body, button, div, form, html, title
 
 
 class UserForm(forms.Form):
@@ -86,6 +87,8 @@ template = html(
         div(
             form(
                 UserForm(),
+                csrf_token,
+                button("submit", type="submit"),
             ),
         )
     ),
@@ -96,21 +99,27 @@ template = html(
 
 ```html
 <html>
-    <head>
-        <title>Forms example</title>
-    </head>
-    <body>
-        <div>
-            <form>
-                <label for="id_name">username:</label>
-                <input type="text" name="name" required="" id="id_name">
-                <label for="id_email">email:</label>
-                <input type="email" name="email" maxlength="320" required="" id="id_email">
-                <label for="id_password">password:</label>
-                <input type="password" name="password" required="" id="id_password">
-            </form>
-        </div>
-    </body>
+  <head>
+    <title>Forms Example</title>
+  </head>
+  <body>
+    <div>
+      <form>
+        <label for="id_name">username:</label>
+        <input type="text" name="name" required="" id="id_name" />
+        <label for="id_email">email:</label>
+        <input type="email" name="email" maxlength="320" required="" id="id_email"/>
+        <label for="id_password">password:</label>
+        <input type="password" name="password" required="" id="id_password" />
+        <input
+          name="csrfmiddlewaretoken"
+          value="aaAAAaAAaAAAaaAAAAAAAaAaaAaAAAaaAAAaaaaaaAAaAAaaAAaaaAAaAAAAaaaa"
+          id="csrfmiddlewaretoken"
+          hidden="True"
+        /><button type="submit">submit</button>
+      </form>
+    </div>
+  </body>
 </html>
 ```
 

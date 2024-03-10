@@ -6,6 +6,17 @@ from django.http import HttpRequest, HttpResponse, StreamingHttpResponse
 from django.template.loader import get_template
 
 from ph7.django.engine import PH7Templates, Template
+from ph7.html import input, node
+
+
+def csrf_token(context: t.Dict) -> node:
+    """CSRF Token input generator."""
+    return input(
+        hidden="true",
+        value=context["csrf_token"],
+        id="csrfmiddlewaretoken",
+        name="csrfmiddlewaretoken",
+    )
 
 
 def render(  # pylint: disable=too-many-arguments
