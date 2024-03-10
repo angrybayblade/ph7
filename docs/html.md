@@ -338,9 +338,9 @@ print(f"Third render: {time.perf_counter() - tick}")
 ```
 
 ```stdout
-First render: 6.031518665999999
-Second render: 0.3840445420000007
-Third render: 0.3478060410000001
+First render: 6.521765374999999
+Second render: 0.37063745800000003
+Third render: 0.35949308300000027
 ```
 <!-- end -->
 

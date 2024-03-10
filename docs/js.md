@@ -387,7 +387,7 @@ print(template.render(context={"_view": __name__}))
         font-family: Lucida Console, Monaco, monospace;
       }
     </style>
-    <script id="js.examples.script">
+    <script type="text/javascript" id="js.examples.script">
       function alertHello(user) {
         alert('Hello, ' + user);
       }
@@ -437,7 +437,7 @@ print(template.render(context={"_view": __name__}))
 <html>
   <head>
     <link href="/static/css/examples_style.css" rel="stylesheet" id="css.examples.style" />
-    <script src="/static/js/examples_script.js" id="js.examples.script"></script>
+    <script src="/static/js/examples_script.js" type="text/javascript" id="js.examples.script"></script>
   </head>
   <body>
     <div class="textbox">
