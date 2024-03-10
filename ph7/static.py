@@ -39,6 +39,7 @@ def include(
 
     script_node = script(
         to_js(*scripts, minify=minify),
+        type="text/javascript",
     )
 
     if len(scripts) > 0 and len(styles) > 0:
@@ -47,4 +48,7 @@ def include(
     if len(scripts) > 0:
         return script_node
 
-    return style_node
+    if len(styles) > 0:
+        return style_node
+
+    return unpack()

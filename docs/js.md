@@ -61,7 +61,7 @@ print(template)
 ```html
 <html>
   <head>
-    <script>
+    <script type="text/javascript">
       async function fetchDog() {
         console.log('Fetching dog');
         let response = await fetch('https://dog.ceo/api/breeds/image/random', {
@@ -138,7 +138,7 @@ print(template.render(context={"users": ["john.doe", "jane.doe"]}))
 ```html
 <html>
   <head>
-    <script>
+    <script type="text/javascript">
       async function fetchUserProfilePicture(user) {
         let response = await fetch('/api/users/' + user, {
           'method': 'GET'

@@ -143,6 +143,7 @@ class StaticContext:
                 script(
                     self.cache["js"][module],
                     id=f"js.{module}",
+                    type="text/javascript",
                 )
                 for module in self.views["js"][view]
             )
@@ -151,6 +152,7 @@ class StaticContext:
             script(
                 src="/static/js/" + self.files["js"][module].name,
                 id=f"js.{module}",
+                type="text/javascript",
             )
             for module in self.views["js"][view]
         )
