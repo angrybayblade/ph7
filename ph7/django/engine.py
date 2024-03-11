@@ -4,14 +4,41 @@ import typing as t
 from importlib.machinery import SourceFileLoader
 from pathlib import Path
 
-from django.http.request import HttpRequest
-from django.template import TemplateDoesNotExist, TemplateSyntaxError
-from django.template.backends.base import BaseEngine
-from django.template.backends.utils import csrf_input_lazy, csrf_token_lazy
-from django.template.utils import get_app_template_dirs
 from typing_extensions import TypedDict
 
 from ph7.base import node
+
+try:
+    from django.http.request import HttpRequest
+    from django.template import TemplateDoesNotExist, TemplateSyntaxError
+    from django.template.backends.base import BaseEngine
+    from django.template.backends.utils import csrf_token_lazy
+    from django.template.utils import get_app_template_dirs
+
+    DJANGO_INSTALLED = True
+except ModuleNotFoundError:
+
+    class HttpRequest:  # type: ignore
+        """Dummy HttpRequest class."""
+
+    class BaseEngine:  # type: ignore
+        """Dummy BaseEngine class."""
+
+    class TemplateSyntaxError(Exception):  # type: ignore
+        """Dummy TemplateSyntaxError class."""
+
+    class TemplateDoesNotExist(Exception):  # type: ignore
+        """Dummy TemplateDoesNotExist class."""
+
+    def csrf_token_lazy(request: t.Any) -> t.Any:
+        """Dummy csrf_token_lazy function."""
+        return request
+
+    def get_app_template_dirs(dirname: str) -> t.Tuple[Path, ...]:
+        """Dummy get_app_template_dirs function."""
+        return tuple(Path(dirname).iterdir())
+
+    DJANGO_INSTALLED = False
 
 
 class NotFound(Exception):
@@ -27,6 +54,11 @@ class Environment:
 
     def __init__(self) -> None:
         """Initialize object."""
+        if not DJANGO_INSTALLED:
+            raise RuntimeError(
+                "Cannot use Django template engine, Django is not installed."
+            )
+
         self.app_dirs = get_app_template_dirs(dirname="templates")
         self.templates = {}
 
@@ -120,7 +152,6 @@ class Template:
             context = {}
         if request is not None:
             context["request"] = request
-            context["csrf_input"] = csrf_input_lazy(request)
             context["csrf_token"] = csrf_token_lazy(request)
         context["_view"] = self.view
         if stream:
