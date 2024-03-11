@@ -117,6 +117,16 @@ async function fetchDog() {
 ```
 <!-- end -->
 
+PH7 is still in beta-development. It will be production ready with following enhancements
+
+- [ ] Remove performance bottlenecks
+- [ ] Dry run support
+- [ ] Unit testing support
+
+Further improvements
+
+- [ ] Typed context for type safety
+
 Links:
 
 * [Documentation](http://ph7.angrybayblade.me)
