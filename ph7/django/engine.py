@@ -4,7 +4,7 @@ import typing as t
 from importlib.machinery import SourceFileLoader
 from pathlib import Path
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 from ph7.base import node
 
@@ -45,14 +45,26 @@ class NotFound(Exception):
     """Template not found."""
 
 
+class _MockContext(dict):
+    def __init__(self, name: str) -> None:
+        """Mock context."""
+        self.name = name
+
+    def __getitem__(self, name: str) -> "_MockContext":
+        """Get mock item."""
+        return _MockContext(f"{self.name}->{name=}")
+
+
 class EngineOptions(TypedDict):
     """Engine options."""
+
+    mock_context: NotRequired[t.Any]
 
 
 class Environment:
     """Templates environment."""
 
-    def __init__(self) -> None:
+    def __init__(self, mock_context: t.Any = None) -> None:
         """Initialize object."""
         if not DJANGO_INSTALLED:
             raise RuntimeError(
@@ -83,6 +95,12 @@ class Environment:
                 ).load_module()
                 self.templates[".".join(path)] = module
 
+                # dry run
+                for name in dir(module):
+                    obj = getattr(module, name)
+                    if isinstance(obj, node):
+                        obj.render(context=mock_context or _MockContext("mock"))
+
     def get(self, name: str, cls: t.Optional[str] = None) -> "Template":
         """Get PH7 node for `name`"""
         cls = cls or "template"
@@ -105,8 +123,9 @@ class PH7Templates(BaseEngine):
     def __init__(self, params: t.Dict[str, t.Any]) -> None:
         """Initialize object."""
         self.options = EngineOptions(params.pop("OPTIONS"))  # type: ignore
-        self.environment = Environment()
-
+        self.environment = Environment(
+            mock_context=self.options.get("mock_context"),
+        )
         super().__init__(params)
 
     @property
