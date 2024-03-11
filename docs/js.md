@@ -47,8 +47,8 @@ template = html(
             ),
             button(
                 "Click to fetch a dog",
-                handlers={
-                    "onclick": fetchDog,
+                on={
+                    "click": fetchDog,
                 },
             ),
         )
@@ -111,8 +111,8 @@ def _user(name: str) -> node:
         img(src="#", style={"height": "200px", "width": "400px"}, id=f"image-{name}"),
         button(
             f"Click to fetch {name}'s  profile picture.",
-            handlers={
-                "onclick": fetchUserProfilePicture(name),
+            on={
+                "click": fetchUserProfilePicture(name),
             },
         ),
     )
@@ -339,6 +339,8 @@ function tryRaiseCatch() {
 
 ## Static Context
 
+PH7 has a runtime context object which can be used for managing the static resource. To use a static context, import `ph7.context.ctx`, add `ctx.static.view(__name__)` at the top of your template and add `ctx.static.include` in your view. In the following example we'll use a function defined in an external module.
+
 <!-- {"type": "html", "file": "examples/static_context.py", "env": {"DEVELOPMENT": "1"}} -->
 ```python
 from examples.script import alertHello
@@ -358,8 +360,8 @@ template = html(
             div(
                 "Click Here",
                 class_name=[textbox.text],
-                handlers={
-                    "onclick": alertHello("John Doe"),
+                on={
+                    "click": alertHello("John Doe"),
                 },
             ),
             class_name=[textbox],
@@ -402,37 +404,9 @@ print(template.render(context={"_view": __name__}))
 ```
 <!-- end -->
 
-<!-- {"type": "html", "file": "examples/static_context.py", "env": {"DEVELOPMENT": "0"}} -->
-```python
-from examples.script import alertHello
-from examples.style import textbox
-from ph7.context import ctx
-from ph7.html import body, div, head, html
+As you can see, the static context collects the various static resources and includes them as part of the view. The output above is produced with the mode set to development by exporting `DEVELOPMENT="1"`. When not in development mode, PH7 will compile static resources, write them as files and reference those files. Here's and example of production render of the same template
 
-ctx.static.view(__name__)
-
-
-template = html(
-    head(
-        ctx.static.include,
-    ),
-    body(
-        div(
-            div(
-                "Click Here",
-                class_name=[textbox.text],
-                handlers={
-                    "onclick": alertHello("John Doe"),
-                },
-            ),
-            class_name=[textbox],
-        )
-    ),
-)
-
-print(template.render(context={"_view": __name__}))
-```
-
+<!-- {"type": "html", "file": "examples/static_context.py", "env": {"DEVELOPMENT": "0"}, "output_only": true} -->
 ```html
 <html>
   <head>

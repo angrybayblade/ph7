@@ -261,8 +261,8 @@ template = html(
             ),
             button(
                 "Click to fetch a dog",
-                handlers={
-                    "onclick": fetchDog(),
+                on={
+                    "click": fetchDog(),
                 },
             ),
             class_name=main,

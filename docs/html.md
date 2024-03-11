@@ -54,8 +54,8 @@ template = html(
             ),
             div(
                 "Clickable div",
-                handlers={
-                    "onclick": "sayHello",
+                on={
+                    "click": "sayHello",
                 },
             ),
             class_name="container",
@@ -338,9 +338,9 @@ print(f"Third render: {time.perf_counter() - tick}")
 ```
 
 ```stdout
-First render: 6.521765374999999
-Second render: 0.37063745800000003
-Third render: 0.35949308300000027
+First render: 6.383804208
+Second render: 0.35257962499999973
+Third render: 0.34973895799999966
 ```
 <!-- end -->
 
