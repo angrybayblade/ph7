@@ -1,4 +1,10 @@
-# v0.1.0.rc1 (09-03-2024)
+# v0.1.0-rc2 (11-03-2024)
+
+* Adds support for dry-runs on Django engine for functional resource collection
+* Renames the `handlers` attribute to `on-*`
+* Adds safe guard for missing  Django installation
+
+# v0.1.0-rc1 (09-03-2024)
 
 * Extends support for `document` API
 * Adds support for transpiling
