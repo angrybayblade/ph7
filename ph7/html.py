@@ -55,7 +55,7 @@ def a(
     ping: t.Optional[str] = None,
     download: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """A node."""
     return node(
@@ -76,7 +76,7 @@ def a(
             "download": download,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="a",
         content_allowed=True,
     )
@@ -93,7 +93,7 @@ def abbr(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Abbr node."""
     return node(
@@ -104,7 +104,7 @@ def abbr(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="abbr",
         content_allowed=True,
     )
@@ -120,7 +120,7 @@ def address(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Address node."""
     return node(
@@ -130,7 +130,7 @@ def address(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="address",
         content_allowed=True,
     )
@@ -169,7 +169,7 @@ def area(
     media: t.Optional[str] = None,
     download: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Area node."""
     return node(
@@ -189,7 +189,7 @@ def area(
             "download": download,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="area",
         content_allowed=True,
     )
@@ -206,7 +206,7 @@ def article(
     ] = None,
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Article node."""
     return node(
@@ -217,7 +217,7 @@ def article(
             "hidden": hidden,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="article",
         content_allowed=True,
     )
@@ -234,7 +234,7 @@ def aside(
     ] = None,
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Aside node."""
     return node(
@@ -245,7 +245,7 @@ def aside(
             "hidden": hidden,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="aside",
         content_allowed=True,
     )
@@ -270,7 +270,7 @@ def audio(
     preload: t.Optional[str] = None,
     crossorigin: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Audio node."""
     return node(
@@ -289,7 +289,7 @@ def audio(
             "crossorigin": crossorigin,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="audio",
         content_allowed=True,
     )
@@ -305,7 +305,7 @@ def b(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """B node."""
     return node(
@@ -315,7 +315,7 @@ def b(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="b",
         content_allowed=True,
     )
@@ -329,7 +329,7 @@ def base(
         Literal["_blank", "_self", "_parent", "_top", "framename"]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Base node."""
     return node(
@@ -340,7 +340,7 @@ def base(
             "target": target,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="base",
         content_allowed=True,
     )
@@ -358,7 +358,7 @@ def blockquote(
     ] = None,
     title: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Blockquote node."""
     return node(
@@ -370,7 +370,7 @@ def blockquote(
             "title": title,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="blockquote",
         content_allowed=True,
     )
@@ -386,7 +386,7 @@ def body(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Body node."""
     return node(
@@ -396,7 +396,7 @@ def body(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="body",
         content_allowed=True,
     )
@@ -406,7 +406,7 @@ def br(
     *children: ChildType,
     clear: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Br node."""
     return node(
@@ -415,9 +415,9 @@ def br(
             "clear": clear,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="br",
-        content_allowed=True,
+        content_allowed=False,
     )
 
 
@@ -447,7 +447,7 @@ def button(
     ] = None,
     autofocus: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Button node."""
     return node(
@@ -471,7 +471,7 @@ def button(
             "autofocus": autofocus,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="button",
         content_allowed=True,
     )
@@ -491,7 +491,7 @@ def canvas(
     hidden: t.Optional[str] = None,
     title: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Canvas node."""
     return node(
@@ -505,7 +505,7 @@ def canvas(
             "title": title,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="canvas",
         content_allowed=True,
     )
@@ -521,7 +521,7 @@ def caption(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Caption node."""
     return node(
@@ -531,7 +531,7 @@ def caption(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="caption",
         content_allowed=True,
     )
@@ -540,16 +540,11 @@ def caption(
 def cite(
     *children: ChildType,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Cite node."""
     return node(
-        *children,
-        attributes={},
-        style=style,
-        handlers=handlers,
-        name="cite",
-        content_allowed=True,
+        *children, attributes={}, style=style, on=on, name="cite", content_allowed=True
     )
 
 
@@ -563,7 +558,7 @@ def code(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Code node."""
     return node(
@@ -573,7 +568,7 @@ def code(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="code",
         content_allowed=True,
     )
@@ -590,7 +585,7 @@ def col(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Col node."""
     return node(
@@ -601,7 +596,7 @@ def col(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="col",
         content_allowed=True,
     )
@@ -612,7 +607,7 @@ def colgroup(
     span: t.Optional[str] = None,
     id: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Colgroup node."""
     return node(
@@ -622,7 +617,7 @@ def colgroup(
             "id": id,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="colgroup",
         content_allowed=True,
     )
@@ -633,7 +628,7 @@ def data(
     value: t.Optional[str] = None,
     id: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Data node."""
     return node(
@@ -643,7 +638,7 @@ def data(
             "id": id,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="data",
         content_allowed=True,
     )
@@ -653,7 +648,7 @@ def datalist(
     *children: ChildType,
     id: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Datalist node."""
     return node(
@@ -662,7 +657,7 @@ def datalist(
             "id": id,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="datalist",
         content_allowed=True,
     )
@@ -678,7 +673,7 @@ def dd(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Dd node."""
     return node(
@@ -688,7 +683,7 @@ def dd(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="dd",
         content_allowed=True,
     )
@@ -705,7 +700,7 @@ def details(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Details node."""
     return node(
@@ -716,7 +711,7 @@ def details(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="details",
         content_allowed=True,
     )
@@ -733,7 +728,7 @@ def div(
     ] = None,
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Div node."""
     return node(
@@ -744,7 +739,7 @@ def div(
             "hidden": hidden,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="div",
         content_allowed=True,
     )
@@ -760,7 +755,7 @@ def dl(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Dl node."""
     return node(
@@ -770,7 +765,7 @@ def dl(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="dl",
         content_allowed=True,
     )
@@ -786,7 +781,7 @@ def dt(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Dt node."""
     return node(
@@ -796,7 +791,7 @@ def dt(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="dt",
         content_allowed=True,
     )
@@ -812,7 +807,7 @@ def em(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Em node."""
     return node(
@@ -822,7 +817,7 @@ def em(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="em",
         content_allowed=True,
     )
@@ -842,7 +837,7 @@ def embed(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Embed node."""
     return node(
@@ -856,7 +851,7 @@ def embed(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="embed",
         content_allowed=True,
     )
@@ -875,7 +870,7 @@ def fieldset(
     name: t.Optional[str] = None,
     disabled: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Fieldset node."""
     return node(
@@ -888,7 +883,7 @@ def fieldset(
             "disabled": disabled,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="fieldset",
         content_allowed=True,
     )
@@ -904,7 +899,7 @@ def figcaption(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Figcaption node."""
     return node(
@@ -914,7 +909,7 @@ def figcaption(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="figcaption",
         content_allowed=True,
     )
@@ -932,7 +927,7 @@ def figure(
     hidden: t.Optional[str] = None,
     title: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Figure node."""
     return node(
@@ -944,7 +939,7 @@ def figure(
             "title": title,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="figure",
         content_allowed=True,
     )
@@ -961,7 +956,7 @@ def footer(
     ] = None,
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Footer node."""
     return node(
@@ -972,7 +967,7 @@ def footer(
             "hidden": hidden,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="footer",
         content_allowed=True,
     )
@@ -1005,7 +1000,7 @@ def form(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Form node."""
     return node(
@@ -1022,7 +1017,7 @@ def form(
             "rel": rel,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="form",
         content_allowed=True,
     )
@@ -1038,7 +1033,7 @@ def h1(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """H1 node."""
     return node(
@@ -1048,7 +1043,7 @@ def h1(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="h1",
         content_allowed=True,
     )
@@ -1064,7 +1059,7 @@ def h2(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """H2 node."""
     return node(
@@ -1074,7 +1069,7 @@ def h2(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="h2",
         content_allowed=True,
     )
@@ -1090,7 +1085,7 @@ def h3(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """H3 node."""
     return node(
@@ -1100,7 +1095,7 @@ def h3(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="h3",
         content_allowed=True,
     )
@@ -1116,7 +1111,7 @@ def h4(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """H4 node."""
     return node(
@@ -1126,7 +1121,7 @@ def h4(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="h4",
         content_allowed=True,
     )
@@ -1142,7 +1137,7 @@ def h5(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """H5 node."""
     return node(
@@ -1152,7 +1147,7 @@ def h5(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="h5",
         content_allowed=True,
     )
@@ -1168,7 +1163,7 @@ def h6(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """H6 node."""
     return node(
@@ -1178,7 +1173,7 @@ def h6(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="h6",
         content_allowed=True,
     )
@@ -1188,7 +1183,7 @@ def head(
     *children: ChildType,
     profile: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Head node."""
     return node(
@@ -1197,7 +1192,7 @@ def head(
             "profile": profile,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="head",
         content_allowed=True,
     )
@@ -1214,7 +1209,7 @@ def header(
     ] = None,
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Header node."""
     return node(
@@ -1225,7 +1220,7 @@ def header(
             "hidden": hidden,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="header",
         content_allowed=True,
     )
@@ -1240,7 +1235,7 @@ def hr(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Hr node."""
     return node(
@@ -1249,9 +1244,9 @@ def hr(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="hr",
-        content_allowed=True,
+        content_allowed=False,
     )
 
 
@@ -1260,7 +1255,7 @@ def html(
     xmlns: t.Optional[str] = None,
     lang: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Html node."""
     return node(
@@ -1270,7 +1265,7 @@ def html(
             "lang": lang,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="html",
         content_allowed=True,
     )
@@ -1286,7 +1281,7 @@ def i(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """I node."""
     return node(
@@ -1296,7 +1291,7 @@ def i(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="i",
         content_allowed=True,
     )
@@ -1321,7 +1316,7 @@ def iframe(
     name: t.Optional[str] = None,
     sandbox: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Iframe node."""
     return node(
@@ -1340,7 +1335,7 @@ def iframe(
             "sandbox": sandbox,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="iframe",
         content_allowed=True,
     )
@@ -1368,7 +1363,7 @@ def img(
     sizes: t.Optional[str] = None,
     crossorigin: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Img node."""
     return node(
@@ -1390,7 +1385,7 @@ def img(
             "crossorigin": crossorigin,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="img",
         content_allowed=False,
     )
@@ -1467,7 +1462,7 @@ def input(
     list: t.Optional[str] = None,
     dirname: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Input node."""
     return node(
@@ -1511,7 +1506,7 @@ def input(
             "dirname": dirname,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="input",
         content_allowed=True,
     )
@@ -1529,7 +1524,7 @@ def ins(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Ins node."""
     return node(
@@ -1541,7 +1536,7 @@ def ins(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="ins",
         content_allowed=True,
     )
@@ -1557,7 +1552,7 @@ def kbd(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Kbd node."""
     return node(
@@ -1567,7 +1562,7 @@ def kbd(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="kbd",
         content_allowed=True,
     )
@@ -1586,7 +1581,7 @@ def label(
     hidden: t.Optional[str] = None,
     title: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Label node."""
     return node(
@@ -1599,7 +1594,7 @@ def label(
             "title": title,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="label",
         content_allowed=True,
     )
@@ -1615,7 +1610,7 @@ def legend(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Legend node."""
     return node(
@@ -1625,7 +1620,7 @@ def legend(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="legend",
         content_allowed=True,
     )
@@ -1644,7 +1639,7 @@ def li(
     hidden: t.Optional[str] = None,
     title: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Li node."""
     return node(
@@ -1657,7 +1652,7 @@ def li(
             "title": title,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="li",
         content_allowed=True,
     )
@@ -1688,7 +1683,7 @@ def link(
     hreflang: t.Optional[str] = None,
     crossorigin: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Link node."""
     return node(
@@ -1704,7 +1699,7 @@ def link(
             "crossorigin": crossorigin,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="link",
         content_allowed=False,
     )
@@ -1721,7 +1716,7 @@ def main(
     ] = None,
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Main node."""
     return node(
@@ -1732,7 +1727,7 @@ def main(
             "hidden": hidden,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="main",
         content_allowed=True,
     )
@@ -1743,7 +1738,7 @@ def map(
     name: t.Optional[str] = None,
     id: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Map node."""
     return node(
@@ -1753,7 +1748,7 @@ def map(
             "id": id,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="map",
         content_allowed=True,
     )
@@ -1769,7 +1764,7 @@ def mark(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Mark node."""
     return node(
@@ -1779,7 +1774,7 @@ def mark(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="mark",
         content_allowed=True,
     )
@@ -1793,7 +1788,7 @@ def meta(
     charset: t.Optional[str] = None,
     id: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Meta node."""
     return node(
@@ -1806,7 +1801,7 @@ def meta(
             "id": id,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="meta",
         content_allowed=True,
     )
@@ -1831,7 +1826,7 @@ def meter(
     optimum: t.Optional[str] = None,
     form: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Meter node."""
     return node(
@@ -1850,7 +1845,7 @@ def meter(
             "form": form,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="meter",
         content_allowed=True,
     )
@@ -1867,7 +1862,7 @@ def nav(
     ] = None,
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Nav node."""
     return node(
@@ -1878,7 +1873,7 @@ def nav(
             "hidden": hidden,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="nav",
         content_allowed=True,
     )
@@ -1888,7 +1883,7 @@ def noscript(
     *children: ChildType,
     id: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Noscript node."""
     return node(
@@ -1897,7 +1892,7 @@ def noscript(
             "id": id,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="noscript",
         content_allowed=True,
     )
@@ -1921,7 +1916,7 @@ def object(
     form: t.Optional[str] = None,
     usemap: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Object node."""
     return node(
@@ -1939,7 +1934,7 @@ def object(
             "usemap": usemap,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="object",
         content_allowed=True,
     )
@@ -1959,7 +1954,7 @@ def ol(
     hidden: t.Optional[str] = None,
     reversed: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Ol node."""
     return node(
@@ -1973,7 +1968,7 @@ def ol(
             "reversed": reversed,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="ol",
         content_allowed=True,
     )
@@ -1992,7 +1987,7 @@ def optgroup(
     hidden: t.Optional[str] = None,
     disabled: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Optgroup node."""
     return node(
@@ -2005,7 +2000,7 @@ def optgroup(
             "disabled": disabled,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="optgroup",
         content_allowed=True,
     )
@@ -2026,7 +2021,7 @@ def option(
     hidden: t.Optional[str] = None,
     disabled: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Option node."""
     return node(
@@ -2041,7 +2036,7 @@ def option(
             "disabled": disabled,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="option",
         content_allowed=True,
     )
@@ -2060,7 +2055,7 @@ def output(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Output node."""
     return node(
@@ -2073,7 +2068,7 @@ def output(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="output",
         content_allowed=True,
     )
@@ -2090,7 +2085,7 @@ def p(
     ] = None,
     lang: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """P node."""
     return node(
@@ -2101,7 +2096,7 @@ def p(
             "lang": lang,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="p",
         content_allowed=True,
     )
@@ -2113,7 +2108,7 @@ def param(
     value: t.Optional[str] = None,
     id: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Param node."""
     return node(
@@ -2124,7 +2119,7 @@ def param(
             "id": id,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="param",
         content_allowed=True,
     )
@@ -2142,7 +2137,7 @@ def picture(
     hidden: t.Optional[str] = None,
     title: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Picture node."""
     return node(
@@ -2154,7 +2149,7 @@ def picture(
             "title": title,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="picture",
         content_allowed=True,
     )
@@ -2172,7 +2167,7 @@ def pre(
     hidden: t.Optional[str] = None,
     title: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Pre node."""
     return node(
@@ -2184,7 +2179,7 @@ def pre(
             "title": title,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="pre",
         content_allowed=True,
     )
@@ -2204,7 +2199,7 @@ def progress(
     hidden: t.Optional[str] = None,
     title: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Progress node."""
     return node(
@@ -2218,7 +2213,7 @@ def progress(
             "title": title,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="progress",
         content_allowed=True,
     )
@@ -2235,7 +2230,7 @@ def q(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Q node."""
     return node(
@@ -2246,7 +2241,7 @@ def q(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="q",
         content_allowed=True,
     )
@@ -2255,48 +2250,33 @@ def q(
 def rp(
     *children: ChildType,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Rp node."""
     return node(
-        *children,
-        attributes={},
-        style=style,
-        handlers=handlers,
-        name="rp",
-        content_allowed=True,
+        *children, attributes={}, style=style, on=on, name="rp", content_allowed=True
     )
 
 
 def rt(
     *children: ChildType,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Rt node."""
     return node(
-        *children,
-        attributes={},
-        style=style,
-        handlers=handlers,
-        name="rt",
-        content_allowed=True,
+        *children, attributes={}, style=style, on=on, name="rt", content_allowed=True
     )
 
 
 def ruby(
     *children: ChildType,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Ruby node."""
     return node(
-        *children,
-        attributes={},
-        style=style,
-        handlers=handlers,
-        name="ruby",
-        content_allowed=True,
+        *children, attributes={}, style=style, on=on, name="ruby", content_allowed=True
     )
 
 
@@ -2310,7 +2290,7 @@ def samp(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Samp node."""
     return node(
@@ -2320,7 +2300,7 @@ def samp(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="samp",
         content_allowed=True,
     )
@@ -2336,7 +2316,7 @@ def script(
     id: t.Optional[str] = None,
     crossorigin: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Script node."""
     return node(
@@ -2351,7 +2331,7 @@ def script(
             "crossorigin": crossorigin,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="script",
         content_allowed=True,
     )
@@ -2368,7 +2348,7 @@ def section(
     ] = None,
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Section node."""
     return node(
@@ -2379,7 +2359,7 @@ def section(
             "hidden": hidden,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="section",
         content_allowed=True,
     )
@@ -2405,7 +2385,7 @@ def select(
     required: t.Optional[str] = None,
     size: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Select node."""
     return node(
@@ -2425,7 +2405,7 @@ def select(
             "size": size,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="select",
         content_allowed=True,
     )
@@ -2441,7 +2421,7 @@ def small(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Small node."""
     return node(
@@ -2451,7 +2431,7 @@ def small(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="small",
         content_allowed=True,
     )
@@ -2466,7 +2446,7 @@ def source(
     id: t.Optional[str] = None,
     sizes: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Source node."""
     return node(
@@ -2480,7 +2460,7 @@ def source(
             "sizes": sizes,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="source",
         content_allowed=True,
     )
@@ -2498,7 +2478,7 @@ def span(
     hidden: t.Optional[str] = None,
     title: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Span node."""
     return node(
@@ -2510,7 +2490,7 @@ def span(
             "title": title,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="span",
         content_allowed=True,
     )
@@ -2526,7 +2506,7 @@ def strong(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Strong node."""
     return node(
@@ -2536,7 +2516,7 @@ def strong(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="strong",
         content_allowed=True,
     )
@@ -2548,7 +2528,7 @@ def style(
     type: t.Optional[str] = None,
     id: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Style node."""
     return node(
@@ -2559,7 +2539,7 @@ def style(
             "id": id,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="style",
         content_allowed=True,
     )
@@ -2575,7 +2555,7 @@ def sub(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Sub node."""
     return node(
@@ -2585,7 +2565,7 @@ def sub(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="sub",
         content_allowed=True,
     )
@@ -2601,7 +2581,7 @@ def summary(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Summary node."""
     return node(
@@ -2611,7 +2591,7 @@ def summary(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="summary",
         content_allowed=True,
     )
@@ -2627,7 +2607,7 @@ def sup(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Sup node."""
     return node(
@@ -2637,7 +2617,7 @@ def sup(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="sup",
         content_allowed=True,
     )
@@ -2659,7 +2639,7 @@ def svg(
     title: t.Optional[str] = None,
     preserveAspectRatio: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Svg node."""
     return node(
@@ -2675,7 +2655,7 @@ def svg(
             "preserveAspectRatio": preserveAspectRatio,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="svg",
         content_allowed=True,
     )
@@ -2693,7 +2673,7 @@ def table(
     hidden: t.Optional[str] = None,
     title: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Table node."""
     return node(
@@ -2705,7 +2685,7 @@ def table(
             "title": title,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="table",
         content_allowed=True,
     )
@@ -2722,7 +2702,7 @@ def tbody(
     ] = None,
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Tbody node."""
     return node(
@@ -2733,7 +2713,7 @@ def tbody(
             "hidden": hidden,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="tbody",
         content_allowed=True,
     )
@@ -2753,7 +2733,7 @@ def td(
     title: t.Optional[str] = None,
     headers: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Td node."""
     return node(
@@ -2767,7 +2747,7 @@ def td(
             "headers": headers,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="td",
         content_allowed=True,
     )
@@ -2783,7 +2763,7 @@ def template(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Template node."""
     return node(
@@ -2793,7 +2773,7 @@ def template(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="template",
         content_allowed=True,
     )
@@ -2826,7 +2806,7 @@ def textarea(
     rows: t.Optional[str] = None,
     wrap: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Textarea node."""
     return node(
@@ -2853,7 +2833,7 @@ def textarea(
             "wrap": wrap,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="textarea",
         content_allowed=True,
     )
@@ -2870,7 +2850,7 @@ def tfoot(
     ] = None,
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Tfoot node."""
     return node(
@@ -2881,7 +2861,7 @@ def tfoot(
             "hidden": hidden,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="tfoot",
         content_allowed=True,
     )
@@ -2903,7 +2883,7 @@ def th(
     scope: t.Optional[str] = None,
     abbr: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Th node."""
     return node(
@@ -2919,7 +2899,7 @@ def th(
             "abbr": abbr,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="th",
         content_allowed=True,
     )
@@ -2936,7 +2916,7 @@ def thead(
     ] = None,
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Thead node."""
     return node(
@@ -2947,7 +2927,7 @@ def thead(
             "hidden": hidden,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="thead",
         content_allowed=True,
     )
@@ -2964,7 +2944,7 @@ def time(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Time node."""
     return node(
@@ -2975,7 +2955,7 @@ def time(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="time",
         content_allowed=True,
     )
@@ -2984,16 +2964,11 @@ def time(
 def title(
     *children: ChildType,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Title node."""
     return node(
-        *children,
-        attributes={},
-        style=style,
-        handlers=handlers,
-        name="title",
-        content_allowed=True,
+        *children, attributes={}, style=style, on=on, name="title", content_allowed=True
     )
 
 
@@ -3009,7 +2984,7 @@ def tr(
     hidden: t.Optional[str] = None,
     title: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Tr node."""
     return node(
@@ -3021,7 +2996,7 @@ def tr(
             "title": title,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="tr",
         content_allowed=True,
     )
@@ -3036,7 +3011,7 @@ def track(
     default: t.Optional[str] = None,
     id: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Track node."""
     return node(
@@ -3050,7 +3025,7 @@ def track(
             "id": id,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="track",
         content_allowed=True,
     )
@@ -3066,7 +3041,7 @@ def u(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """U node."""
     return node(
@@ -3076,7 +3051,7 @@ def u(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="u",
         content_allowed=True,
     )
@@ -3093,7 +3068,7 @@ def ul(
     ] = None,
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Ul node."""
     return node(
@@ -3104,7 +3079,7 @@ def ul(
             "hidden": hidden,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="ul",
         content_allowed=True,
     )
@@ -3120,7 +3095,7 @@ def var(
         ]
     ] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Var node."""
     return node(
@@ -3130,7 +3105,7 @@ def var(
             "class": cformat(class_name),
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="var",
         content_allowed=True,
     )
@@ -3158,7 +3133,7 @@ def video(
     preload: t.Optional[str] = None,
     crossorigin: t.Optional[str] = None,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Video node."""
     return node(
@@ -3180,7 +3155,7 @@ def video(
             "crossorigin": crossorigin,
         },
         style=style,
-        handlers=handlers,
+        on=on,
         name="video",
         content_allowed=True,
     )
@@ -3189,16 +3164,11 @@ def video(
 def wbr(
     *children: ChildType,
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     """Wbr node."""
     return node(
-        *children,
-        attributes={},
-        style=style,
-        handlers=handlers,
-        name="wbr",
-        content_allowed=True,
+        *children, attributes={}, style=style, on=on, name="wbr", content_allowed=True
     )
 
 

@@ -41,7 +41,8 @@ print(template)
 ## CSSObject
 
 Using `style` object is not the only way to develop CSS with PH7, You can utilise a special class called `CSSObject` to define stylesheets.
-<!-- {"type": "html", "file": "examples/css_cls.py"} -->
+<!-- {"type": "html", "file": "examples/css_cls.py", "class": "side-by-side"} -->
+<div class='side-by-side'>
 ```python
 from ph7 import CSSObject, include
 from ph7.html import body, div, head, html
@@ -90,11 +91,13 @@ print(template)
   </body>
 </html>
 ```
+</div>
 <!-- end -->
 
 A `CSSObject` can also be reused via class inheritance. You can define a base CSS class and reuse it however many times you like.
 
-<!-- {"type": "html", "file": "examples/css_inherit.py"} -->
+<!-- {"type": "html", "file": "examples/css_inherit.py", "class": "side-by-side"} -->
+<div class='side-by-side'>
 ```python
 from ph7 import CSSObject, include
 from ph7.html import body, div, head, html
@@ -121,10 +124,7 @@ template = html(
     ),
     body(
         div(
-            div(
-                "Hello, World!",
-                class_name=[textbox],
-            ),
+            "Hello, World!",
             class_name=[textbox],
         )
     ),
@@ -147,17 +147,17 @@ print(template)
     </style>
   </head>
   <body>
-    <div class="textbox">
-      <div class="textbox">Hello, World!</div>
-    </div>
+    <div class="textbox">Hello, World!</div>
   </body>
 </html>
 ```
+</div>
 <!-- end -->
 
 Furthermore `CSSObject` also allows for nesting by sub classes.
 
-<!-- {"type": "html", "file": "examples/css_nesting.py"} -->
+<!-- {"type": "html", "file": "examples/css_nesting.py", "class": "side-by-side"} -->
+<div class='side-by-side'>
 ```python
 from ph7 import CSSObject, include
 from ph7.html import body, div, head, html
@@ -228,13 +228,14 @@ print(template)
   </body>
 </html>
 ```
+</div>
 <!-- end -->
 
 To make your styles more manageable and reusable, you can define the styles in a separate module and import them throughout your codebase. Following section provides an example of a reusable stylesheet module.
 
 ## Static Context
 
-PH7 has a runtime context object which can be used for managing the static resource. To use a static context, import `ph7.context.ctx`, add `ctx.static.view(__name__)` at the top of your template and add `ctx.static.include` in your view. In the following example we'll use and external stylesheet for styling our view.
+PH7 has a runtime context object which can be used for managing the static resource. To use a static context, import `ph7.context.ctx`, add `ctx.static.view(__name__)` at the top of your template and add `ctx.static.include` in your view. In the following example we'll use an external stylesheet for styling our view.
 
 <!-- {"type": "html", "file": "examples/static_context.py", "env": {"DEVELOPMENT": "1"}} -->
 ```python
@@ -255,8 +256,8 @@ template = html(
             div(
                 "Click Here",
                 class_name=[textbox.text],
-                handlers={
-                    "onclick": alertHello("John Doe"),
+                on={
+                    "click": alertHello("John Doe"),
                 },
             ),
             class_name=[textbox],

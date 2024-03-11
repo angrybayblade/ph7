@@ -13,8 +13,8 @@ template = html(
             ),
             div(
                 "Clickable div",
-                handlers={
-                    "onclick": "sayHello",
+                on={
+                    "click": "sayHello",
                 },
             ),
             class_name="container",

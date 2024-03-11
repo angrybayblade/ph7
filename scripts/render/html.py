@@ -6,36 +6,21 @@ from black import Mode, format_str
 
 tags = json.loads((Path.cwd() / "data" / "html.json").read_text())
 
-content_not_allowed = ["link", "img"]
+content_not_allowed = ["link", "img", "br", "hr"]
 
-template_cls = """class {tag}(node):
-    \"\"\"{title} node.\"\"\"
-
-    def __init__(
-        self,
-        *children: ChildType,
-        {attribute_definitions}
-        style: t.Optional[Style] = None,
-        handlers: t.Optional[DOMEvents] = None,
-        render: t.Optional[t.Callable[[t.Dict], str]] = None,
-    ) -> None:
-        \"\"\"Initialize object.\"\"\"
-        super().__init__(*children, attributes={attribute_dict}, style=style,handlers=handlers,render=render)
-
-"""
 
 template_fn = """def {tag}(
     *children: ChildType,
     {attribute_definitions}
     style: t.Optional[Style] = None,
-    handlers: t.Optional[DOMEvents] = None,
+    on: t.Optional[DOMEvents] = None,
 ) -> node:
     \"\"\"{title} node.\"\"\"
     return node(
         *children,
         attributes={attribute_dict},
         style=style,
-        handlers=handlers,
+        on=on,
         name="{tag}",
         content_allowed={content_allowed}
     )

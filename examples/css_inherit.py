@@ -23,10 +23,7 @@ template = html(
     ),
     body(
         div(
-            div(
-                "Hello, World!",
-                class_name=[textbox],
-            ),
+            "Hello, World!",
             class_name=[textbox],
         )
     ),
