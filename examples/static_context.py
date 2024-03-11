@@ -15,8 +15,8 @@ template = html(
             div(
                 "Click Here",
                 class_name=[textbox.text],
-                handlers={
-                    "onclick": alertHello("John Doe"),
+                on={
+                    "click": alertHello("John Doe"),
                 },
             ),
             class_name=[textbox],

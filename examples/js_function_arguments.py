@@ -18,8 +18,8 @@ def _user(name: str) -> node:
         img(src="#", style={"height": "200px", "width": "400px"}, id=f"image-{name}"),
         button(
             f"Click to fetch {name}'s  profile picture.",
-            handlers={
-                "onclick": fetchUserProfilePicture(name),
+            on={
+                "click": fetchUserProfilePicture(name),
             },
         ),
     )
