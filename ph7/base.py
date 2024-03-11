@@ -60,7 +60,7 @@ class node:  # pylint: disable=too-many-instance-attributes
         *children: "ChildType",
         attributes: t.Optional[t.Dict[str, t.Optional[str]]] = None,
         style: t.Optional[Style] = None,
-        handlers: t.Optional[DOMEvents] = None,
+        on: t.Optional[DOMEvents] = None,
         render: t.Optional[t.Callable[[t.Dict], str]] = None,
         name: t.Optional[str] = None,
         content_allowed: bool = True,
@@ -72,7 +72,7 @@ class node:  # pylint: disable=too-many-instance-attributes
 
         self.children = _unpack(children=children)
         self.style = style or {}
-        self.handlers = handlers or DOMEvents({})
+        self.on = on or DOMEvents({})
         self.attributes = attributes or {}
         self.context_render = render
         self.name = name or self.__class__.__name__
@@ -100,7 +100,7 @@ class node:  # pylint: disable=too-many-instance-attributes
                     f"<{self.name}"
                     + f"{aformat(self.attributes)}"
                     + f"{sformat(style)}"
-                    + f"{hformat(t.cast(t.Dict,self.handlers))}"
+                    + f"{hformat(t.cast(t.Dict,self.on))}"
                     + (">" if self.content_allowed else "/>")
                 ),
                 "end": f"</{self.name}>",
@@ -168,7 +168,7 @@ class node:  # pylint: disable=too-many-instance-attributes
                     }
                 ),
                 style=style or self.style,
-                handlers=self.handlers,
+                on=self.on,
                 render=self.context_render,
                 name=self.name,
                 content_allowed=self.content_allowed,
@@ -206,7 +206,7 @@ class node:  # pylint: disable=too-many-instance-attributes
             *(child.copy() for child in self.children),
             attributes=self.attributes,
             style=self.style,
-            handlers=self.handlers,
+            on=self.on,
             render=self.context_render,
             name=self.name,
             content_allowed=self.content_allowed,
