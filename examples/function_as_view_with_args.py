@@ -1,6 +1,6 @@
 import typing as t
 
-from ph7.html import body, div, html, HtmlNode
+from ph7.html import HtmlNode, body, div, html
 
 user = div(class_name="user")
 users = div(class_name="user")

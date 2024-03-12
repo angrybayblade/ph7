@@ -1,5 +1,5 @@
 from ph7 import include
-from ph7.html import body, button, div, head, html, img, HtmlNode
+from ph7.html import HtmlNode, body, button, div, head, html, img
 from ph7.js import document, fetch, js_callable
 
 

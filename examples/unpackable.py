@@ -1,7 +1,7 @@
 import typing as t
 
 from ph7 import kebabc, titlec
-from ph7.html import a, body, div, html, HtmlNode, title, unpack
+from ph7.html import HtmlNode, a, body, div, html, title, unpack
 
 NAVIGATION = [
     "home",

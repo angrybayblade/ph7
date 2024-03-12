@@ -3,7 +3,7 @@
 import typing as t
 
 from ph7.django.engine import PH7Templates, Template
-from ph7.html import input, HtmlNode
+from ph7.html import HtmlNode, input
 
 try:
     from django.http import HttpRequest, HttpResponse, StreamingHttpResponse
