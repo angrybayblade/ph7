@@ -7,4 +7,4 @@ ignore=
 disable=R0801,R0903,C0103,C0114,R0401,W0622
 
 [IMPORTS]
-ignored-modules=bootstrap,django,black,requests
+ignored-modules=bootstrap,django,black,requests,pytest
