@@ -132,7 +132,7 @@ Define your stylesheet using [`CSSObject`](/css/#cssobject) and use [`Static Con
 from ph7.css import CSSObject
 
 
-class main(CSSObject):
+class container(CSSObject):
     display = "flex"
     align_items = "center"
     justify_content = "center"
@@ -167,7 +167,7 @@ template = html(
     body(
         div(
             "Hello, World!",
-            class_name=stylesheet.main,
+            class_name=stylesheet.container,
         )
     ),
 )
@@ -240,12 +240,22 @@ Use the function in the view
 <!-- {"type": "html", "file": "examples/django_app/javascript/templates/__init__.py", "input_only": true} -->
 ```python
 from javascript.templates.script import fetchDog
-from javascript.templates.styles import image, main
+from javascript.templates.styles import container, image
 
 from ph7.context import ctx
 from ph7.html import body, button, div, head, html, img
 
 ctx.static.view(__name__)
+
+
+def _fetch():
+    return button(
+        "Click to fetch a dog",
+        on={
+            "click": fetchDog(),
+        },
+    )
+
 
 template = html(
     head(
@@ -259,13 +269,8 @@ template = html(
                 alt="Click to fetch dog",
                 class_name=image,
             ),
-            button(
-                "Click to fetch a dog",
-                on={
-                    "click": fetchDog(),
-                },
-            ),
-            class_name=main,
+            _fetch,
+            class_name=container,
         )
     ),
 )
