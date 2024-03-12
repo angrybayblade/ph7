@@ -1,5 +1,5 @@
 from ph7 import include
-from ph7.html import body, button, div, head, html, img, node
+from ph7.html import HtmlNode, body, button, div, head, html, img
 from ph7.js import document, fetch, js_callable
 
 
@@ -13,7 +13,7 @@ async def fetchUserProfilePicture(user: str) -> None:
     document.getElementById(f"image-{user}").src = data.profile_picture
 
 
-def _user(name: str) -> node:
+def _user(name: str) -> HtmlNode:
     return div(
         img(src="#", style={"height": "200px", "width": "400px"}, id=f"image-{name}"),
         button(
@@ -25,7 +25,7 @@ def _user(name: str) -> node:
     )
 
 
-def _users(context: dict) -> node:
+def _users(context: dict) -> HtmlNode:
     """List users."""
     return div(_user(name=name) for name in context["users"])
 

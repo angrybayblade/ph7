@@ -1,7 +1,7 @@
 import typing as t
 
 from ph7 import kebabc, titlec
-from ph7.html import a, body, div, html, node, title, unpack
+from ph7.html import HtmlNode, a, body, div, html, title, unpack
 
 NAVIGATION = [
     "home",
@@ -15,10 +15,10 @@ navbar = div(class_name="nav").overridable("navbar")
 base = html(title("Templates Example"), body(navbar, unpack().overridable("container")))
 
 
-def render_navbar(context: t.Dict) -> node:
+def render_navbar(context: t.Dict) -> HtmlNode:
     """Render navbar"""
 
-    def _btn(page: str) -> node:
+    def _btn(page: str) -> HtmlNode:
         return button(
             a(
                 titlec(page),

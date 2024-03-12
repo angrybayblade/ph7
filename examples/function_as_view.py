@@ -1,13 +1,13 @@
 import typing as t
 
-from ph7.html import body, div, html, node
+from ph7.html import HtmlNode, body, div, html
 
 user = div(class_name="user")
 users = div(class_name="user")
 nousers = div("Error, Users not found", class_name="error")
 
 
-def render_users(context: t.Dict) -> node:
+def render_users(context: t.Dict) -> HtmlNode:
     """Render users."""
     if "number_of_users" not in context:
         return nousers

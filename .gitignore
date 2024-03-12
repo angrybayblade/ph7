@@ -12,3 +12,6 @@ __pycache__/
 *.html
 
 Pipfile.lock
+
+.coverage
+coverage.xml

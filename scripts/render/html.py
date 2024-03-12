@@ -14,9 +14,9 @@ template_fn = """def {tag}(
     {attribute_definitions}
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     \"\"\"{title} node.\"\"\"
-    return node(
+    return HtmlNode(
         *children,
         attributes={attribute_dict},
         style=style,
@@ -27,9 +27,9 @@ template_fn = """def {tag}(
 """
 
 
-unpack_node = """def unpack(*children: ChildType) -> node:
+unpack_node = """def unpack(*children: ChildType) -> HtmlNode:
     \"\"\"Unpackable node.\"\"\"
-    return _unpack(*children)
+    return UnpackableNode(*children)
 """
 
 code = """\"\"\"
@@ -41,7 +41,7 @@ This file is auto generated using scripts/render/html.py
 import typing as t
 from typing_extensions import Literal
 
-from ph7.base import node, ChildType, unpack as _unpack
+from ph7.core.html import ChildType, HtmlNode, UnpackableNode
 from ph7.style import Style
 from ph7.formatters import cformat
 from ph7.css import CSSObject
