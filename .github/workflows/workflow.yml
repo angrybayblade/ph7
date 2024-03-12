@@ -94,7 +94,8 @@ jobs:
       - name: Unittests
         run: |
           tox -e unittests
-      - name: Upload coverage reports to Codecov
+      - if: matrix.python-version == '3.10.9'
+        name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4.0.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
