@@ -235,9 +235,13 @@ print(template.render(context={"name": "Jane Doe"}))
 </html>
 ```
 <!-- end -->
+
 Using overridable views and reusable views you can create a modular and reusable codebase and save a lot of time an effort in the process.
+
 ## Function As View
+
 You can define your view as a python function create views based on conditions, using for loops or any other kind of logical operation to build your view.
+
 <!-- {"type": "html", "file": "examples/function_as_view.py"} -->
 ```python
 import typing as t
@@ -290,8 +294,67 @@ print(template.render(context={}))
 </html>
 ```
 <!-- end -->
+
+You can also use named arguments instead of context argument to make thing more simple.
+
+<!-- {"type": "html", "file": "examples/function_as_view_with_args.py"} -->
+```python
+import typing as t
+
+from ph7.html import body, div, html, node
+
+user = div(class_name="user")
+users = div(class_name="user")
+nousers = div("Error, Users not found", class_name="error")
+
+
+def render_users(number_of_users: t.Optional[int] = None) -> node:
+    """Render users."""
+    if number_of_users is None:
+        return nousers
+    return users(user(f"User {i}") for i in range(number_of_users))
+
+
+template = html(
+    body(
+        render_users,
+    )
+)
+
+print("<!-- With `number_of_users` parameter -->\n")
+print(template.render(context={"number_of_users": 5}), end="\n\n")
+
+print("<!-- Without `number_of_users` parameter -->\n")
+print(template.render(context={}))
+```
+
+```html
+<!-- With `number_of_users` parameter -->
+<html>
+  <body>
+    <div class="user">
+      <div class="user">User 0</div>
+      <div class="user">User 1</div>
+      <div class="user">User 2</div>
+      <div class="user">User 3</div>
+      <div class="user">User 4</div>
+    </div>
+  </body>
+</html>
+<!-- Without `number_of_users` parameter -->
+<html>
+  <body>
+    <div class="error">Error, Users not found</div>
+  </body>
+</html>
+```
+<!-- end -->
+
+
 ## Caching
+
 Since you can define your views as python functions you can also use caching utilities like `functools.lru_cache` to reduce rendering time.
+
 <!-- {"type": "stdout", "file": "examples/cacheable_view.py"} -->
 ```python
 import time
@@ -338,9 +401,9 @@ print(f"Third render: {time.perf_counter() - tick}")
 ```
 
 ```stdout
-First render: 6.383804208
-Second render: 0.35257962499999973
-Third render: 0.34973895799999966
+First render: 6.87079775
+Second render: 0.3591619169999998
+Third render: 0.3592319160000006
 ```
 <!-- end -->
 
