@@ -108,7 +108,7 @@ class Environment:
                 continue
             try:
                 obj.render(context=context)
-            except Exception as e:
+            except Exception as e:  # pylint: disable=broad-exception-caught
                 errors.append(str(e))
 
         if len(errors) == 0:
