@@ -1,10 +1,20 @@
 from javascript.templates.script import fetchDog
-from javascript.templates.styles import image, main
+from javascript.templates.styles import container, image
 
 from ph7.context import ctx
 from ph7.html import body, button, div, head, html, img
 
 ctx.static.view(__name__)
+
+
+def _fetch():
+    return button(
+        "Click to fetch a dog",
+        on={
+            "click": fetchDog(),
+        },
+    )
+
 
 template = html(
     head(
@@ -18,13 +28,8 @@ template = html(
                 alt="Click to fetch dog",
                 class_name=image,
             ),
-            button(
-                "Click to fetch a dog",
-                on={
-                    "click": fetchDog(),
-                },
-            ),
-            class_name=main,
+            _fetch,
+            class_name=container,
         )
     ),
 )

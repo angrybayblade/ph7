@@ -1,7 +1,7 @@
 from ph7 import CSSObject
 
 
-class main(CSSObject):
+class container(CSSObject):
     display = "flex"
     justify_content = "center"
     align_items = "center"

@@ -14,7 +14,7 @@ template = html(
     body(
         div(
             "Hello, World!",
-            class_name=stylesheet.main,
+            class_name=stylesheet.container,
         )
     ),
 )
