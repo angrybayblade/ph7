@@ -1,3 +1,9 @@
+# v0.1.0-rc3 (12-03-2024)
+
+* Adds support for named arguments on view based function
+* Adds support for pseudo selectors
+* Adds mock context and dry run support on the Django engine
+
 # v0.1.0-rc2 (11-03-2024)
 
 * Adds support for dry-runs on Django engine for functional resource collection
