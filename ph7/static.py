@@ -4,7 +4,7 @@ Static content helpers.
 
 import typing as t
 
-from ph7.base import node
+from ph7.core.html import node
 from ph7.css import CSSObject
 from ph7.css import render as to_css
 from ph7.html import script, style, unpack

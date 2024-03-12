@@ -19,8 +19,6 @@ from ph7.style import attributes as _styles
 
 TEMPLATE_RE = re.compile(r"\$\{([a-z0-9_]+)(\|([a-zA-Z0-9_\. ]+))?\}")
 
-P = t.ParamSpec("P")
-
 
 def _wrap(child: "ChildType") -> t.Tuple["node", ...]:
     """Warp child as node type."""
@@ -283,7 +281,7 @@ class wrapper(node):
                 defaults[arg] = value
 
         for arg in signature.args:
-            if arg in kwargs:
+            if arg in kwargs or arg == "self":
                 continue
             args[arg] = signature.annotations.get(arg)
 

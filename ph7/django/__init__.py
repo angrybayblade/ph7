@@ -2,11 +2,26 @@
 
 import typing as t
 
-from django.http import HttpRequest, HttpResponse, StreamingHttpResponse
-from django.template.loader import get_template
-
 from ph7.django.engine import PH7Templates, Template
 from ph7.html import input, node
+
+try:
+    from django.http import HttpRequest, HttpResponse, StreamingHttpResponse
+    from django.template.loader import get_template
+except ModuleNotFoundError:
+
+    class HttpRequest:  # type: ignore
+        """Dummy HttpRequest"""
+
+    class HttpResponse:  # type: ignore
+        """Dummy HttpResponse"""
+
+    class StreamingHttpResponse:  # type: ignore
+        """Dummy StreamingHttpResponse"""
+
+    def get_template(template_name: str, using: t.Optional[str] = None) -> t.Any:
+        """Get template"""
+        return template_name, using
 
 
 def csrf_token(context: t.Dict) -> node:

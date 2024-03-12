@@ -6,7 +6,7 @@ from pathlib import Path
 
 from typing_extensions import NotRequired, TypedDict
 
-from ph7.base import node
+from ph7.core.html import node
 
 try:
     from django.http.request import HttpRequest

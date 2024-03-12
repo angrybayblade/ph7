@@ -41,7 +41,7 @@ This file is auto generated using scripts/render/html.py
 import typing as t
 from typing_extensions import Literal
 
-from ph7.base import node, ChildType, unpack as _unpack
+from ph7.core.html import node, ChildType, unpack as _unpack
 from ph7.style import Style
 from ph7.formatters import cformat
 from ph7.css import CSSObject

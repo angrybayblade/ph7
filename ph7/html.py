@@ -8,8 +8,8 @@ import typing as t
 
 from typing_extensions import Literal
 
-from ph7.base import ChildType, node
-from ph7.base import unpack as _unpack
+from ph7.core.html import ChildType, node
+from ph7.core.html import unpack as _unpack
 from ph7.css import CSSObject
 from ph7.formatters import cformat
 from ph7.js import Events as DOMEvents
