@@ -68,7 +68,7 @@ def cformat(
 
     if hasattr(class_name, "name"):
         ctx.static.add(resource=t.cast(CSSObject, class_name))
-        return t.cast(CSSObject, class_name).name()
+        return t.cast(CSSObject, class_name).format()
 
     if isinstance(class_name, str):
         return class_name
@@ -77,7 +77,7 @@ def cformat(
     for cls in class_name:
         if hasattr(cls, "name"):
             ctx.static.add(resource=t.cast(CSSObject, cls))
-            cls_name += f"{t.cast(CSSObject, cls).name()} "
+            cls_name += f"{t.cast(CSSObject, cls).format()} "
             continue
         cls_name += f"{cls} "
     return cls_name[:-1]

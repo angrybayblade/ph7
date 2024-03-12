@@ -6,7 +6,7 @@ import typing as t
 
 from ph7.core.html import HtmlNode
 from ph7.css import CSSObject
-from ph7.css import render as to_css
+from ph7.css import to_css as to_css
 from ph7.html import script, style, unpack
 from ph7.js import JavaScriptObject, JSCallable
 from ph7.js.transpile import to_js

@@ -8,13 +8,11 @@ import typing as t
 
 from typing_extensions import Literal
 
-from ph7.style import attributes as css_attr
+from ph7.core.css import CSSNode, to_css
 
 
-class CSSObject:
+class CSSObject(CSSNode):
     """CSS class representation."""
-
-    __css__ = True
 
     animation: Literal[  # type: ignore
         "animation-name",
@@ -842,11 +840,7 @@ class CSSObject:
     """gap: length | normal | initial | inherit;"""
 
     grid: Literal["none", "initial", "inherit", str]  # type: ignore
-    """
-    grid: none |grid-template-rows / grid-template-columns |grid-template-areas |
-    grid-template-rows / [grid-auto-flow] grid-auto-columns |
-    [grid-auto-flow] grid-auto-rows / grid-template-columns |initial | inherit;
-    """
+    """grid: none |grid-template-rows / grid-template-columns |grid-template-areas |grid-template-rows / [grid-auto-flow] grid-auto-columns |[grid-auto-flow] grid-auto-rows / grid-template-columns |initial | inherit;"""
 
     grid_auto_columns: Literal[  # type: ignore
         "auto", "min-content", "max-content", "minmax(min.max)", "length", "%", str
@@ -1403,64 +1397,8 @@ class CSSObject:
     ]
     """writing-mode: horizontal-tb | vertical-rl | vertical-lr;"""
 
-    @classmethod
-    def name(cls) -> str:
-        """Name string."""
-        return cls.__name__.replace("_", "-")
-
-    @classmethod
-    def properties(cls) -> t.Dict[str, str]:
-        """Returns properties mapping."""
-        properties = {}
-        for base in cls.__bases__:
-            if hasattr(base, "properties"):
-                properties.update(base.properties())
-        for prop, val in cls.__dict__.items():
-            if isinstance(val, str) and not prop.startswith("__"):
-                properties[css_attr[prop]] = val
-        return properties
-
-    @classmethod
-    def subclasses(cls) -> t.List["CSSObject"]:
-        """Returns the list of available subclasses."""
-        cs = []
-        for c in cls.__dict__.values():
-            if hasattr(c, "properties"):
-                cs.append(c)
-        return cs
-
     def __str__(self) -> str:
-        """String represenstation."""
-        return render(self, minify=False)
+        """String representation."""
+        return to_css(self)
 
     __repr__ = __str__
-
-
-def _render(
-    obj: t.Union[CSSObject, t.Type[CSSObject]], parent: str, container: t.Dict
-) -> None:
-    """Render CSS object."""
-    container[f"{parent} .{obj.name()}"[1:]] = obj.properties()
-    for subc in obj.subclasses():
-        _render(
-            obj=subc,
-            parent=f"{parent} .{obj.name()}",
-            container=container,
-        )
-
-
-def render(*objs: t.Union[CSSObject, t.Type[CSSObject]], minify: bool = False) -> str:
-    """Render CSS stylesheet."""
-    sheet = ""
-    container: t.Dict[str, t.Dict] = {}
-    separator = "" if minify else " "
-    newline = "" if minify else "\n"
-    tab = "" if minify else "  "
-    for obj in objs:
-        _render(obj=obj, parent="", container=container)
-    for cls in sorted(container):
-        sheet += f"{cls}" + "{" + newline
-        for prop, val in container[cls].items():
-            sheet += f"{tab}{prop}:{separator}{val};{newline}"
-        sheet += "}" + newline
-    return sheet

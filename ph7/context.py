@@ -6,7 +6,7 @@ import typing as t
 from pathlib import Path
 
 from ph7.css import CSSObject
-from ph7.css import render as to_css
+from ph7.css import to_css as to_css
 from ph7.js import JavaScriptObject, JSCallable
 from ph7.js.transpile import to_js
 
