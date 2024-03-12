@@ -11,13 +11,21 @@ class CSSNode:
 
     __css__: bool = True
 
+    child: t.Optional[int] = None
+
     @classmethod
     def name(cls) -> str:
         """Name string."""
         name = cls.__name__.replace("_", "-")
         if name in TAGS:
             return name
-        return f".{name}"
+        if name.startswith("--"):
+            return f"::{name[2:]}"
+        if name.startswith("-") and cls.child is not None:
+            return f":{name[1:]}({cls.child})"
+        if name.startswith("-"):
+            return f":{name[1:]}"
+        return f" .{name}"
 
     @classmethod
     def format(cls) -> str:
@@ -53,10 +61,10 @@ class CSSNode:
     @classmethod
     def dict(cls, parent: str, context: t.Dict) -> None:
         """Render CSS object."""
-        context[f"{parent} {cls.name()}"[1:]] = cls.properties()
+        context[f"{parent}{cls.name()}"[1:]] = cls.properties()
         for subc in cls.subclasses():
             subc.dict(
-                parent=f"{parent} {cls.name()}",
+                parent=f"{parent}{cls.name()}",
                 context=context,
             )
 
