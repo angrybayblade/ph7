@@ -1,5 +1,4 @@
-from ph7 import CSSObject, include
-from ph7.html import body, div, head, html
+from ph7 import CSSObject
 
 
 class flex_center(CSSObject):
@@ -17,16 +16,4 @@ class textbox(flex_center):
     width = "100vw"
 
 
-template = html(
-    head(
-        include(textbox),
-    ),
-    body(
-        div(
-            "Hello, World!",
-            class_name=[textbox],
-        )
-    ),
-)
-
-print(template)
+print(textbox())

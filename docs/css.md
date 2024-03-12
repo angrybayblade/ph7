@@ -41,6 +41,7 @@ print(template)
 ## CSSObject
 
 Using `style` object is not the only way to develop CSS with PH7, You can utilise a special class called `CSSObject` to define stylesheets.
+
 <!-- {"type": "html", "file": "examples/css_cls.py", "class": "side-by-side"} -->
 <div class='side-by-side'>
 ```python
@@ -96,11 +97,10 @@ print(template)
 
 A `CSSObject` can also be reused via class inheritance. You can define a base CSS class and reuse it however many times you like.
 
-<!-- {"type": "html", "file": "examples/css_inherit.py", "class": "side-by-side"} -->
+<!-- {"type": "css", "file": "examples/css_inherit.py", "class": "side-by-side"} -->
 <div class='side-by-side'>
 ```python
-from ph7 import CSSObject, include
-from ph7.html import body, div, head, html
+from ph7 import CSSObject
 
 
 class flex_center(CSSObject):
@@ -118,49 +118,27 @@ class textbox(flex_center):
     width = "100vw"
 
 
-template = html(
-    head(
-        include(textbox),
-    ),
-    body(
-        div(
-            "Hello, World!",
-            class_name=[textbox],
-        )
-    ),
-)
-
-print(template)
+print(textbox())
 ```
 
-```html
-<html>
-  <head>
-    <style>
-      .textbox {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        width: 100vw;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="textbox">Hello, World!</div>
-  </body>
-</html>
+```css
+.textbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
 ```
 </div>
 <!-- end -->
 
 Furthermore `CSSObject` also allows for nesting by sub classes.
 
-<!-- {"type": "html", "file": "examples/css_nesting.py", "class": "side-by-side"} -->
+<!-- {"type": "css", "file": "examples/css_nesting.py", "class": "side-by-side"} -->
 <div class='side-by-side'>
 ```python
-from ph7 import CSSObject, include
-from ph7.html import body, div, head, html
+from ph7 import CSSObject
 
 
 class flex_center(CSSObject):
@@ -185,53 +163,78 @@ class textbox(flex_center):
         font_family = "Lucida Console, Monaco, monospace"
 
 
-template = html(
-    head(
-        include(textbox),
-    ),
-    body(
-        div(
-            div(
-                "Hello, World!",
-                class_name=[textbox.text],
-            ),
-            class_name=[textbox],
-        )
-    ),
-)
-
-print(template)
+print(textbox())
 ```
 
-```html
-<html>
-  <head>
-    <style>
-      .textbox {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        width: 100vw;
-      }
-      .textbox .text {
-        font-size: 12px;
-        font-weight: 500;
-        font-family: Lucida Console, Monaco, monospace;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="textbox">
-      <div class="text">Hello, World!</div>
-    </div>
-  </body>
-</html>
+```css
+.textbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+.textbox .text {
+  font-size: 12px;
+  font-weight: 500;
+  font-family: Lucida Console, Monaco, monospace;
+}
 ```
 </div>
 <!-- end -->
 
 To make your styles more manageable and reusable, you can define the styles in a separate module and import them throughout your codebase. Following section provides an example of a reusable stylesheet module.
+
+## Pseudo Classes and Elements
+
+A pseudo class can be defined by adding `_` at the beginning of class name, for selecting a child you can set `child` parameter. For pseudo, elements add `__` at the beginning of the class name.
+
+<!-- {"type": "css", "file": "examples/css_pseudo_class.py", "class": "side-by-side"} -->
+<div class='side-by-side'>
+```python
+from ph7 import CSSObject, include
+from ph7.html import body, div, head, html
+
+
+class item(CSSObject):
+    """Flex center."""
+
+    height = "30px"
+    width = "100%"
+
+    margin_top = "5px"
+
+    class _nth_child(CSSObject):
+        """Nth child."""
+
+        child = 1
+        margin_top = "0px"
+
+    class __before(CSSObject):
+        """Before selector."""
+
+        content = '">"'
+
+
+print(item())
+```
+
+```css
+.item {
+  height: 30px;
+  width: 100%;
+  margin-top: 5px;
+}
+.item::before {
+  content: ">";
+}
+.item:nth-child(1) {
+  margin-top: 0px;
+}
+```
+</div>
+<!-- end -->
+
 
 ## Static Context
 
