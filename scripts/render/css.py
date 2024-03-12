@@ -26,8 +26,6 @@ This file is auto generated using scripts/render/css.py
 
 # pylint: disable=line-too-long,too-many-lines,redefined-outer-name,redefined-builtin,invalid-name,too-many-locals
 
-import typing as t
-
 from typing_extensions import Literal
 
 from ph7.core.css import CSSNode, to_css
