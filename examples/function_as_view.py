@@ -8,7 +8,6 @@ nousers = div("Error, Users not found", class_name="error")
 
 
 def render_users(context: t.Dict) -> HtmlNode:
-    """Render users."""
     if "number_of_users" not in context:
         return nousers
     return users(user(f"User {i}") for i in range(context["number_of_users"]))

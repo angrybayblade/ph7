@@ -26,7 +26,6 @@ def _user(name: str) -> HtmlNode:
 
 
 def _users(context: dict) -> HtmlNode:
-    """List users."""
     return div(_user(name=name) for name in context["users"])
 
 

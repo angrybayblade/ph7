@@ -3,8 +3,6 @@ from ph7.html import body, div, head, html
 
 
 class flex_center(CSSObject):
-    """Flex center."""
-
     display = "flex"
     align_items = "center"
     justify_content = "center"

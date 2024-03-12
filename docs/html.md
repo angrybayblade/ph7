@@ -254,7 +254,6 @@ nousers = div("Error, Users not found", class_name="error")
 
 
 def render_users(context: t.Dict) -> HtmlNode:
-    """Render users."""
     if "number_of_users" not in context:
         return nousers
     return users(user(f"User {i}") for i in range(context["number_of_users"]))
@@ -309,7 +308,6 @@ nousers = div("Error, Users not found", class_name="error")
 
 
 def render_users(number_of_users: t.Optional[int] = None) -> HtmlNode:
-    """Render users."""
     if number_of_users is None:
         return nousers
     return users(user(f"User {i}") for i in range(number_of_users))
@@ -370,12 +368,10 @@ nousers = div("Error, Users not found", class_name="error")
 
 @lru_cache
 def _render_users(n: int) -> HtmlNode:
-    """Render users."""
     return users(user(f"User {i}") for i in range(n))
 
 
 def render_users(context: t.Dict) -> HtmlNode:
-    """Render users."""
     if "number_of_users" not in context:
         return nousers
     return _render_users(n=context["number_of_users"])
@@ -401,9 +397,9 @@ print(f"Third render: {time.perf_counter() - tick}")
 ```
 
 ```stdout
-First render: 6.493273332999999
-Second render: 0.4277449579999999
-Third render: 0.3591492089999999
+First render: 6.325592083
+Second render: 0.3570236659999999
+Third render: 0.3628813340000008
 ```
 <!-- end -->
 

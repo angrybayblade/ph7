@@ -8,7 +8,6 @@ nousers = div("Error, Users not found", class_name="error")
 
 
 def render_users(number_of_users: t.Optional[int] = None) -> HtmlNode:
-    """Render users."""
     if number_of_users is None:
         return nousers
     return users(user(f"User {i}") for i in range(number_of_users))
