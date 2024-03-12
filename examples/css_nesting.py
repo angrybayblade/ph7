@@ -1,5 +1,4 @@
-from ph7 import CSSObject, include
-from ph7.html import body, div, head, html
+from ph7 import CSSObject
 
 
 class flex_center(CSSObject):
@@ -24,19 +23,4 @@ class textbox(flex_center):
         font_family = "Lucida Console, Monaco, monospace"
 
 
-template = html(
-    head(
-        include(textbox),
-    ),
-    body(
-        div(
-            div(
-                "Hello, World!",
-                class_name=[textbox.text],
-            ),
-            class_name=[textbox],
-        )
-    ),
-)
-
-print(template)
+print(textbox())
