@@ -246,14 +246,14 @@ You can define your view as a python function create views based on conditions, 
 ```python
 import typing as t
 
-from ph7.html import body, div, html, node
+from ph7.html import HtmlNode, body, div, html
 
 user = div(class_name="user")
 users = div(class_name="user")
 nousers = div("Error, Users not found", class_name="error")
 
 
-def render_users(context: t.Dict) -> node:
+def render_users(context: t.Dict) -> HtmlNode:
     """Render users."""
     if "number_of_users" not in context:
         return nousers
@@ -301,14 +301,14 @@ You can also use named arguments instead of context argument to make thing more 
 ```python
 import typing as t
 
-from ph7.html import body, div, html, node
+from ph7.html import HtmlNode, body, div, html
 
 user = div(class_name="user")
 users = div(class_name="user")
 nousers = div("Error, Users not found", class_name="error")
 
 
-def render_users(number_of_users: t.Optional[int] = None) -> node:
+def render_users(number_of_users: t.Optional[int] = None) -> HtmlNode:
     """Render users."""
     if number_of_users is None:
         return nousers
@@ -361,7 +361,7 @@ import time
 import typing as t
 from functools import lru_cache
 
-from ph7.html import body, div, html, node
+from ph7.html import HtmlNode, body, div, html
 
 user = div(class_name="user")
 users = div(class_name="user")
@@ -369,12 +369,12 @@ nousers = div("Error, Users not found", class_name="error")
 
 
 @lru_cache
-def _render_users(n: int) -> node:
+def _render_users(n: int) -> HtmlNode:
     """Render users."""
     return users(user(f"User {i}") for i in range(n))
 
 
-def render_users(context: t.Dict) -> node:
+def render_users(context: t.Dict) -> HtmlNode:
     """Render users."""
     if "number_of_users" not in context:
         return nousers
@@ -401,9 +401,9 @@ print(f"Third render: {time.perf_counter() - tick}")
 ```
 
 ```stdout
-First render: 6.87079775
-Second render: 0.3591619169999998
-Third render: 0.3592319160000006
+First render: 6.493273332999999
+Second render: 0.4277449579999999
+Third render: 0.3591492089999999
 ```
 <!-- end -->
 
