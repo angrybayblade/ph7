@@ -3,7 +3,7 @@
 import typing as t
 
 from ph7.django.engine import PH7Templates, Template
-from ph7.html import input, node
+from ph7.html import input, HtmlNode
 
 try:
     from django.http import HttpRequest, HttpResponse, StreamingHttpResponse
@@ -24,7 +24,7 @@ except ModuleNotFoundError:
         return template_name, using
 
 
-def csrf_token(context: t.Dict) -> node:
+def csrf_token(context: t.Dict) -> HtmlNode:
     """CSRF Token input generator."""
     return input(
         hidden="true",

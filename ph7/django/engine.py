@@ -6,7 +6,7 @@ from pathlib import Path
 
 from typing_extensions import NotRequired, TypedDict
 
-from ph7.core.html import node
+from ph7.core.html import HtmlNode
 
 try:
     from django.http.request import HttpRequest
@@ -104,7 +104,7 @@ class Environment:
         errors = []
         for name in dir(module):
             obj = getattr(module, name)
-            if not isinstance(obj, node):
+            if not isinstance(obj, HtmlNode):
                 continue
             try:
                 obj.render(context=context)
@@ -177,7 +177,7 @@ class PH7Templates(BaseEngine):
 class Template:
     """Template class."""
 
-    def __init__(self, template: node, view: str) -> None:
+    def __init__(self, template: HtmlNode, view: str) -> None:
         """Initialize object."""
         self.view = view
         self.template = template

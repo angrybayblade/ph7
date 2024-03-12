@@ -2,7 +2,7 @@ import time
 import typing as t
 from functools import lru_cache
 
-from ph7.html import body, div, html, node
+from ph7.html import body, div, html, HtmlNode
 
 user = div(class_name="user")
 users = div(class_name="user")
@@ -10,12 +10,12 @@ nousers = div("Error, Users not found", class_name="error")
 
 
 @lru_cache
-def _render_users(n: int) -> node:
+def _render_users(n: int) -> HtmlNode:
     """Render users."""
     return users(user(f"User {i}") for i in range(n))
 
 
-def render_users(context: t.Dict) -> node:
+def render_users(context: t.Dict) -> HtmlNode:
     """Render users."""
     if "number_of_users" not in context:
         return nousers

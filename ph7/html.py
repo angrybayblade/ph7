@@ -5,15 +5,13 @@ This file is auto generated using scripts/render/html.py
 # pylint: disable=line-too-long,too-many-lines,redefined-outer-name,redefined-builtin,invalid-name,too-many-locals
 
 import typing as t
-
 from typing_extensions import Literal
 
-from ph7.core.html import ChildType, node
-from ph7.core.html import unpack as _unpack
-from ph7.css import CSSObject
-from ph7.formatters import cformat
-from ph7.js import Events as DOMEvents
+from ph7.core.html import ChildType, HtmlNode, UnpackableNode
 from ph7.style import Style
+from ph7.formatters import cformat
+from ph7.css import CSSObject
+from ph7.js import Events as DOMEvents
 
 
 def a(
@@ -56,9 +54,9 @@ def a(
     download: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """A node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "href": href,
@@ -94,9 +92,9 @@ def abbr(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Abbr node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "title": title,
@@ -121,9 +119,9 @@ def address(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Address node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -170,9 +168,9 @@ def area(
     download: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Area node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "shape": shape,
@@ -207,9 +205,9 @@ def article(
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Article node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -235,9 +233,9 @@ def aside(
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Aside node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -271,9 +269,9 @@ def audio(
     crossorigin: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Audio node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "controls": controls,
@@ -306,9 +304,9 @@ def b(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """B node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -330,9 +328,9 @@ def base(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Base node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "href": href,
@@ -359,9 +357,9 @@ def blockquote(
     title: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Blockquote node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "cite": cite,
@@ -387,9 +385,9 @@ def body(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Body node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -407,9 +405,9 @@ def br(
     clear: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Br node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "clear": clear,
@@ -448,9 +446,9 @@ def button(
     autofocus: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Button node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "type": type,
@@ -492,9 +490,9 @@ def canvas(
     title: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Canvas node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "height": height,
@@ -522,9 +520,9 @@ def caption(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Caption node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -541,9 +539,9 @@ def cite(
     *children: ChildType,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Cite node."""
-    return node(
+    return HtmlNode(
         *children, attributes={}, style=style, on=on, name="cite", content_allowed=True
     )
 
@@ -559,9 +557,9 @@ def code(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Code node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -586,9 +584,9 @@ def col(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Col node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "span": span,
@@ -608,9 +606,9 @@ def colgroup(
     id: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Colgroup node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "span": span,
@@ -629,9 +627,9 @@ def data(
     id: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Data node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "value": value,
@@ -649,9 +647,9 @@ def datalist(
     id: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Datalist node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -674,9 +672,9 @@ def dd(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Dd node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -701,9 +699,9 @@ def details(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Details node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "open": open,
@@ -729,9 +727,9 @@ def div(
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Div node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -756,9 +754,9 @@ def dl(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Dl node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -782,9 +780,9 @@ def dt(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Dt node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -808,9 +806,9 @@ def em(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Em node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -838,9 +836,9 @@ def embed(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Embed node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "height": height,
@@ -871,9 +869,9 @@ def fieldset(
     disabled: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Fieldset node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -900,9 +898,9 @@ def figcaption(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Figcaption node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -928,9 +926,9 @@ def figure(
     title: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Figure node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -957,9 +955,9 @@ def footer(
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Footer node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -1001,9 +999,9 @@ def form(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Form node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "action": action,
@@ -1034,9 +1032,9 @@ def h1(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """H1 node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -1060,9 +1058,9 @@ def h2(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """H2 node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -1086,9 +1084,9 @@ def h3(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """H3 node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -1112,9 +1110,9 @@ def h4(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """H4 node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -1138,9 +1136,9 @@ def h5(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """H5 node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -1164,9 +1162,9 @@ def h6(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """H6 node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -1184,9 +1182,9 @@ def head(
     profile: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Head node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "profile": profile,
@@ -1210,9 +1208,9 @@ def header(
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Header node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -1236,9 +1234,9 @@ def hr(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Hr node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "class": cformat(class_name),
@@ -1256,9 +1254,9 @@ def html(
     lang: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Html node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "xmlns": xmlns,
@@ -1282,9 +1280,9 @@ def i(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """I node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -1317,9 +1315,9 @@ def iframe(
     sandbox: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Iframe node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "height": height,
@@ -1364,9 +1362,9 @@ def img(
     crossorigin: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Img node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "src": src,
@@ -1463,9 +1461,9 @@ def input(
     dirname: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Input node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "type": type,
@@ -1525,9 +1523,9 @@ def ins(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Ins node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "datetime": datetime,
@@ -1553,9 +1551,9 @@ def kbd(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Kbd node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -1582,9 +1580,9 @@ def label(
     title: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Label node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "for": for_html,
@@ -1611,9 +1609,9 @@ def legend(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Legend node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -1640,9 +1638,9 @@ def li(
     title: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Li node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "value": value,
@@ -1684,9 +1682,9 @@ def link(
     crossorigin: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Link node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "href": href,
@@ -1717,9 +1715,9 @@ def main(
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Main node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -1739,9 +1737,9 @@ def map(
     id: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Map node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "name": name,
@@ -1765,9 +1763,9 @@ def mark(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Mark node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -1789,9 +1787,9 @@ def meta(
     id: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Meta node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "name": name,
@@ -1827,9 +1825,9 @@ def meter(
     form: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Meter node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "value": value,
@@ -1863,9 +1861,9 @@ def nav(
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Nav node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -1884,9 +1882,9 @@ def noscript(
     id: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Noscript node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -1917,9 +1915,9 @@ def object(
     usemap: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Object node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "data": data,
@@ -1955,9 +1953,9 @@ def ol(
     reversed: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Ol node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "type": type,
@@ -1988,9 +1986,9 @@ def optgroup(
     disabled: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Optgroup node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "label": label,
@@ -2022,9 +2020,9 @@ def option(
     disabled: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Option node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "label": label,
@@ -2056,9 +2054,9 @@ def output(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Output node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "for": for_html,
@@ -2086,9 +2084,9 @@ def p(
     lang: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """P node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -2109,9 +2107,9 @@ def param(
     id: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Param node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "name": name,
@@ -2138,9 +2136,9 @@ def picture(
     title: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Picture node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -2168,9 +2166,9 @@ def pre(
     title: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Pre node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -2200,9 +2198,9 @@ def progress(
     title: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Progress node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "max": max,
@@ -2231,9 +2229,9 @@ def q(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Q node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "cite": cite,
@@ -2251,9 +2249,9 @@ def rp(
     *children: ChildType,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Rp node."""
-    return node(
+    return HtmlNode(
         *children, attributes={}, style=style, on=on, name="rp", content_allowed=True
     )
 
@@ -2262,9 +2260,9 @@ def rt(
     *children: ChildType,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Rt node."""
-    return node(
+    return HtmlNode(
         *children, attributes={}, style=style, on=on, name="rt", content_allowed=True
     )
 
@@ -2273,9 +2271,9 @@ def ruby(
     *children: ChildType,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Ruby node."""
-    return node(
+    return HtmlNode(
         *children, attributes={}, style=style, on=on, name="ruby", content_allowed=True
     )
 
@@ -2291,9 +2289,9 @@ def samp(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Samp node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -2317,9 +2315,9 @@ def script(
     crossorigin: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Script node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "src": src,
@@ -2349,9 +2347,9 @@ def section(
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Section node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -2386,9 +2384,9 @@ def select(
     size: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Select node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "name": name,
@@ -2422,9 +2420,9 @@ def small(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Small node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -2447,9 +2445,9 @@ def source(
     sizes: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Source node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "src": src,
@@ -2479,9 +2477,9 @@ def span(
     title: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Span node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -2507,9 +2505,9 @@ def strong(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Strong node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -2529,9 +2527,9 @@ def style(
     id: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Style node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "media": media,
@@ -2556,9 +2554,9 @@ def sub(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Sub node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -2582,9 +2580,9 @@ def summary(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Summary node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -2608,9 +2606,9 @@ def sup(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Sup node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -2640,9 +2638,9 @@ def svg(
     preserveAspectRatio: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Svg node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "viewBox": viewBox,
@@ -2674,9 +2672,9 @@ def table(
     title: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Table node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -2703,9 +2701,9 @@ def tbody(
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Tbody node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -2734,9 +2732,9 @@ def td(
     headers: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Td node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "rowspan": rowspan,
@@ -2764,9 +2762,9 @@ def template(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Template node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -2807,9 +2805,9 @@ def textarea(
     wrap: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Textarea node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -2851,9 +2849,9 @@ def tfoot(
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Tfoot node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -2884,9 +2882,9 @@ def th(
     abbr: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Th node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "colspan": colspan,
@@ -2917,9 +2915,9 @@ def thead(
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Thead node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -2945,9 +2943,9 @@ def time(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Time node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "datetime": datetime,
@@ -2965,9 +2963,9 @@ def title(
     *children: ChildType,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Title node."""
-    return node(
+    return HtmlNode(
         *children, attributes={}, style=style, on=on, name="title", content_allowed=True
     )
 
@@ -2985,9 +2983,9 @@ def tr(
     title: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Tr node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -3012,9 +3010,9 @@ def track(
     id: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Track node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "src": src,
@@ -3042,9 +3040,9 @@ def u(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """U node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -3069,9 +3067,9 @@ def ul(
     hidden: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Ul node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -3096,9 +3094,9 @@ def var(
     ] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Var node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "id": id,
@@ -3134,9 +3132,9 @@ def video(
     crossorigin: t.Optional[str] = None,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Video node."""
-    return node(
+    return HtmlNode(
         *children,
         attributes={
             "height": height,
@@ -3165,13 +3163,13 @@ def wbr(
     *children: ChildType,
     style: t.Optional[Style] = None,
     on: t.Optional[DOMEvents] = None,
-) -> node:
+) -> HtmlNode:
     """Wbr node."""
-    return node(
+    return HtmlNode(
         *children, attributes={}, style=style, on=on, name="wbr", content_allowed=True
     )
 
 
-def unpack(*children: ChildType) -> node:
+def unpack(*children: ChildType) -> HtmlNode:
     """Unpackable node."""
-    return _unpack(*children)
+    return UnpackableNode(*children)

@@ -4,7 +4,7 @@ Static content helpers.
 
 import typing as t
 
-from ph7.core.html import node
+from ph7.core.html import HtmlNode
 from ph7.css import CSSObject
 from ph7.css import render as to_css
 from ph7.html import script, style, unpack
@@ -20,7 +20,7 @@ def is_css(obj: t.Any):
 def include(
     *objs: t.Union[CSSObject, JavaScriptObject],
     minify: bool = True,
-) -> node:
+) -> HtmlNode:
     """Include css objects."""
     styles: t.List[t.Union[CSSObject, t.Type[CSSObject]]] = []
     scripts: t.List[JavaScriptObject] = []
