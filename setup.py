@@ -28,7 +28,7 @@ setup(
     ],
     keywords="html, css, js, templates, django",
     packages=find_packages(include=["ph7*"]),
-    python_requires=">=3.7, <4",
+    python_requires=">=3.9, <4",
     install_requires=[],
     package_data={
         "ph7": [
