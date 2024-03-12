@@ -11,12 +11,10 @@ nousers = div("Error, Users not found", class_name="error")
 
 @lru_cache
 def _render_users(n: int) -> HtmlNode:
-    """Render users."""
     return users(user(f"User {i}") for i in range(n))
 
 
 def render_users(context: t.Dict) -> HtmlNode:
-    """Render users."""
     if "number_of_users" not in context:
         return nousers
     return _render_users(n=context["number_of_users"])
