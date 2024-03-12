@@ -4,6 +4,7 @@ Base class for defining HTML nodes.
 
 # pylint: disable=line-too-long,too-many-lines,redefined-outer-name,redefined-builtin,invalid-name,too-many-locals
 
+import inspect
 import re
 import typing as t
 from pathlib import Path
@@ -263,6 +264,52 @@ class wrapper(node):
         self.templates = {}
         self._is_overridable = False
         self._overridable_name = None
+        self.call = self._generate_call_signature()
+
+    def _generate_call_signature(self) -> t.Callable[[t.Dict], node]:
+        """Generate call signature for view."""
+        args = {}
+        kwargs = {}
+        defaults = {}
+        signature = inspect.getfullargspec(self.view)
+
+        if signature.defaults is not None:
+            for arg, value in zip(
+                reversed(signature.args), reversed(signature.defaults)
+            ):
+                kwargs[arg] = signature.annotations.get(arg)
+                defaults[arg] = value
+
+        for arg in signature.args:
+            if arg in kwargs:
+                continue
+            args[arg] = signature.annotations.get(arg)
+
+        def call(context: t.Dict) -> node:
+            """Render a callable view."""
+            call_args = {}
+            call_kwargs = {}
+            for arg in args:
+                if arg == "context":
+                    call_args[arg] = context
+                    continue
+                if arg not in context:
+                    raise ValueError(
+                        f"Error calling '{self.view.__module__}.{self.view.__name__}'; "
+                        f"Value for argument '{arg}' not provided"
+                    )
+                call_args[arg] = context[arg]
+            for kwarg in kwargs:
+                if kwarg == "context":
+                    call_kwargs[kwarg] = context
+                    continue
+                if kwarg not in context:
+                    call_kwargs[kwarg] = defaults[kwarg]
+                    continue
+                call_kwargs[kwarg] = context[kwarg]
+            return self.view(**call_args, **call_kwargs)
+
+        return call
 
     def copy(self) -> "node":
         """Copy data node."""
@@ -270,14 +317,14 @@ class wrapper(node):
 
     def render(self, context: t.Dict) -> str:
         """Render string."""
-        return self.view(context).render(context=context)
+        return self.call(context).render(context=context)
 
     def stream(
         self,
         context: t.Dict,
     ) -> t.Generator[str, None, None]:
         """Stream chunks of response."""
-        yield from self.view(context).stream(context=context)
+        yield from self.call(context).stream(context=context)
 
 
 class data(node):
@@ -365,7 +412,7 @@ class unpack(node):
         yield from self._stream(context=context)
 
 
-CallableAsView = t.Callable[[t.Dict], node]
+CallableAsView = t.Callable[[], node]
 
 ChildTypeMeta = t.Union[node, str, int, float, bool, CallableAsView]
 
