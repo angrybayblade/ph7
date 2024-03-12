@@ -120,7 +120,6 @@ async function fetchDog() {
 PH7 is still in beta-development. It will be production ready with following enhancements
 
 - [ ] Remove performance bottlenecks
-- [ ] Dry run support
 - [ ] Unit testing support
 
 Further improvements
