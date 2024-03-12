@@ -45,14 +45,28 @@ class NotFound(Exception):
     """Template not found."""
 
 
-class _MockContext(dict):
-    def __init__(self, name: str) -> None:
+class _MockContext:
+    def __init__(self, name: str, data: t.Optional[t.Dict] = None) -> None:
         """Mock context."""
         self.name = name
+        self.data = data or {}
+
+    def __setitem__(self, __key: str, __value: t.Any) -> None:
+        """Set mock value."""
+        self.data[__key] = __value
 
     def __getitem__(self, name: str) -> "_MockContext":
         """Get mock item."""
-        return _MockContext(f"{self.name}->{name=}")
+        return self.data.get(
+            name,
+            _MockContext(
+                f"{self.name}->{name=}",
+                data=self.data,
+            ),
+        )
+
+    def __hash__(self) -> int:
+        return hash(self.name)
 
 
 class EngineOptions(TypedDict):
@@ -96,12 +110,17 @@ class Environment:
                 self.templates[".".join(path)] = module
                 self._dry_run(
                     module=module,
-                    context=mock_context or _MockContext("mock"),
+                    context=mock_context
+                    or t.cast(
+                        dict,
+                        _MockContext("mock"),
+                    ),
                 )
 
     def _dry_run(self, module: t.Any, context: t.Any) -> None:
         """Perform a dry run for a template module."""
         errors = []
+        context["_view"] = module.__name__
         for name in dir(module):
             obj = getattr(module, name)
             if not isinstance(obj, HtmlNode):
