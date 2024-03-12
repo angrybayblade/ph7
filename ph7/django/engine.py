@@ -94,12 +94,34 @@ class Environment:
                     path=str(template),
                 ).load_module()
                 self.templates[".".join(path)] = module
+                self._dry_run(
+                    module=module,
+                    context=mock_context or _MockContext("mock"),
+                )
 
-                # dry run
-                for name in dir(module):
-                    obj = getattr(module, name)
-                    if isinstance(obj, node):
-                        obj.render(context=mock_context or _MockContext("mock"))
+    def _dry_run(self, module: t.Any, context: t.Any) -> None:
+        """Perform a dry run for a template module."""
+        errors = []
+        for name in dir(module):
+            obj = getattr(module, name)
+            if not isinstance(obj, node):
+                continue
+            try:
+                obj.render(context=context)
+            except Exception as e:
+                errors.append(str(e))
+
+        if len(errors) == 0:
+            return
+
+        print(
+            "\n- ".join(
+                [
+                    f"[WARNING] Errors found while performing dry run for {module}",
+                    *errors,
+                ]
+            )
+        )
 
     def get(self, name: str, cls: t.Optional[str] = None) -> "Template":
         """Get PH7 node for `name`"""
