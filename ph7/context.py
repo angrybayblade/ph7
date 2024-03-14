@@ -161,7 +161,6 @@ class StaticContext:
         from ph7.html import unpack  # pylint: disable=import-outside-toplevel
 
         view = context["_view"]
-
         if view not in self.views["css"] and view not in self.cache["js"]:
             return unpack()
 
