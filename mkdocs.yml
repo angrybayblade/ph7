@@ -9,3 +9,4 @@ nav:
   - CSS: css.md
   - JS: js.md
   - Django: django.md
+  - Flask: flask.md
