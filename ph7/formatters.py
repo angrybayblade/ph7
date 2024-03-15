@@ -35,16 +35,16 @@ def hformat(handlers: t.Dict) -> str:
     for name, handler in handlers.items():
         if isinstance(handler, str):
             if "(" in handler and handler.endswith(")"):
-                formatted += f"on{name}='{handler}'"
+                formatted += f'on{name}="{handler}"'
                 continue
-            formatted += f"on{name}='{handler}()'"
+            formatted += f'on{name}="{handler}()"'
             continue
         if isinstance(handler, JSCallable):
-            formatted += f"on{name}={handler}"
+            formatted += f'on{name}="{handler}"'
             ctx.static.add(handler)
             continue
         ctx.static.add(handler)
-        formatted += f"on{name}={handler.__name__}()"
+        formatted += f'on{name}="{handler.__name__}()"'
     return formatted
 
 
