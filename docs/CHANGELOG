@@ -1,3 +1,9 @@
+# v0.1.0-rc4 (15-03-2024)
+
+* Adds template engine for Flask
+* Adds support for pseudo selector arguments via `__init_subclass__` method
+* Adds support for returning iterables on the functional views
+
 # v0.1.0-rc3 (12-03-2024)
 
 * Adds support for named arguments on view based function
