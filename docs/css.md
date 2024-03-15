@@ -189,8 +189,7 @@ class item(CSSObject):
 
     margin_top = "5px"
 
-    class _nth_child(CSSObject):
-        child = 1
+    class _nth_child(CSSObject, n=1):
         margin_top = "0px"
 
     class __before(CSSObject):

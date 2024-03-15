@@ -10,8 +10,11 @@ class CSSNode:
     """Renderable CSS node."""
 
     __css__: bool = True
+    __child__: t.Optional[int] = None
 
-    child: t.Optional[int] = None
+    def __init_subclass__(cls, n: t.Optional[int] = None) -> None:
+        """Initialize subclass."""
+        cls.__child__ = n
 
     @classmethod
     def name(cls) -> str:
@@ -21,8 +24,8 @@ class CSSNode:
             return name
         if name.startswith("--"):
             return f"::{name[2:]}"
-        if name.startswith("-") and cls.child is not None:
-            return f":{name[1:]}({cls.child})"
+        if name.startswith("-") and cls.__child__ is not None:
+            return f":{name[1:]}({cls.__child__})"
         if name.startswith("-"):
             return f":{name[1:]}"
         return f" .{name}"
