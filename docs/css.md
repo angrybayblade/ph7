@@ -276,7 +276,7 @@ print(template.render(context={"_view": __name__}))
   </head>
   <body>
     <div class="textbox">
-      <div class="text" onclick=alertHello('John Doe')>Click Here</div>
+      <div class="text" onclick="alertHello('John Doe')">Click Here</div>
     </div>
   </body>
 </html>
@@ -294,7 +294,7 @@ As you can see, the static context collects the various static resources and inc
   </head>
   <body>
     <div class="textbox">
-      <div class="text" onclick=alertHello('John Doe')>Click Here</div>
+      <div class="text" onclick="alertHello('John Doe')">Click Here</div>
     </div>
   </body>
 </html>

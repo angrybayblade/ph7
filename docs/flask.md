@@ -159,7 +159,7 @@ Write your scripts using the [`ph7.js`](/js) APIs.
 
 <!-- {"type": "html", "file": "examples/flask_app/templates/script.py", "input_only": true} -->
 ```python
-from ph7.js import alert, console, document, fetch, js_callable
+from ph7.js import console, document, fetch, js_callable
 
 
 @js_callable

@@ -76,7 +76,7 @@ print(template)
   <body>
     <div id="container" class="container">
       <div id="child" class="text bold teal">Example for different attributes</div>
-      <div onclick='sayHello()'>Clickable div</div>
+      <div onclick="sayHello()">Clickable div</div>
     </div>
   </body>
 </html>
@@ -397,9 +397,9 @@ print(f"Third render: {time.perf_counter() - tick}")
 ```
 
 ```stdout
-First render: 6.325592083
-Second render: 0.3570236659999999
-Third render: 0.3628813340000008
+First render: 4.100849833999746
+Second render: 0.1824485419992925
+Third render: 0.1806802080000125
 ```
 <!-- end -->
 

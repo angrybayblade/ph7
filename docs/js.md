@@ -79,7 +79,7 @@ print(template)
     </script>
   </head>
   <body>
-    <div><img src="#" alt="Click to fetch dog" id="image" style="height:200px;width:400px" /><button onclick=fetchDog()>Click to fetch a dog</button></div>
+    <div><img src="#" alt="Click to fetch dog" id="image" style="height:200px;width:400px" /><button onclick="fetchDog()">Click to fetch a dog</button></div>
   </body>
 </html>
 ```
@@ -149,8 +149,8 @@ print(template.render(context={"users": ["john.doe", "jane.doe"]}))
   </head>
   <body>
     <div>
-      <div><img src="#" id="image-john.doe" style="height:200px;width:400px" /><button onclick=fetchUserProfilePicture('john.doe')>Click to fetch john.doe's profile picture.</button></div>
-      <div><img src="#" id="image-jane.doe" style="height:200px;width:400px" /><button onclick=fetchUserProfilePicture('jane.doe')>Click to fetch jane.doe's profile picture.</button></div>
+      <div><img src="#" id="image-john.doe" style="height:200px;width:400px" /><button onclick="fetchUserProfilePicture('john.doe')">Click to fetch john.doe's profile picture.</button></div>
+      <div><img src="#" id="image-jane.doe" style="height:200px;width:400px" /><button onclick="fetchUserProfilePicture('jane.doe')">Click to fetch jane.doe's profile picture.</button></div>
     </div>
   </body>
 </html>
@@ -396,7 +396,7 @@ print(template.render(context={"_view": __name__}))
   </head>
   <body>
     <div class="textbox">
-      <div class="text" onclick=alertHello('John Doe')>Click Here</div>
+      <div class="text" onclick="alertHello('John Doe')">Click Here</div>
     </div>
   </body>
 </html>
@@ -414,7 +414,7 @@ As you can see, the static context collects the various static resources and inc
   </head>
   <body>
     <div class="textbox">
-      <div class="text" onclick=alertHello('John Doe')>Click Here</div>
+      <div class="text" onclick="alertHello('John Doe')">Click Here</div>
     </div>
   </body>
 </html>

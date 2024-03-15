@@ -248,15 +248,6 @@ from ph7.html import body, button, div, head, html, img
 ctx.static.view(__name__)
 
 
-def _fetch():
-    return button(
-        "Click to fetch a dog",
-        on={
-            "click": fetchDog(),
-        },
-    )
-
-
 template = html(
     head(
         ctx.static.include,
@@ -269,7 +260,12 @@ template = html(
                 alt="Click to fetch dog",
                 class_name=image,
             ),
-            _fetch,
+            button(
+                "Click to fetch a dog",
+                on={
+                    "click": fetchDog(),
+                },
+            ),
             class_name=container,
         )
     ),
