@@ -264,9 +264,10 @@ class WrapperNode(HtmlNode):
         self.templates = {}
         self._is_overridable = False
         self._overridable_name = None
-        self.call = self._generate_call_signature()
 
-    def _generate_call_signature(self) -> t.Callable[[t.Dict], HtmlNode]:
+        self._generate_call_signature()
+
+    def _generate_call_signature(self) -> None:
         """Generate call signature for view."""
         args = {}
         kwargs = {}
@@ -285,7 +286,9 @@ class WrapperNode(HtmlNode):
                 continue
             args[arg] = signature.annotations.get(arg)
 
-        def call(context: t.Dict) -> HtmlNode:
+        rtype = signature.annotations.get("return")
+
+        def call(context: t.Dict) -> t.Union[HtmlNode, t.Iterable]:
             """Render a callable view."""
             call_args = {}
             call_kwargs = {}
@@ -309,22 +312,62 @@ class WrapperNode(HtmlNode):
                 call_kwargs[kwarg] = context[kwarg]
             return self.view(**call_args, **call_kwargs)
 
-        return call
+        if rtype is None or rtype is t.Any:
+
+            def render(context: t.Dict) -> str:
+                """Render view."""
+                renderable = call(context)
+                if isinstance(renderable, t.Iterable):
+                    return "".join(
+                        [child.render(context=context) for child in renderable]
+                    )
+                return renderable.render(context=context)
+
+            def stream(context: t.Dict) -> t.Generator[str, None, None]:
+                """Stream chunks of response."""
+                renderable = call(context)
+                if isinstance(renderable, t.Iterable):
+                    for child in renderable:
+                        yield from child.stream(context=context)
+                yield from t.cast(HtmlNode, renderable).stream(context=context)
+
+        elif rtype in (list, t.List, tuple, t.Tuple, t.Generator):
+
+            def render(context: t.Dict) -> str:
+                """Render view."""
+                return "".join(
+                    [
+                        child.render(context=context)
+                        for child in t.cast(t.Iterable, call(context=context))
+                    ]
+                )
+
+            def stream(context: t.Dict) -> t.Generator[str, None, None]:
+                """Stream chunks of response."""
+                for child in t.cast(t.Iterable, call(context)):
+                    yield from child.stream(context=context)
+
+        elif rtype in (HtmlNode, DataNode, WrapperNode, UnpackableNode):
+
+            def render(context: t.Dict) -> str:
+                """Stream chunks of response."""
+                return t.cast(HtmlNode, call(context)).render(context=context)
+
+            def stream(context: t.Dict) -> t.Generator[str, None, None]:
+                """Stream chunks of response."""
+                yield from t.cast(HtmlNode, call(context)).stream(context=context)
+
+        else:
+            raise ValueError(
+                f"Invalid return type found for function {self.view.__name__}"
+            )
+
+        self.render = render  # type: ignore
+        self.stream = stream  # type: ignore
 
     def copy(self) -> "HtmlNode":
         """Copy data node."""
         return WrapperNode(view=self.view)
-
-    def render(self, context: t.Dict) -> str:
-        """Render string."""
-        return self.call(context).render(context=context)
-
-    def stream(
-        self,
-        context: t.Dict,
-    ) -> t.Generator[str, None, None]:
-        """Stream chunks of response."""
-        yield from self.call(context).stream(context=context)
 
 
 class DataNode(HtmlNode):
