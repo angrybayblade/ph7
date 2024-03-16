@@ -156,6 +156,26 @@ class StaticContext:
             for module in self.views["js"][view]
         )
 
+    def include_js(self, context: t.Dict) -> t.Any:
+        """Include js files."""
+        from ph7.html import unpack  # pylint: disable=import-outside-toplevel
+
+        view = context["_view"]
+        if view not in self.views["css"] and view not in self.cache["js"]:
+            return unpack()
+
+        return self._include_js(view=view)
+
+    def include_css(self, context: t.Dict) -> t.Any:
+        """Include css files."""
+        from ph7.html import unpack  # pylint: disable=import-outside-toplevel
+
+        view = context["_view"]
+        if view not in self.views["css"] and view not in self.cache["js"]:
+            return unpack()
+
+        return self._include_css(view=view)
+
     def include(self, context: t.Dict) -> t.Any:
         """Include static files."""
         from ph7.html import unpack  # pylint: disable=import-outside-toplevel

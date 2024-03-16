@@ -2,7 +2,7 @@
     <h1>💧 PH7</h1>
 </div>
 <div style="display:flex; align-items: center; justify-content: center;">
-    Python native HTML rendering
+    Python native HTML templates
 </div>
 
 ## Why PH7?
