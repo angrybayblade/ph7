@@ -1,3 +1,7 @@
+# v0.1.0-rc5 (16-03-2024)
+
+* Adds support for including CSS and JS files in separate blocks
+
 # v0.1.0-rc4 (15-03-2024)
 
 * Adds template engine for Flask

@@ -8,8 +8,8 @@ here = pathlib.Path(__file__).parent.resolve()
 long_description = (here / "README.md").read_text(encoding="utf-8")
 setup(
     name="ph7",
-    version="0.1.0-rc4",
-    description="Python native HTML rendering",
+    version="0.1.0-rc5",
+    description="Python native web templates",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/angrybayblade/ph7",
@@ -37,7 +37,7 @@ setup(
     },
     project_urls={
         "Documentation": "http://ph7.angrybayblade.me",
-        "Changelog": "https://github.com/angrybayblade/ph7/blob/main/docs/CHANGELOG",
+        "Changelog": "https://github.com/angrybayblade/ph7/blob/main/docs/CHANGELOG.md",
         "Issue Tracker": "https://github.com/angrybayblade/ph7/issues",
     },
 )
