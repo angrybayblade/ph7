@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
+        
+        <link rel="canonical" href="http://ph7.angrybayblade.me/">
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>PH7</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <link href="style.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body class="homepage">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">PH7</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="html/" class="nav-link">HTML</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="css/" class="nav-link">CSS</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="js/" class="nav-link">JS</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="django/" class="nav-link">Django</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="flask/" class="nav-link">Flask</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/angrybayblade/ph7/blob/main/docs/index.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#why-ph7" class="nav-link">Why PH7?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#install" class="nav-link">Install</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#quickstart" class="nav-link">Quickstart</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#next-steps" class="nav-link">Next Steps</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="why-ph7">Why PH7?</h2>
+<ul>
+<li>Native to python</li>
+<li>More code modularity</li>
+<li>Easy to write reusable components</li>
+<li>Out of the box editor support<ul>
+<li>Syntax highlighting</li>
+<li>Code navvigation tools</li>
+<li>Auto-completion</li>
+</ul>
+</li>
+<li>Type safety using MyPy</li>
+</ul>
+<h2 id="install">Install</h2>
+<pre><code>pip3 install ph7
+</code></pre>
+<h2 id="quickstart">Quickstart</h2>
+<p>Write your first block of markup</p>
+<!-- {"type": "html", "file": "examples/hello.py"} -->
+
+<pre><code class="language-python">from ph7.html import body, div, html
+
+template = html(
+    body(
+        div(
+            &quot;Hello, World!&quot;,
+        )
+    )
+)
+
+print(template)
+</code></pre>
+<pre><code class="language-html">&lt;html&gt;
+  &lt;body&gt;
+    &lt;div&gt;Hello, World!&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<!-- end -->
+
+<p>Or write a CSS class</p>
+<!-- {"type": "css", "file": "examples/css_example.py"} -->
+
+<pre><code class="language-python">from ph7.css import CSSObject
+
+
+class flex_center(CSSObject):
+    display = &quot;flex&quot;
+    align_items = &quot;center&quot;
+    justify_content = &quot;center&quot;
+
+
+print(flex_center())
+</code></pre>
+<pre><code class="language-css">.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</code></pre>
+<!-- end -->
+
+<p>Or use python function as JavaScript function</p>
+<!-- {"type": "js", "file": "examples/js_example.py"} -->
+
+<pre><code class="language-python">from ph7.js import as_js, console, document, fetch
+
+
+async def fetchDog():
+    response = await fetch(
+        &quot;https://dog.ceo/api/breeds/image/random&quot;,
+        {&quot;method&quot;: &quot;GET&quot;},
+    )
+    if response.status != 200:
+        response_body = await response.text()
+        console.log(f&quot;Error fetching dog; {response_body}&quot;)
+        return
+    data = await response.json()
+    document.getElementById(&quot;image&quot;).src = data.message
+
+
+print(as_js(fetchDog))
+</code></pre>
+<pre><code class="language-js">async function fetchDog() {
+  let response = await fetch('https://dog.ceo/api/breeds/image/random', {
+    'method': 'GET'
+  });
+  if (response.status != 200) {
+    let response_body = await response.text();
+    console.log('Error fetching dog; ' + response_body);
+    return;
+  };
+  let data = await response.json();
+  document.getElementById('image').src = data.message;
+};
+</code></pre>
+<!-- end -->
+
+<h2 id="next-steps">Next Steps</h2>
+<ul>
+<li><a href="/html">Writing HTML</a></li>
+<li><a href="/css">Writing CSS</a></li>
+<li><a href="/js">Writing JS</a></li>
+<li><a href="/django">Django Integration</a></li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="js/jquery-3.6.0.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js"></script>
+        <script src="search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.5.3
+Build Date UTC : 2024-09-21 15:59:06.843609+00:00
+-->

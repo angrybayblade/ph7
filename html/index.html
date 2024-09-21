@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="http://ph7.angrybayblade.me/html/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>HTML - PH7</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <link href="../style.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">PH7</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">HTML</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../css/" class="nav-link">CSS</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../js/" class="nav-link">JS</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../django/" class="nav-link">Django</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../flask/" class="nav-link">Flask</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" class="nav-link disabled">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../css/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/angrybayblade/ph7/blob/main/docs/html.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#writing-html" class="nav-link">Writing HTML</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#attributes" class="nav-link">Attributes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#placeholders" class="nav-link">Placeholders</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#reusable-views" class="nav-link">Reusable views</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#overridable-views" class="nav-link">Overridable views</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#function-as-view" class="nav-link">Function As View</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#caching" class="nav-link">Caching</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="writing-html">Writing HTML</h2>
+<p>Writing HTML with PH7 might be a bit weird at first since it does not follow the open/close bracket format. But once you get used to it, it can be ridiculously fast with autocomplete and type checking.</p>
+<!-- {"type": "html", "file": "examples/simple_html.py"} -->
+
+<pre><code class="language-python">from ph7.html import body, div, h1, head, html, title
+
+template = html(
+    head(
+        title(
+            &quot;H1 Tag Example&quot;,
+        ),
+    ),
+    body(
+        div(
+            h1(
+                &quot;This is an example of H1 tag&quot;,
+            )
+        )
+    ),
+)
+
+print(template)
+</code></pre>
+<pre><code class="language-html">&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;H1 Tag Example&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div&gt;
+      &lt;h1&gt;This is an example of H1 tag&lt;/h1&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<!-- end -->
+<h2 id="attributes">Attributes</h2>
+<p>HTML attributes can be passed down as function arguments, all of the HTML tag functions are defined with arguments representing the attributes as keyword arguments so you that can also utilise your autocomplete for faster development.</p>
+<!-- {"type": "html", "file": "examples/attributes.py"} -->
+
+<pre><code class="language-python">from ph7.html import body, div, head, html, title
+
+template = html(
+    head(
+        title(&quot;HTML Attributes&quot;),
+    ),
+    body(
+        div(
+            div(
+                &quot;Example for different attributes&quot;,
+                class_name=[&quot;text&quot;, &quot;bold&quot;, &quot;teal&quot;],
+                id=&quot;child&quot;,
+            ),
+            div(
+                &quot;Clickable div&quot;,
+                on={
+                    &quot;click&quot;: &quot;sayHello&quot;,
+                },
+            ),
+            class_name=&quot;container&quot;,
+            id=&quot;container&quot;,
+        )
+    ),
+    lang=&quot;en&quot;,
+)
+
+print(template)
+</code></pre>
+<pre><code class="language-html">&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;title&gt;HTML Attributes&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id=&quot;container&quot; class=&quot;container&quot;&gt;
+      &lt;div id=&quot;child&quot; class=&quot;text bold teal&quot;&gt;Example for different attributes&lt;/div&gt;
+      &lt;div onclick=&quot;sayHello()&quot;&gt;Clickable div&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<!-- end -->
+<h2 id="placeholders">Placeholders</h2>
+<p>PH7 allows you to define placeholders for data which can be filled out at when rendering a view using <code>context</code> argument.
+A placeholder can be defined with a default value</p>
+<pre><code>Hello ${name|John Doe}
+</code></pre>
+<p>and without a default value</p>
+<pre><code>Hello ${name}
+</code></pre>
+<!-- {"type": "html", "file": "examples/placeholders.py"} -->
+
+<pre><code class="language-python">from ph7.html import body, div, html
+
+template = html(
+    body(
+        div(
+            &quot;Hello, ${name|John Doe}, I'm ${age} years old and I like ${food|Coffee}&quot;,
+        )
+    )
+)
+
+print(template.render(context={&quot;name&quot;: &quot;Jane Doe&quot;, &quot;age&quot;: 24}))
+</code></pre>
+<pre><code class="language-html">&lt;html&gt;
+  &lt;body&gt;
+    &lt;div&gt;Hello, Jane Doe, I'm 24 years old and I like Coffee&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<!-- end -->
+<p>Not providing value for placeholder without default value will result in error</p>
+<!-- {"type": "text", "file": "examples/missing_placeholders.py", "lines": {"output": [-1, null]}} -->
+
+<pre><code class="language-python">from ph7.html import body, div, html
+
+template = html(
+    body(
+        div(
+            &quot;Hello, ${name|John Doe}, I'm ${age} years old and I like ${food|Coffee}&quot;,
+        )
+    )
+)
+
+print(template)
+</code></pre>
+<pre><code class="language-text">ValueError: Error rendering 'Hello, ${name|John Doe}, I'm ${age} years old and I like ${food|Coffee}'; Value for 'age' not provided
+</code></pre>
+<!-- end -->
+<h2 id="reusable-views">Reusable views</h2>
+<p>You can define empty views with specific attributes and hydrate them later with data. When hydrating or rehydrating a view, you can also override the attributes.</p>
+<!-- {"type": "html", "file": "examples/reusable_views.py"} -->
+
+<pre><code class="language-python">from ph7.html import body, div, html
+
+text = div(
+    style={
+        &quot;font_size&quot;: &quot;16px&quot;,
+        &quot;font_weight&quot;: &quot;600&quot;,
+        &quot;letter_spacing&quot;: &quot;0.75px&quot;,
+    }
+)
+
+template = html(
+    body(
+        div(
+            text(&quot;Text 1&quot;),
+            text(&quot;Text 2&quot;),
+            text(&quot;Text 3&quot;, class_name=[&quot;active&quot;]),
+        )
+    )
+)
+
+print(template)
+</code></pre>
+<pre><code class="language-html">&lt;html&gt;
+  &lt;body&gt;
+    &lt;div&gt;
+      &lt;div style=&quot;font-size:16px;font-weight:600;letter-spacing:0.75px&quot;&gt;Text 1&lt;/div&gt;
+      &lt;div style=&quot;font-size:16px;font-weight:600;letter-spacing:0.75px&quot;&gt;Text 2&lt;/div&gt;
+      &lt;div class=&quot;active&quot; style=&quot;font-size:16px;font-weight:600;letter-spacing:0.75px&quot;&gt;Text 3&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<!-- end -->
+<h2 id="overridable-views">Overridable views</h2>
+<p>You can define a block as overridable by using <code>overridable</code> method, these blocks can be filled with content when hydrating/rehydrating the parent component.</p>
+<!-- {"type": "html", "file": "examples/overridable_views.py"} -->
+
+<pre><code class="language-python">from ph7.html import a, body, div, html, title
+
+button = div(class_name=[&quot;btn&quot;, &quot;btn-primary&quot;])
+
+base = html(
+    title(&quot;Templates Example&quot;),
+    body(
+        div(class_name=&quot;nav&quot;).overridable(&quot;navbar&quot;),
+        div(class_name=&quot;container&quot;).overridable(&quot;container&quot;),
+        div(
+            &quot;© Organisation 2024 | Made by &quot;,
+            a(&quot;angrybayblade&quot;, href=&quot;https://github.com/angrybayblade&quot;),
+            class_name=&quot;footer&quot;,
+        ),
+    ),
+)
+
+template = base(
+    navbar=div(
+        button(&quot;Home&quot;, class_name=[&quot;btn&quot;, &quot;btn-primary&quot;, &quot;active&quot;]),
+        button(&quot;About Us&quot;),
+        button(&quot;Contact Us&quot;),
+    ),
+    container=div(
+        div(
+            &quot;Hello &quot;,
+            &quot;${name|John Doe}&quot;,
+            class_name=&quot;greeting&quot;,
+        ),
+        class_name=&quot;flex-center&quot;,
+    ),
+)
+
+print(template.render(context={&quot;name&quot;: &quot;Jane Doe&quot;}))
+</code></pre>
+<pre><code class="language-html">&lt;html&gt;
+  &lt;title&gt;Templates Example&lt;/title&gt;
+  &lt;body&gt;
+    &lt;div class=&quot;nav&quot;&gt;
+      &lt;div&gt;
+        &lt;div class=&quot;btn btn-primary active&quot;&gt;Home&lt;/div&gt;
+        &lt;div class=&quot;btn btn-primary&quot;&gt;About Us&lt;/div&gt;
+        &lt;div class=&quot;btn btn-primary&quot;&gt;Contact Us&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;container&quot;&gt;
+      &lt;div class=&quot;flex-center&quot;&gt;
+        &lt;div class=&quot;greeting&quot;&gt;Hello Jane Doe&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;footer&quot;&gt;© Organisation 2024 | Made by &lt;a href=&quot;https://github.com/angrybayblade&quot;&gt;angrybayblade&lt;/a&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<!-- end -->
+
+<p>Using overridable views and reusable views you can create a modular and reusable codebase and save a lot of time an effort in the process.</p>
+<h2 id="function-as-view">Function As View</h2>
+<p>You can define your view as a python function create views based on conditions, using for loops or any other kind of logical operation to build your view.</p>
+<!-- {"type": "html", "file": "examples/function_as_view.py"} -->
+
+<pre><code class="language-python">import typing as t
+
+from ph7.html import HtmlNode, body, div, html
+
+user = div(class_name=&quot;user&quot;)
+users = div(class_name=&quot;user&quot;)
+nousers = div(&quot;Error, Users not found&quot;, class_name=&quot;error&quot;)
+
+
+def render_users(context: t.Dict) -&gt; HtmlNode:
+    if &quot;number_of_users&quot; not in context:
+        return nousers
+    return users(user(f&quot;User {i}&quot;) for i in range(context[&quot;number_of_users&quot;]))
+
+
+template = html(
+    body(
+        render_users,
+    )
+)
+
+print(&quot;&lt;!-- With `number_of_users` parameter --&gt;\n&quot;)
+print(template.render(context={&quot;number_of_users&quot;: 5}), end=&quot;\n\n&quot;)
+
+print(&quot;&lt;!-- Without `number_of_users` parameter --&gt;\n&quot;)
+print(template.render(context={}))
+</code></pre>
+<pre><code class="language-html">&lt;!-- With `number_of_users` parameter --&gt;
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;div class=&quot;user&quot;&gt;
+      &lt;div class=&quot;user&quot;&gt;User 0&lt;/div&gt;
+      &lt;div class=&quot;user&quot;&gt;User 1&lt;/div&gt;
+      &lt;div class=&quot;user&quot;&gt;User 2&lt;/div&gt;
+      &lt;div class=&quot;user&quot;&gt;User 3&lt;/div&gt;
+      &lt;div class=&quot;user&quot;&gt;User 4&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+&lt;!-- Without `number_of_users` parameter --&gt;
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;div class=&quot;error&quot;&gt;Error, Users not found&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<!-- end -->
+
+<p>You can also use named arguments instead of context argument to make thing more simple.</p>
+<!-- {"type": "html", "file": "examples/function_as_view_with_args.py"} -->
+
+<pre><code class="language-python">import typing as t
+
+from ph7.html import HtmlNode, body, div, html
+
+user = div(class_name=&quot;user&quot;)
+users = div(class_name=&quot;user&quot;)
+nousers = div(&quot;Error, Users not found&quot;, class_name=&quot;error&quot;)
+
+
+def render_users(number_of_users: t.Optional[int] = None) -&gt; HtmlNode:
+    if number_of_users is None:
+        return nousers
+    return users(user(f&quot;User {i}&quot;) for i in range(number_of_users))
+
+
+template = html(
+    body(
+        render_users,
+    )
+)
+
+print(&quot;&lt;!-- With `number_of_users` parameter --&gt;\n&quot;)
+print(template.render(context={&quot;number_of_users&quot;: 5}), end=&quot;\n\n&quot;)
+
+print(&quot;&lt;!-- Without `number_of_users` parameter --&gt;\n&quot;)
+print(template.render(context={}))
+</code></pre>
+<pre><code class="language-html">&lt;!-- With `number_of_users` parameter --&gt;
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;div class=&quot;user&quot;&gt;
+      &lt;div class=&quot;user&quot;&gt;User 0&lt;/div&gt;
+      &lt;div class=&quot;user&quot;&gt;User 1&lt;/div&gt;
+      &lt;div class=&quot;user&quot;&gt;User 2&lt;/div&gt;
+      &lt;div class=&quot;user&quot;&gt;User 3&lt;/div&gt;
+      &lt;div class=&quot;user&quot;&gt;User 4&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+&lt;!-- Without `number_of_users` parameter --&gt;
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;div class=&quot;error&quot;&gt;Error, Users not found&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<!-- end -->
+
+<h2 id="caching">Caching</h2>
+<p>Since you can define your views as python functions you can also use caching utilities like <code>functools.lru_cache</code> to reduce rendering time.</p>
+<!-- {"type": "stdout", "file": "examples/cacheable_view.py"} -->
+
+<pre><code class="language-python">import time
+import typing as t
+from functools import lru_cache
+
+from ph7.html import HtmlNode, body, div, html
+
+user = div(class_name=&quot;user&quot;)
+users = div(class_name=&quot;user&quot;)
+nousers = div(&quot;Error, Users not found&quot;, class_name=&quot;error&quot;)
+
+
+@lru_cache
+def _render_users(n: int) -&gt; HtmlNode:
+    return users(user(f&quot;User {i}&quot;) for i in range(n))
+
+
+def render_users(context: t.Dict) -&gt; HtmlNode:
+    if &quot;number_of_users&quot; not in context:
+        return nousers
+    return _render_users(n=context[&quot;number_of_users&quot;])
+
+
+template = html(
+    body(
+        render_users,
+    )
+)
+
+tick = time.perf_counter()
+template.render(context={&quot;number_of_users&quot;: 300000})
+print(f&quot;First render: {time.perf_counter() - tick}&quot;)
+
+tick = time.perf_counter()
+template.render(context={&quot;number_of_users&quot;: 300000})
+print(f&quot;Second render: {time.perf_counter() - tick}&quot;)
+
+tick = time.perf_counter()
+template.render(context={&quot;number_of_users&quot;: 300000})
+print(f&quot;Third render: {time.perf_counter() - tick}&quot;)
+</code></pre>
+<pre><code class="language-stdout">First render: 4.100849833999746
+Second render: 0.1824485419992925
+Third render: 0.1806802080000125
+</code></pre>
+<!-- end -->
+
+<p>When making a view cacheable, make sure the view satisfies following constrains</p>
+<ul>
+<li>View only depends on the data provided by the arguments and does not fetch any external data</li>
+<li>View does not return very large objects, or you might run into out of memory error after a while. If a view returns very large objects and you still want to cache it, you can use a smaller cache stack size on <code>functools.lru_cache</code>.</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/jquery-3.6.0.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

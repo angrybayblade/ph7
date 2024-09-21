@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="http://ph7.angrybayblade.me/css/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>CSS - PH7</title>
+        <link href="bootstrap.min.css" rel="stylesheet">
+        <link href="font-awesome.min.css" rel="stylesheet">
+        <link href="base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <link href="../style.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">PH7</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../html/" class="nav-link">HTML</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">CSS</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../js/" class="nav-link">JS</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../django/" class="nav-link">Django</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../flask/" class="nav-link">Flask</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../html/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../js/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/angrybayblade/ph7/blob/main/docs/css.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#adding-style" class="nav-link">Adding Style</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#cssobject" class="nav-link">CSSObject</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#pseudo-classes-and-elements" class="nav-link">Pseudo Classes and Elements</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#static-context" class="nav-link">Static Context</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="adding-style">Adding Style</h2>
+<p>Use <code>style</code> attribute to add style to a view. The <code>style</code> attribute is defined using a <code>TypedDict</code> object which means it's a type constrained dictionary. What this means is, you can utilise the autocomplete from your IDE for writing code faster. And since it's type constriained you can also utilise a tool like <code>mypy</code> to make sure you are not defining any wrong attributes.
+<img alt="Autocomplete" src="/img/style-autocomplete.gif" /></p>
+<!-- {"type": "html", "file": "examples/styles.py"} -->
+
+<pre><code class="language-python">&quot;&quot;&quot;Simple hello example.&quot;&quot;&quot;
+
+from ph7.html import body, div, html
+
+template = html(
+    body(
+        div(
+            &quot;Hello, World!&quot;,
+            style={
+                &quot;height&quot;: &quot;100vh&quot;,
+                &quot;width&quot;: &quot;100vw&quot;,
+                &quot;display&quot;: &quot;flex&quot;,
+                &quot;align_items&quot;: &quot;center&quot;,
+                &quot;justify_content&quot;: &quot;center&quot;,
+            },
+        )
+    )
+)
+
+print(template)
+</code></pre>
+<pre><code class="language-html">&lt;html&gt;
+  &lt;body&gt;
+    &lt;div style=&quot;height:100vh;width:100vw;display:flex;align-items:center;justify-content:center&quot;&gt;Hello, World!&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<!-- end -->
+
+<blockquote>
+<p>The style object get's rendered and cached at the object initialization for faster template rendering.</p>
+</blockquote>
+<h2 id="cssobject">CSSObject</h2>
+<p>Using <code>style</code> object is not the only way to develop CSS with PH7, You can utilise a special class called <code>CSSObject</code> to define stylesheets.</p>
+<!-- {"type": "html", "file": "examples/css_cls.py", "class": "side-by-side"} -->
+<div class='side-by-side'>
+
+<pre><code class="language-python">from ph7 import CSSObject, include
+from ph7.html import body, div, head, html
+
+
+class flex_center(CSSObject):
+    display = &quot;flex&quot;
+    align_items = &quot;center&quot;
+    justify_content = &quot;center&quot;
+
+
+template = html(
+    head(
+        include(flex_center),
+    ),
+    body(
+        div(
+            div(
+                &quot;Hello, World!&quot;,
+            ),
+            class_name=[flex_center],
+        )
+    ),
+)
+
+print(template)
+</code></pre>
+
+
+
+<pre><code class="language-html">&lt;html&gt;
+  &lt;head&gt;
+    &lt;style&gt;
+      .flex-center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class=&quot;flex-center&quot;&gt;
+      &lt;div&gt;Hello, World!&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+</div>
+<!-- end -->
+
+<p>A <code>CSSObject</code> can also be reused via class inheritance. You can define a base CSS class and reuse it however many times you like.</p>
+<!-- {"type": "css", "file": "examples/css_inherit.py", "class": "side-by-side"} -->
+<div class='side-by-side'>
+
+<pre><code class="language-python">from ph7 import CSSObject
+
+
+class flex_center(CSSObject):
+    display = &quot;flex&quot;
+    align_items = &quot;center&quot;
+    justify_content = &quot;center&quot;
+
+
+class textbox(flex_center):
+    height = &quot;100vh&quot;
+    width = &quot;100vw&quot;
+
+
+print(textbox())
+</code></pre>
+
+
+
+<pre><code class="language-css">.textbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+</code></pre>
+
+</div>
+<!-- end -->
+
+<p>Furthermore <code>CSSObject</code> also allows for nesting by sub classes.</p>
+<!-- {"type": "css", "file": "examples/css_nesting.py", "class": "side-by-side"} -->
+<div class='side-by-side'>
+
+<pre><code class="language-python">from ph7 import CSSObject
+
+
+class flex_center(CSSObject):
+    display = &quot;flex&quot;
+    align_items = &quot;center&quot;
+    justify_content = &quot;center&quot;
+
+
+class textbox(flex_center):
+    height = &quot;100vh&quot;
+    width = &quot;100vw&quot;
+
+    class text(CSSObject):
+        font_size = &quot;12px&quot;
+        font_weight = &quot;500&quot;
+        font_family = &quot;Lucida Console, Monaco, monospace&quot;
+
+
+print(textbox())
+</code></pre>
+
+
+
+<pre><code class="language-css">.textbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+.textbox .text {
+  font-size: 12px;
+  font-weight: 500;
+  font-family: Lucida Console, Monaco, monospace;
+}
+</code></pre>
+
+</div>
+<!-- end -->
+
+<p>To make your styles more manageable and reusable, you can define the styles in a separate module and import them throughout your codebase. Following section provides an example of a reusable stylesheet module.</p>
+<h2 id="pseudo-classes-and-elements">Pseudo Classes and Elements</h2>
+<p>A pseudo class can be defined by adding <code>_</code> at the beginning of class name, for selecting a child you can set <code>child</code> parameter. For pseudo, elements add <code>__</code> at the beginning of the class name.</p>
+<!-- {"type": "css", "file": "examples/css_pseudo_class.py", "class": "side-by-side"} -->
+<div class='side-by-side'>
+
+<pre><code class="language-python">from ph7 import CSSObject
+
+
+class item(CSSObject):
+    height = &quot;30px&quot;
+    width = &quot;100%&quot;
+
+    margin_top = &quot;5px&quot;
+
+    class _nth_child(CSSObject, n=1):
+        margin_top = &quot;0px&quot;
+
+    class __before(CSSObject):
+        content = '&quot;&gt;&quot;'
+
+
+print(item())
+</code></pre>
+
+
+
+<pre><code class="language-css">.item {
+  height: 30px;
+  width: 100%;
+  margin-top: 5px;
+}
+.item::before {
+  content: &quot;&gt;&quot;;
+}
+.item:nth-child(1) {
+  margin-top: 0px;
+}
+</code></pre>
+
+</div>
+<!-- end -->
+
+<h2 id="static-context">Static Context</h2>
+<p>PH7 has a runtime context object which can be used for managing the static resource. To use a static context, import <code>ph7.context.ctx</code>, add <code>ctx.static.view(__name__)</code> at the top of your template and add <code>ctx.static.include</code> in your view. In the following example we'll use an external stylesheet for styling our view.</p>
+<!-- {"type": "html", "file": "examples/static_context.py", "env": {"DEVELOPMENT": "1"}} -->
+
+<pre><code class="language-python">from examples.script import alertHello
+from examples.style import textbox
+from ph7.context import ctx
+from ph7.html import body, div, head, html
+
+ctx.static.view(__name__)
+
+
+template = html(
+    head(
+        ctx.static.include,
+    ),
+    body(
+        div(
+            div(
+                &quot;Click Here&quot;,
+                class_name=[textbox.text],
+                on={
+                    &quot;click&quot;: alertHello(&quot;John Doe&quot;),
+                },
+            ),
+            class_name=[textbox],
+        )
+    ),
+)
+
+print(template.render(context={&quot;_view&quot;: __name__}))
+</code></pre>
+<pre><code class="language-html">&lt;html&gt;
+  &lt;head&gt;
+    &lt;style id=&quot;css.examples.style&quot;&gt;
+      .textbox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100vw;
+      }
+      .textbox .text {
+        font-size: 12px;
+        font-weight: 500;
+        font-family: Lucida Console, Monaco, monospace;
+      }
+    &lt;/style&gt;
+    &lt;script type=&quot;text/javascript&quot; id=&quot;js.examples.script&quot;&gt;
+      function alertHello(user) {
+        alert('Hello, ' + user);
+      }
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class=&quot;textbox&quot;&gt;
+      &lt;div class=&quot;text&quot; onclick=&quot;alertHello('John Doe')&quot;&gt;Click Here&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<!-- end -->
+
+<p>As you can see, the static context collects the various static resources and includes them as part of the view. The output above is produced with the mode set to development by exporting <code>DEVELOPMENT="1"</code>. When not in development mode, PH7 will compile static resources, write them as files and reference those files. Here's and example of production render of the same template</p>
+<!-- {"type": "html", "file": "examples/static_context.py", "env": {"DEVELOPMENT": "0"}, "output_only": true} -->
+
+<pre><code class="language-html">&lt;html&gt;
+  &lt;head&gt;
+    &lt;link href=&quot;/static/css/examples_style.css&quot; rel=&quot;stylesheet&quot; id=&quot;css.examples.style&quot; /&gt;
+    &lt;script src=&quot;/static/js/examples_script.js&quot; type=&quot;text/javascript&quot; id=&quot;js.examples.script&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class=&quot;textbox&quot;&gt;
+      &lt;div class=&quot;text&quot; onclick=&quot;alertHello('John Doe')&quot;&gt;Click Here&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<!-- end -->
+
+<p>And here's what the CSS file looks like.</p>
+<!-- {"type": "css", "cmd": ["cat", "static/css/examples_style.css"], "env": {"DEVELOPMENT": "0"}} -->
+
+<pre><code class="language-bash">$ cat static/css/examples_style.css
+</code></pre>
+<pre><code class="language-css">.textbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+.textbox .text {
+  font-size: 12px;
+  font-weight: 500;
+  font-family: Lucida Console, Monaco, monospace;
+}
+</code></pre>
+<!-- end --></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/jquery-3.6.0.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

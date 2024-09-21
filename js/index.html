@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="http://ph7.angrybayblade.me/js/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>JS - PH7</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <link href="../style.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">PH7</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../html/" class="nav-link">HTML</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../css/" class="nav-link">CSS</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">JS</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../django/" class="nav-link">Django</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../flask/" class="nav-link">Flask</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../css/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../django/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/angrybayblade/ph7/blob/main/docs/js.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#functions" class="nav-link">Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#arguments" class="nav-link">Arguments</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#conditionals" class="nav-link">Conditionals</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#for-loop" class="nav-link">For Loop</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#trycatch" class="nav-link">Try/Catch</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#static-context" class="nav-link">Static Context</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<p>Currently PH7 has very limited JavaScript support. But the transpiler API allows you to write your JavaScript code in pure python. PH7 also provides a set of mock APIs that can be used for autocomplete and type checking. </p>
+<p>The list of mock APIs</p>
+<ul>
+<li><code>alert</code></li>
+<li><code>console</code></li>
+<li><code>fetch</code></li>
+<li><code>document</code></li>
+</ul>
+<h2 id="functions">Functions</h2>
+<p>Write your functions in python and refer them as event handler, PH7 will take care of the rest.</p>
+<!-- {"type": "html", "file": "examples/js_function.py"} -->
+
+<pre><code class="language-python">from ph7 import include
+from ph7.html import body, button, div, head, html, img
+from ph7.js import console, document, fetch
+
+
+async def fetchDog():
+    console.log(&quot;Fetching dog&quot;)
+    response = await fetch(
+        &quot;https://dog.ceo/api/breeds/image/random&quot;,
+        {&quot;method&quot;: &quot;GET&quot;},
+    )
+    if response.status != 200:
+        response_body = await response.text()
+        console.log(f&quot;Error fetching dog; {response_body}&quot;)
+        return
+    data = await response.json()
+    console.log(&quot;Dog fetched&quot;)
+    document.getElementById(&quot;image&quot;).src = data.message
+
+
+template = html(
+    head(
+        include(fetchDog),
+    ),
+    body(
+        div(
+            img(
+                src=&quot;#&quot;,
+                id=&quot;image&quot;,
+                alt=&quot;Click to fetch dog&quot;,
+                style={&quot;height&quot;: &quot;200px&quot;, &quot;width&quot;: &quot;400px&quot;},
+            ),
+            button(
+                &quot;Click to fetch a dog&quot;,
+                on={
+                    &quot;click&quot;: fetchDog,
+                },
+            ),
+        )
+    ),
+)
+
+print(template)
+</code></pre>
+<pre><code class="language-html">&lt;html&gt;
+  &lt;head&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+      async function fetchDog() {
+        console.log('Fetching dog');
+        let response = await fetch('https://dog.ceo/api/breeds/image/random', {
+          'method': 'GET'
+        });
+        if (response.status != 200) {
+          let response_body = await response.text();
+          console.log('Error fetching dog; ' + response_body);
+          return;
+        };
+        let data = await response.json();
+        console.log('Dog fetched');
+        document.getElementById('image').src = data.message;
+      };
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div&gt;&lt;img src=&quot;#&quot; alt=&quot;Click to fetch dog&quot; id=&quot;image&quot; style=&quot;height:200px;width:400px&quot; /&gt;&lt;button onclick=&quot;fetchDog()&quot;&gt;Click to fetch a dog&lt;/button&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<!-- end -->
+
+<h2 id="arguments">Arguments</h2>
+<p>If you want to render a function call with arguments you can decorate a method with <code>ph7.js.js_callable</code> and it'll allow you to render function calls with arguments.</p>
+<!-- {"type": "html", "file": "examples/js_function_arguments.py"} -->
+
+<pre><code class="language-python">from ph7 import include
+from ph7.html import HtmlNode, body, button, div, head, html, img
+from ph7.js import document, fetch, js_callable
+
+
+@js_callable
+async def fetchUserProfilePicture(user: str) -&gt; None:
+    response = await fetch(
+        &quot;/api/users/&quot; + user,
+        {&quot;method&quot;: &quot;GET&quot;},
+    )
+    data = await response.json()
+    document.getElementById(f&quot;image-{user}&quot;).src = data.profile_picture
+
+
+def _user(name: str) -&gt; HtmlNode:
+    return div(
+        img(src=&quot;#&quot;, style={&quot;height&quot;: &quot;200px&quot;, &quot;width&quot;: &quot;400px&quot;}, id=f&quot;image-{name}&quot;),
+        button(
+            f&quot;Click to fetch {name}'s  profile picture.&quot;,
+            on={
+                &quot;click&quot;: fetchUserProfilePicture(name),
+            },
+        ),
+    )
+
+
+def _users(context: dict) -&gt; HtmlNode:
+    return div(_user(name=name) for name in context[&quot;users&quot;])
+
+
+template = html(
+    head(
+        include(fetchUserProfilePicture),
+    ),
+    body(
+        _users,
+    ),
+)
+
+print(template.render(context={&quot;users&quot;: [&quot;john.doe&quot;, &quot;jane.doe&quot;]}))
+</code></pre>
+<pre><code class="language-html">&lt;html&gt;
+  &lt;head&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+      async function fetchUserProfilePicture(user) {
+        let response = await fetch('/api/users/' + user, {
+          'method': 'GET'
+        });
+        let data = await response.json();
+        document.getElementById('image-' + user).src = data.profile_picture;
+      };
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div&gt;
+      &lt;div&gt;&lt;img src=&quot;#&quot; id=&quot;image-john.doe&quot; style=&quot;height:200px;width:400px&quot; /&gt;&lt;button onclick=&quot;fetchUserProfilePicture('john.doe')&quot;&gt;Click to fetch john.doe's profile picture.&lt;/button&gt;&lt;/div&gt;
+      &lt;div&gt;&lt;img src=&quot;#&quot; id=&quot;image-jane.doe&quot; style=&quot;height:200px;width:400px&quot; /&gt;&lt;button onclick=&quot;fetchUserProfilePicture('jane.doe')&quot;&gt;Click to fetch jane.doe's profile picture.&lt;/button&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<!-- end -->
+
+<p>These function calls are also type checkable.</p>
+<h2 id="conditionals">Conditionals</h2>
+<!-- {"type": "js", "file": "examples/js_conditionals.py", "read": "stdout", "class": "side-by-side", "lines": {"input": [3, -11]}} -->
+<div class='side-by-side'>
+
+<pre><code class="language-python">def checkCondition(number: int):
+    if number % 2 == 0:
+        print(&quot;even&quot;)
+    else:
+        print(&quot;odd&quot;)
+
+
+def fizzBuzz(number: int):
+    if number % 3 == 0 and number % 5 == 0:
+        print(&quot;fizzbuzz&quot;)
+    elif number % 3 == 0:
+        print(&quot;fizz&quot;)
+    elif number % 5 == 0:
+        print(&quot;buzz&quot;)
+    else:
+        print(number)
+
+
+def strictEqual(number: int):
+    if number % 2 is 0:
+        print(&quot;even&quot;)
+    else:
+        print(&quot;odd&quot;)
+</code></pre>
+
+
+
+<pre><code class="language-js">function checkCondition(number) {
+  if (number % 2 == 0) {
+    console.log('even');
+  } else {
+    console.log('odd');
+  };
+}
+function fizzBuzz(number) {
+  if (number % 3 == 0 &amp;&amp; number % 5 == 0) {
+    console.log('fizzbuzz');
+  } else if (number % 3 == 0) {
+    console.log('fizz');
+  } else if (number % 5 == 0) {
+    console.log('buzz');
+  } else {
+    console.log(number);
+  };
+}
+function strictEqual(number) {
+  if (number % 2 === 0) {
+    console.log('even');
+  } else {
+    console.log('odd');
+  };
+}
+</code></pre>
+
+</div>
+<!-- end -->
+
+<h2 id="for-loop">For Loop</h2>
+<!-- {"type": "js", "file": "examples/js_for_loop.py", "read": "stdout", "class": "side-by-side", "lines": {"input": [3, -11]}} -->
+<div class='side-by-side'>
+
+<pre><code class="language-python">def oddEven(n: int):
+    for i in range(n):
+        if i % 2 is 0:
+            print(i + &quot; is even&quot;)
+        else:
+            print(i + &quot; is odd&quot;)
+
+
+def oddEvenStartEnd(start: int, end: int):
+    for i in range(start, end):
+        if i % 2 is 0:
+            print(i + &quot; is even&quot;)
+        else:
+            print(i + &quot; is odd&quot;)
+
+
+def oddEvenStartEndStep(start: int, end: int, step: int):
+    for i in range(start, end, step):
+        if i % 2 is 0:
+            print(i + &quot; is even&quot;)
+        else:
+            print(i + &quot; is odd&quot;)
+</code></pre>
+
+
+
+<pre><code class="language-js">function oddEven(n) {
+  for (let i = 0; i &lt; n; i = i + 1) {
+    if (i % 2 === 0) {
+      console.log(i + ' is even');
+    } else {
+      console.log(i + ' is odd');
+    };
+  }
+}
+function oddEvenStartEnd(start, end) {
+  for (let i = start; i &lt; end; i = i + 1) {
+    if (i % 2 === 0) {
+      console.log(i + ' is even');
+    } else {
+      console.log(i + ' is odd');
+    };
+  }
+}
+function oddEvenStartEndStep(start, end, step) {
+  for (let i = start; i &lt; end; i = i + step) {
+    if (i % 2 === 0) {
+      console.log(i + ' is even');
+    } else {
+      console.log(i + ' is odd');
+    };
+  }
+}
+</code></pre>
+
+</div>
+<!-- end -->
+
+<h2 id="trycatch">Try/Catch</h2>
+<!-- {"type": "js", "file": "examples/js_try_catch.py", "read": "stdout", "class": "side-by-side", "lines": {"input": [3, -11]}} -->
+<div class='side-by-side'>
+
+<pre><code class="language-python">def tryCatch():
+    try:
+        print(&quot;try something&quot;)
+    except Exception as e:
+        print(f&quot;Error: {e}&quot;)
+
+
+def tryCatchFinally():
+    try:
+        print(&quot;try something&quot;)
+    except Exception as e:
+        print(f&quot;Error: {e}&quot;)
+    finally:
+        print(&quot;finally&quot;)
+
+
+def tryRaiseCatch():
+    try:
+        raise Exception(&quot;Some error&quot;)
+    except Exception as e:
+        print(f&quot;Error: {e}&quot;)
+</code></pre>
+
+
+
+<pre><code class="language-js">function tryCatch() {
+  try {
+    console.log('try something');
+  } catch (e) {
+    console.log('Error: ' + e);
+  };
+}
+function tryCatchFinally() {
+  try {
+    console.log('try something');
+  } catch (e) {
+    console.log('Error: ' + e);
+  } finally {
+    console.log('finally');
+  };
+}
+function tryRaiseCatch() {
+  try {
+    throw new Error('Some error');
+  } catch (e) {
+    console.log('Error: ' + e);
+  };
+}
+</code></pre>
+
+</div>
+<!-- end -->
+
+<h2 id="static-context">Static Context</h2>
+<p>PH7 has a runtime context object which can be used for managing the static resource. To use a static context, import <code>ph7.context.ctx</code>, add <code>ctx.static.view(__name__)</code> at the top of your template and add <code>ctx.static.include</code> in your view. In the following example we'll use a function defined in an external module.</p>
+<!-- {"type": "html", "file": "examples/static_context.py", "env": {"DEVELOPMENT": "1"}} -->
+
+<pre><code class="language-python">from examples.script import alertHello
+from examples.style import textbox
+from ph7.context import ctx
+from ph7.html import body, div, head, html
+
+ctx.static.view(__name__)
+
+
+template = html(
+    head(
+        ctx.static.include,
+    ),
+    body(
+        div(
+            div(
+                &quot;Click Here&quot;,
+                class_name=[textbox.text],
+                on={
+                    &quot;click&quot;: alertHello(&quot;John Doe&quot;),
+                },
+            ),
+            class_name=[textbox],
+        )
+    ),
+)
+
+print(template.render(context={&quot;_view&quot;: __name__}))
+</code></pre>
+<pre><code class="language-html">&lt;html&gt;
+  &lt;head&gt;
+    &lt;style id=&quot;css.examples.style&quot;&gt;
+      .textbox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100vw;
+      }
+      .textbox .text {
+        font-size: 12px;
+        font-weight: 500;
+        font-family: Lucida Console, Monaco, monospace;
+      }
+    &lt;/style&gt;
+    &lt;script type=&quot;text/javascript&quot; id=&quot;js.examples.script&quot;&gt;
+      function alertHello(user) {
+        alert('Hello, ' + user);
+      }
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class=&quot;textbox&quot;&gt;
+      &lt;div class=&quot;text&quot; onclick=&quot;alertHello('John Doe')&quot;&gt;Click Here&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<!-- end -->
+
+<p>As you can see, the static context collects the various static resources and includes them as part of the view. The output above is produced with the mode set to development by exporting <code>DEVELOPMENT="1"</code>. When not in development mode, PH7 will compile static resources, write them as files and reference those files. Here's and example of production render of the same template</p>
+<!-- {"type": "html", "file": "examples/static_context.py", "env": {"DEVELOPMENT": "0"}, "output_only": true} -->
+
+<pre><code class="language-html">&lt;html&gt;
+  &lt;head&gt;
+    &lt;link href=&quot;/static/css/examples_style.css&quot; rel=&quot;stylesheet&quot; id=&quot;css.examples.style&quot; /&gt;
+    &lt;script src=&quot;/static/js/examples_script.js&quot; type=&quot;text/javascript&quot; id=&quot;js.examples.script&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class=&quot;textbox&quot;&gt;
+      &lt;div class=&quot;text&quot; onclick=&quot;alertHello('John Doe')&quot;&gt;Click Here&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<!-- end -->
+
+<!-- {"type": "js", "cmd": ["cat", "static/js/examples_script.js"], "env": {"DEVELOPMENT": "0"}} -->
+
+<pre><code class="language-bash">$ cat static/js/examples_script.js
+</code></pre>
+<pre><code class="language-js">function alertHello(user) {
+  alert('Hello, ' + user);
+}
+</code></pre>
+<!-- end --></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="jquery-3.6.0.min.js"></script>
+        <script src="bootstrap.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

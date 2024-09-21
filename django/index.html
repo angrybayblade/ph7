@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="http://ph7.angrybayblade.me/django/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Django - PH7</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <link href="../style.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">PH7</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../html/" class="nav-link">HTML</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../css/" class="nav-link">CSS</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../js/" class="nav-link">JS</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Django</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../flask/" class="nav-link">Flask</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../js/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../flask/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/angrybayblade/ph7/blob/main/docs/django.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#configure-template-engine" class="nav-link">Configure Template Engine</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#templates" class="nav-link">Templates</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#forms" class="nav-link">Forms</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#stylesheets" class="nav-link">Stylesheets</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#scripts" class="nav-link">Scripts</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="configure-template-engine">Configure Template Engine</h2>
+<p>To configure your Django application to use PH7 templates, update <code>settings.py</code> to use PH7's Django template engine.</p>
+<pre><code class="language-python">TEMPLATES = [
+    {
+        &quot;NAME&quot;: &quot;PH7&quot;,
+        &quot;BACKEND&quot;: &quot;ph7.django.PH7Templates&quot;,
+        &quot;DIRS&quot;: [],
+        &quot;APP_DIRS&quot;: True,
+        &quot;OPTIONS&quot;: {},
+    }
+]
+</code></pre>
+<h2 id="templates">Templates</h2>
+<pre><code class="language-bash">|_ home
+ |_ templates
+   |_ __init__.py # default view
+</code></pre>
+<p>Define your view in <code>__init__.py</code>, when defining the view you need to name the default view <code>template</code>, for example</p>
+<!-- {"type": "html", "file": "examples/django_app/home/templates/__init__.py", "input_only": true} -->
+
+<pre><code class="language-python">from ph7.html import body, div, html, title
+
+template = html(
+    title(&quot;Hello World&quot;),
+    body(
+        div(
+            &quot;Hello, World!&quot;,
+        )
+    ),
+)
+</code></pre>
+<!-- end -->
+
+<p>When rendering the view, refer to this template using relative path</p>
+<!-- {"type": "html", "file": "examples/django_app/home/views.py", "input_only": true} -->
+
+<pre><code class="language-python">from django.shortcuts import render
+
+
+def home(request):
+    return render(
+        request=request,
+        template_name=&quot;home&quot;,  # or &quot;home:template&quot;
+    )
+</code></pre>
+<!-- end -->
+
+<p>If you name your view anything other than <code>template</code>, you can specify the view name using <code>module:view</code> format. For example if you name your view <code>home</code>, you can specify the template as <code>app:home</code>.</p>
+<h2 id="forms">Forms</h2>
+<p>Forms can be included directly using <code>form</code> tag.</p>
+<!-- {"type": "html", "file": "examples/django_app/forms/templates/__init__.py", "input_only": true} -->
+
+<pre><code class="language-python">from django import forms
+
+from ph7.django import csrf_token
+from ph7.html import body, button, div, form, html, title
+
+
+class UserForm(forms.Form):
+    &quot;&quot;&quot;User form class.&quot;&quot;&quot;
+
+    name = forms.CharField(label=&quot;username&quot;)
+    email = forms.EmailField(label=&quot;email&quot;)
+    password = forms.CharField(label=&quot;password&quot;, widget=forms.PasswordInput())
+
+
+template = html(
+    title(&quot;Forms Example&quot;),
+    body(
+        div(
+            form(
+                UserForm(),
+                csrf_token,
+                button(&quot;submit&quot;, type=&quot;submit&quot;),
+            ),
+        )
+    ),
+)
+</code></pre>
+<!-- end -->
+
+<pre><code class="language-html">&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Forms Example&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div&gt;
+      &lt;form&gt;
+        &lt;label for=&quot;id_name&quot;&gt;username:&lt;/label&gt;
+        &lt;input type=&quot;text&quot; name=&quot;name&quot; required=&quot;&quot; id=&quot;id_name&quot; /&gt;
+        &lt;label for=&quot;id_email&quot;&gt;email:&lt;/label&gt;
+        &lt;input type=&quot;email&quot; name=&quot;email&quot; maxlength=&quot;320&quot; required=&quot;&quot; id=&quot;id_email&quot;/&gt;
+        &lt;label for=&quot;id_password&quot;&gt;password:&lt;/label&gt;
+        &lt;input type=&quot;password&quot; name=&quot;password&quot; required=&quot;&quot; id=&quot;id_password&quot; /&gt;
+        &lt;input
+          name=&quot;csrfmiddlewaretoken&quot;
+          value=&quot;aaAAAaAAaAAAaaAAAAAAAaAaaAaAAAaaAAAaaaaaaAAaAAaaAAaaaAAaAAAAaaaa&quot;
+          id=&quot;csrfmiddlewaretoken&quot;
+          hidden=&quot;True&quot;
+        /&gt;&lt;button type=&quot;submit&quot;&gt;submit&lt;/button&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="stylesheets">Stylesheets</h2>
+<p>Define your stylesheet using <a href="/css/#cssobject"><code>CSSObject</code></a> and use <a href="/css/#static-context"><code>Static Context</code></a> to include the stylesheets in your views. First let's define <code>templates/styles.py</code></p>
+<!-- {"type": "html", "file": "examples/django_app/static_files/templates/styles.py", "input_only": true} -->
+
+<pre><code class="language-python">from ph7.css import CSSObject
+
+
+class container(CSSObject):
+    display = &quot;flex&quot;
+    align_items = &quot;center&quot;
+    justify_content = &quot;center&quot;
+
+    height = &quot;100vh&quot;
+    width = &quot;100vw&quot;
+
+    box_sizing = &quot;border-box&quot;
+    margin = &quot;0px&quot;
+    padding = &quot;0px&quot;
+</code></pre>
+<!-- end -->
+
+<p>Next include the stylesheet by importing it and using one of the style classes.</p>
+<!-- {"type": "html", "file": "examples/django_app/static_files/templates/__init__.py", "input_only": true} -->
+
+<pre><code class="language-python">from static_files.templates import styles as stylesheet
+
+from ph7.context import ctx
+from ph7.html import body, div, head, html, title
+
+ctx.static.view(__name__)
+
+
+template = html(
+    title(&quot;Static Files Example&quot;),
+    head(
+        ctx.static.include,
+    ),
+    body(
+        div(
+            &quot;Hello, World!&quot;,
+            class_name=stylesheet.container,
+        )
+    ),
+)
+</code></pre>
+<!-- end -->
+
+<p>This is what the rendered view looks like</p>
+<pre><code class="language-html">&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Static Files Example&lt;/title&gt;
+    &lt;link
+      href=&quot;/static/css/static_files_templates_styles.css&quot;
+      rel=&quot;stylesheet&quot;
+      id=&quot;css.static_files.templates.styles&quot;
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class=&quot;main&quot;&gt;Hello, World!&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>And this is what the rendered stylesheet looks like</p>
+<pre><code class="language-css">.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+</code></pre>
+<blockquote>
+<p>Note: In the final render of the stylesheet generated by static context, only the classes which have been used in a template will be included.</p>
+</blockquote>
+<h2 id="scripts">Scripts</h2>
+<p>Write your scripts using the <a href="/js"><code>ph7.js</code></a> APIs.</p>
+<!-- {"type": "html", "file": "examples/django_app/javascript/templates/script.py", "input_only": true} -->
+
+<pre><code class="language-python">from ph7.js import alert, console, document, fetch, js_callable
+
+
+@js_callable
+async def fetchDog():
+    console.log(&quot;Fetching dog&quot;)
+    response = await fetch(
+        &quot;https://dog.ceo/api/breeds/image/random&quot;,
+        {
+            &quot;method&quot;: &quot;GET&quot;,
+        },
+    )
+    data = await response.json()
+    console.log(&quot;Dog fetched&quot;)
+    document.getElementById(&quot;image&quot;).src = data.message
+</code></pre>
+<!-- end -->
+
+<p>Use the function in the view</p>
+<!-- {"type": "html", "file": "examples/django_app/javascript/templates/__init__.py", "input_only": true} -->
+
+<pre><code class="language-python">from javascript.templates.script import fetchDog
+from javascript.templates.styles import container, image
+
+from ph7.context import ctx
+from ph7.html import body, button, div, head, html, img
+
+ctx.static.view(__name__)
+
+
+template = html(
+    head(
+        ctx.static.include,
+    ),
+    body(
+        div(
+            img(
+                src=&quot;#&quot;,
+                id=&quot;image&quot;,
+                alt=&quot;Click to fetch dog&quot;,
+                class_name=image,
+            ),
+            button(
+                &quot;Click to fetch a dog&quot;,
+                on={
+                    &quot;click&quot;: fetchDog(),
+                },
+            ),
+            class_name=container,
+        )
+    ),
+)
+
+
+if __name__ == &quot;__main__&quot;:
+    print(template.render({&quot;_view&quot;: __name__}))
+</code></pre>
+<!-- end -->
+
+<p>This is what the rendered view looks like</p>
+<pre><code class="language-html">&lt;html&gt;
+  &lt;head&gt;
+    &lt;link
+      href=&quot;/static/css/javascript_templates_styles.css&quot;
+      rel=&quot;stylesheet&quot;
+      id=&quot;css.javascript.templates.styles&quot;
+    /&gt;
+    &lt;script
+      src=&quot;/static/js/javascript_templates_script.js&quot;
+      id=&quot;js.javascript.templates.script&quot;
+    &gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class=&quot;main&quot;&gt;
+      &lt;img src=&quot;#&quot; alt=&quot;Click to fetch dog&quot; id=&quot;image&quot; class=&quot;image&quot; /&gt;&lt;button
+        onclick=&quot;fetchDog()&quot;
+      &gt;
+        Click to fetch a dog
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>And this is what the rendered script looks like</p>
+<pre><code class="language-js">async function fetchDog() {
+  console.log(&quot;Fetching dog&quot;);
+  let response = await fetch(&quot;https://dog.ceo/api/breeds/image/random&quot;, {
+    method: &quot;GET&quot;,
+  });
+  let data = await response.json();
+  console.log(&quot;Dog fetched&quot;);
+  document.getElementById(&quot;image&quot;).src = data.message;
+}
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/jquery-3.6.0.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
