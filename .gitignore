@@ -1,5 +1,6 @@
 temp/
 static/
+site/
 
 .tox/
 dist/

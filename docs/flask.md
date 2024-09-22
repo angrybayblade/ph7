@@ -39,7 +39,7 @@ def _dogs():
 
 ## Stylesheets
 
-Define your stylesheet using [`CSSObject`](/css/#cssobject) and use [`Static Context`](/css/#static-context) to include the stylesheets in your views. First let's define `templates/styles.py`
+Define your stylesheet using [`CSSObject`](/ph7/css/#cssobject) and use [`Static Context`](/ph7/css/#static-context) to include the stylesheets in your views. First let's define `templates/styles.py`
 
 <!-- {"type": "html", "file": "examples/flask_app/templates/styles.py", "input_only": true} -->
 ```python
@@ -155,7 +155,7 @@ And this is what the rendered stylesheet looks like
 
 ## Scripts
 
-Write your scripts using the [`ph7.js`](/js) APIs.
+Write your scripts using the [`ph7.js`](/ph7/js) APIs.
 
 <!-- {"type": "html", "file": "examples/flask_app/templates/script.py", "input_only": true} -->
 ```python

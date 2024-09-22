@@ -112,6 +112,6 @@ async function fetchDog() {
 ## Next Steps
 
 * [Writing HTML](/html)
-* [Writing CSS](/css)
-* [Writing JS](/js)
-* [Django Integration](/django)
+* [Writing CSS](/ph7/css)
+* [Writing JS](/ph7/js)
+* [Django Integration](/ph7/django)
